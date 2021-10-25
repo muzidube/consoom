@@ -47,7 +47,7 @@ export default function Testing() {
   }, []);
 
   return (
-    <div className="container movie-container w-mediaW h-auto overflow-auto">
+    <div className="container movie-container w-auto h-auto overflow-auto">
       <ul className="float-left -mr-999em whitespace-nowrap list-none">
         {movies.length > 0 && movies.map((movie) => <Movie key={movie.id} {...movie} />)}
       </ul>
