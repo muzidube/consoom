@@ -7,6 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        grey: {
+          background: '#dbdbdb'
+        },
         red: {
           primary: '#F87666'
         },
@@ -17,9 +20,22 @@ module.exports = {
       },
       spacing: {
         '-999em': '-999em',
-        mediaW: '600px',
-        mediaH: '200px',
-        movieW: '150px'
+        '600px': '600px',
+        '225px': '225px',
+        '200px': '200px',
+        '150px': '150px',
+        '38px': '38px'
+      },
+      minWidth: {
+        '600px': '600px',
+        '200px': '200px',
+        '150px': '150px'
+      },
+      borderRadius: {
+        '50%': '50%'
+      },
+      fontSize: {
+        '0.6em': '0.6em'
       }
     }
   },

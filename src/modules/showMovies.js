@@ -33,6 +33,28 @@ import Movie from './Movie';
 //     });
 // }
 
+// export default function Testing() {
+//   const [movies, setMovies] = useState([]);
+
+//   useEffect(() => {
+//     fetch(
+//       'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0375f153b709c9b683ba71849a873283&page=1'
+//     )
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setMovies(data.results);
+//       });
+//   }, []);
+
+//   return (
+//     <div className="container movie-container w-auto h-auto overflow-auto">
+//       <ul className="float-left -mr-999em whitespace-nowrap list-none">
+//         {movies.length > 0 && movies.map((movie) => <Movie key={movie.id} {...movie} />)}
+//       </ul>
+//     </div>
+//   );
+// }
+
 export default function Testing() {
   const [movies, setMovies] = useState([]);
 
@@ -47,10 +69,10 @@ export default function Testing() {
   }, []);
 
   return (
-    <div className="container movie-container w-auto h-auto overflow-auto">
-      <ul className="float-left -mr-999em whitespace-nowrap list-none">
+    <div className="container movie-container w-full flex justify-center flex-wrap items-start content-start">
+      <div className="h-auto w-full max-w-screen-lg overflow-x-scroll overflow-y-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
         {movies.length > 0 && movies.map((movie) => <Movie key={movie.id} {...movie} />)}
-      </ul>
+      </div>
     </div>
   );
 }
