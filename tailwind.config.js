@@ -21,10 +21,14 @@ module.exports = {
       spacing: {
         '-999em': '-999em',
         '600px': '600px',
+        '500px': '500px',
         '225px': '225px',
         '200px': '200px',
         '150px': '150px',
-        '38px': '38px'
+        '48px': '48px',
+        '38px': '38px',
+        '34px': '34px',
+        '5px': '5px'
       },
       minWidth: {
         '600px': '600px',
@@ -35,7 +39,15 @@ module.exports = {
         '50%': '50%'
       },
       fontSize: {
-        '0.6em': '0.6em'
+        '0.6em': '0.6em',
+        '0.4rem': '0.4rem',
+        '1em': '1em'
+      },
+      strokeWidth: {
+        '10s': '10'
+      },
+      fill: {
+        none: 'none'
       }
     }
   },

@@ -20,21 +20,22 @@ body {
   font-size: 1rem;
 }
 
-.movie-info {
-  width: 150px;
-  display: flex;
-  color: black;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem 1rem;
-  letter-spacing: 0.5px;
+/* .progress-ring__circle {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
 }
 
-.movie-info h3 {
-  margin-top: 0;
+.box .percent svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: black;
 }
 
-.movie-info span {
+.box .percent svg circle:nth-child(2) {
+  stroke-dashoffset: calc(120 - (120 * 87) / 100);
+  stroke: white;
+} */
+
+/* .movie-info span {
   background-color: red;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
@@ -51,7 +52,7 @@ body {
 
 .movie-info span.red {
   color: red;
-}
+} */
 
 /* .overview {
   position: absolute;
