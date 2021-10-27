@@ -69,7 +69,7 @@ export default function Testing() {
   }, []);
 
   return (
-    <div className="container movie-container w-full flex justify-center flex-wrap items-start content-start">
+    <div className="movie-container container w-full flex justify-center flex-wrap items-start content-start">
       <div className="h-auto w-full max-w-screen-lg overflow-x-scroll overflow-y-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
         {movies.length > 0 && movies.map((movie) => <Movie key={movie.id} {...movie} />)}
       </div>

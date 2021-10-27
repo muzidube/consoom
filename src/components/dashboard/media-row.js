@@ -40,6 +40,28 @@ export default function MediaRow() {
           hfkajhskdjf hkjasdhf hkdjhkasjhdf hk fhka sjkdhf hk kh
         </div>
       </div>
+      <div className="movie">
+        <img src="/images/Consume-Big.jpg" alt="imagess" />
+        <div className="movie-info">
+          <h3>Movie Title</h3>
+          <span className="green">9.8</span>
+        </div>
+        <div className="overview">
+          Lorem ipsum asdhashd hadsjkhaf haskdjfh ajkdahs hdjks hfdkjhs ajkdhf khkajsdjhfads khaskjd
+          hfkajhskdjf hkjasdhf hkdjhkasjhdf hk fhka sjkdhf hk kh
+        </div>
+      </div>
+      <div className="movie">
+        <img src="/images/Consume-Big.jpg" alt="imagess" />
+        <div className="movie-info">
+          <h3>Movie Title</h3>
+          <span className="green">9.8</span>
+        </div>
+        <div className="overview">
+          Lorem ipsum asdhashd hadsjkhaf haskdjfh ajkdahs hdjks hfdkjhs ajkdhf khkajsdjhfads khaskjd
+          hfkajhskdjf hkjasdhf hkdjhkasjhdf hk fhka sjkdhf hk kh
+        </div>
+      </div>
     </div>
   );
 }

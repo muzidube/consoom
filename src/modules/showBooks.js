@@ -15,7 +15,7 @@ export default function ShowBooks() {
   }, []);
 
   return (
-    <div className="container book-container w-full flex justify-center flex-wrap items-start content-start">
+    <div className="book-container container w-full flex justify-center flex-wrap items-start content-start">
       <div className="h-auto w-full max-w-screen-lg overflow-x-scroll overflow-y-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
         {books.length > 0 && books.map((book) => <Book key={book.primary_isbn10} {...book} />)}
       </div>
