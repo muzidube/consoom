@@ -10,7 +10,7 @@ import HeroSearch from '../components/dashboard/hero-search';
 
 export default function Dashboard1() {
   useEffect(() => {
-    document.title = 'Co-Lab';
+    document.title = 'Consume';
   }, []);
 
   return (

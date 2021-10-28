@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { heroSearchBG } from '../../modules/heroSearchBG';
+import SearchBar from '../../modules/searchBar';
 
 export default function HeroSearch() {
   heroSearchBG();
@@ -20,7 +21,7 @@ export default function HeroSearch() {
               <form className="mt-7 relative top-0 left-0 box-border text-white">
                 <label className="box-border text-white" htmlFor="search">
                   <input
-                    className="search w-full h-11 leading-10 text-1.1em text-black border-none rounded-3xl px-5 py-2.5 box-border"
+                    className="search w-full h-11 leading-10 text-1.1em text-black border-none rounded-3xl px-5 py-2.5 box-border focus:outline-none"
                     dir="auto"
                     name="query"
                     type="text"
@@ -31,6 +32,7 @@ export default function HeroSearch() {
                     placeholder="Search for a movie, tv show, book or game..."
                     value=""
                   />
+                  <SearchBar />
                 </label>
                 <input
                   className="inline-flex justify-center align-center content-center h-11 py-2.5 px-6 border-none bg-red-primary rounded-3xl absolute top-0 -right-px text-white font-bold cursor-pointer leading-normal"

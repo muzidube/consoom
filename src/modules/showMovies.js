@@ -19,7 +19,7 @@ export default function ShowMovies() {
       <div className="column-wrapper w-full flex justify-center items-start content-start box-border text-black">
         <div className="content-wrapper px-0 pb-0 mb-0 box-border text-black max-w-screen-xl w-full flex flex-wrap items-start content-start pt-7">
           <div className="column w-full box-border text-black text-1em font-semibold p-0 box-border text-black">
-            <div className="column-header px-10 py-10 flex flex-wrap justify-start items-center content-center box-border text-black">
+            <div className="column-header px-10 flex flex-wrap justify-start items-center content-center box-border text-black">
               <h2 className="m-0 mr-5 whitespace-nowrap text-1.5em">Movies</h2>
               <div className="selector-wrap box-border text-black">
                 <div className="selector flex justify-start items-stretch content-center border rounded-3xl border-red-primary box-border text-black">
