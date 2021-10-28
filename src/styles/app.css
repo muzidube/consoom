@@ -615,6 +615,10 @@ body {
   font-size: 1rem;
 }
 
+.hero {
+  background-color: linear-gradient(to right, rgba(248, 118, 102, 1), rgba(248, 118, 102, 1));
+}
+
 /* .progress-ring__circle {
   stroke-dasharray: 120;
   stroke-dashoffset: 120;
@@ -4309,6 +4313,10 @@ body {
   z-index: 0;
 }
 
+.z-1 {
+  z-index: 1;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -4337,6 +4345,10 @@ body {
   z-index: 0;
 }
 
+.focus-within\:z-1:focus-within {
+  z-index: 1;
+}
+
 .focus-within\:z-10:focus-within {
   z-index: 10;
 }
@@ -4363,6 +4375,10 @@ body {
 
 .focus\:z-0:focus {
   z-index: 0;
+}
+
+.focus\:z-1:focus {
+  z-index: 1;
 }
 
 .focus\:z-10:focus {
@@ -23975,6 +23991,10 @@ body {
   background-position: top center;
 }
 
+.bg-50-50 {
+  background-position: 50% 50%;
+}
+
 .bg-repeat {
   background-repeat: repeat;
 }
@@ -25600,8 +25620,20 @@ body {
   font-size: 2em;
 }
 
+.text-1\.5em {
+  font-size: 1.5em;
+}
+
 .text-1\.1em {
   font-size: 1.1em;
+}
+
+.text-1em {
+  font-size: 1em;
+}
+
+.text-1rem {
+  font-size: 1rem;
 }
 
 .text-0\.6em {
@@ -25610,10 +25642,6 @@ body {
 
 .text-0\.4rem {
   font-size: 0.4rem;
-}
-
-.text-1em {
-  font-size: 1em;
 }
 
 .font-thin {
@@ -33411,6 +33439,10 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.media-item:first-child {
+  margin-left: 0;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -37094,6 +37126,10 @@ body {
     z-index: 0;
   }
 
+  .sm\:z-1 {
+    z-index: 1;
+  }
+
   .sm\:z-10 {
     z-index: 10;
   }
@@ -37122,6 +37158,10 @@ body {
     z-index: 0;
   }
 
+  .sm\:focus-within\:z-1:focus-within {
+    z-index: 1;
+  }
+
   .sm\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -37148,6 +37188,10 @@ body {
 
   .sm\:focus\:z-0:focus {
     z-index: 0;
+  }
+
+  .sm\:focus\:z-1:focus {
+    z-index: 1;
   }
 
   .sm\:focus\:z-10:focus {
@@ -56729,6 +56773,10 @@ body {
     background-position: top center;
   }
 
+  .sm\:bg-50-50 {
+    background-position: 50% 50%;
+  }
+
   .sm\:bg-repeat {
     background-repeat: repeat;
   }
@@ -58354,8 +58402,20 @@ body {
     font-size: 2em;
   }
 
+  .sm\:text-1\.5em {
+    font-size: 1.5em;
+  }
+
   .sm\:text-1\.1em {
     font-size: 1.1em;
+  }
+
+  .sm\:text-1em {
+    font-size: 1em;
+  }
+
+  .sm\:text-1rem {
+    font-size: 1rem;
   }
 
   .sm\:text-0\.6em {
@@ -58364,10 +58424,6 @@ body {
 
   .sm\:text-0\.4rem {
     font-size: 0.4rem;
-  }
-
-  .sm\:text-1em {
-    font-size: 1em;
   }
 
   .sm\:font-thin {
@@ -69836,6 +69892,10 @@ body {
     z-index: 0;
   }
 
+  .md\:z-1 {
+    z-index: 1;
+  }
+
   .md\:z-10 {
     z-index: 10;
   }
@@ -69864,6 +69924,10 @@ body {
     z-index: 0;
   }
 
+  .md\:focus-within\:z-1:focus-within {
+    z-index: 1;
+  }
+
   .md\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -69890,6 +69954,10 @@ body {
 
   .md\:focus\:z-0:focus {
     z-index: 0;
+  }
+
+  .md\:focus\:z-1:focus {
+    z-index: 1;
   }
 
   .md\:focus\:z-10:focus {
@@ -89471,6 +89539,10 @@ body {
     background-position: top center;
   }
 
+  .md\:bg-50-50 {
+    background-position: 50% 50%;
+  }
+
   .md\:bg-repeat {
     background-repeat: repeat;
   }
@@ -91096,8 +91168,20 @@ body {
     font-size: 2em;
   }
 
+  .md\:text-1\.5em {
+    font-size: 1.5em;
+  }
+
   .md\:text-1\.1em {
     font-size: 1.1em;
+  }
+
+  .md\:text-1em {
+    font-size: 1em;
+  }
+
+  .md\:text-1rem {
+    font-size: 1rem;
   }
 
   .md\:text-0\.6em {
@@ -91106,10 +91190,6 @@ body {
 
   .md\:text-0\.4rem {
     font-size: 0.4rem;
-  }
-
-  .md\:text-1em {
-    font-size: 1em;
   }
 
   .md\:font-thin {
@@ -102578,6 +102658,10 @@ body {
     z-index: 0;
   }
 
+  .lg\:z-1 {
+    z-index: 1;
+  }
+
   .lg\:z-10 {
     z-index: 10;
   }
@@ -102606,6 +102690,10 @@ body {
     z-index: 0;
   }
 
+  .lg\:focus-within\:z-1:focus-within {
+    z-index: 1;
+  }
+
   .lg\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -102632,6 +102720,10 @@ body {
 
   .lg\:focus\:z-0:focus {
     z-index: 0;
+  }
+
+  .lg\:focus\:z-1:focus {
+    z-index: 1;
   }
 
   .lg\:focus\:z-10:focus {
@@ -122213,6 +122305,10 @@ body {
     background-position: top center;
   }
 
+  .lg\:bg-50-50 {
+    background-position: 50% 50%;
+  }
+
   .lg\:bg-repeat {
     background-repeat: repeat;
   }
@@ -123838,8 +123934,20 @@ body {
     font-size: 2em;
   }
 
+  .lg\:text-1\.5em {
+    font-size: 1.5em;
+  }
+
   .lg\:text-1\.1em {
     font-size: 1.1em;
+  }
+
+  .lg\:text-1em {
+    font-size: 1em;
+  }
+
+  .lg\:text-1rem {
+    font-size: 1rem;
   }
 
   .lg\:text-0\.6em {
@@ -123848,10 +123956,6 @@ body {
 
   .lg\:text-0\.4rem {
     font-size: 0.4rem;
-  }
-
-  .lg\:text-1em {
-    font-size: 1em;
   }
 
   .lg\:font-thin {
@@ -135320,6 +135424,10 @@ body {
     z-index: 0;
   }
 
+  .xl\:z-1 {
+    z-index: 1;
+  }
+
   .xl\:z-10 {
     z-index: 10;
   }
@@ -135348,6 +135456,10 @@ body {
     z-index: 0;
   }
 
+  .xl\:focus-within\:z-1:focus-within {
+    z-index: 1;
+  }
+
   .xl\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -135374,6 +135486,10 @@ body {
 
   .xl\:focus\:z-0:focus {
     z-index: 0;
+  }
+
+  .xl\:focus\:z-1:focus {
+    z-index: 1;
   }
 
   .xl\:focus\:z-10:focus {
@@ -154955,6 +155071,10 @@ body {
     background-position: top center;
   }
 
+  .xl\:bg-50-50 {
+    background-position: 50% 50%;
+  }
+
   .xl\:bg-repeat {
     background-repeat: repeat;
   }
@@ -156580,8 +156700,20 @@ body {
     font-size: 2em;
   }
 
+  .xl\:text-1\.5em {
+    font-size: 1.5em;
+  }
+
   .xl\:text-1\.1em {
     font-size: 1.1em;
+  }
+
+  .xl\:text-1em {
+    font-size: 1em;
+  }
+
+  .xl\:text-1rem {
+    font-size: 1rem;
   }
 
   .xl\:text-0\.6em {
@@ -156590,10 +156722,6 @@ body {
 
   .xl\:text-0\.4rem {
     font-size: 0.4rem;
-  }
-
-  .xl\:text-1em {
-    font-size: 1em;
   }
 
   .xl\:font-thin {
@@ -168062,6 +168190,10 @@ body {
     z-index: 0;
   }
 
+  .\32xl\:z-1 {
+    z-index: 1;
+  }
+
   .\32xl\:z-10 {
     z-index: 10;
   }
@@ -168090,6 +168222,10 @@ body {
     z-index: 0;
   }
 
+  .\32xl\:focus-within\:z-1:focus-within {
+    z-index: 1;
+  }
+
   .\32xl\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -168116,6 +168252,10 @@ body {
 
   .\32xl\:focus\:z-0:focus {
     z-index: 0;
+  }
+
+  .\32xl\:focus\:z-1:focus {
+    z-index: 1;
   }
 
   .\32xl\:focus\:z-10:focus {
@@ -187697,6 +187837,10 @@ body {
     background-position: top center;
   }
 
+  .\32xl\:bg-50-50 {
+    background-position: 50% 50%;
+  }
+
   .\32xl\:bg-repeat {
     background-repeat: repeat;
   }
@@ -189322,8 +189466,20 @@ body {
     font-size: 2em;
   }
 
+  .\32xl\:text-1\.5em {
+    font-size: 1.5em;
+  }
+
   .\32xl\:text-1\.1em {
     font-size: 1.1em;
+  }
+
+  .\32xl\:text-1em {
+    font-size: 1em;
+  }
+
+  .\32xl\:text-1rem {
+    font-size: 1rem;
   }
 
   .\32xl\:text-0\.6em {
@@ -189332,10 +189488,6 @@ body {
 
   .\32xl\:text-0\.4rem {
     font-size: 0.4rem;
-  }
-
-  .\32xl\:text-1em {
-    font-size: 1em;
   }
 
   .\32xl\:font-thin {

@@ -7,7 +7,7 @@ export default function Header() {
   let user;
   //   useContext(UserContext);
   return (
-    <header className="h-16 bg-red-primary border-b border-gray-primary mb-8">
+    <header className="h-16 bg-red-primary fixed top-0 left-0 w-full z-10">
       <div className="container mx-auto max-w-screen-lg h-full">
         <div className="flex justify-between h-full">
           <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">

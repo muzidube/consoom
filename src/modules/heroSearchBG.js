@@ -11,6 +11,8 @@ export async function heroSearchBG() {
 
   const selectBG = await bgArray[Math.floor(Math.random() * bgArray.length)];
 
-  document.querySelector('.hero').style.backgroundImage = `url(
+  document.querySelector(
+    '.hero'
+  ).style.backgroundImage = `linear-gradient(to right, rgba(248, 118, 102, 1), rgba(248, 118, 102, 0.3)), url(
   https://image.tmdb.org/t/p/w1280${selectBG}`;
 }

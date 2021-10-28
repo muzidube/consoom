@@ -13,7 +13,7 @@ export default function HeroSearch() {
                 Welcome
               </h2>
               <h3 className="text-2em font-semibold m-0 p-0 box-border text-white">
-                Millions of Movies, TV Shows, and People to discover. Explore now.
+                Movies, TV Shows, Books and Games... What are you waiting for? Consume now.
               </h3>
             </div>
             <div className="search max-w-screen-xl w-full box-border text-white">
@@ -28,7 +28,7 @@ export default function HeroSearch() {
                     autoCorrect="on"
                     autoComplete="on"
                     spellCheck="false"
-                    placeholder="Search for a movie, tv show, book, game..."
+                    placeholder="Search for a movie, tv show, book or game..."
                     value=""
                   />
                 </label>

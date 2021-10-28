@@ -20,6 +20,9 @@ body {
   font-size: 1rem;
 }
 
+.hero {
+  background-color: linear-gradient(to right, rgba(248, 118, 102, 1), rgba(248, 118, 102, 1));
+}
 /* .progress-ring__circle {
   stroke-dasharray: 120;
   stroke-dashoffset: 120;
@@ -67,3 +70,7 @@ body {
 } */
 
 @tailwind utilities;
+
+.media-item:first-child {
+  margin-left: 0;
+}

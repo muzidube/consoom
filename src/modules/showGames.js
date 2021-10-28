@@ -31,7 +31,7 @@ export default function ShowGames() {
 
   return (
     <div className="game-container container w-full flex justify-center flex-wrap items-start content-start">
-      <div className="h-auto w-full max-w-screen-lg overflow-x-scroll overflow-y-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
+      <div className="media-inner-container h-auto w-full max-w-screen-lg overflow-x-scroll overflow-y-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
         {games.length > 0 && games.map((game) => <Game key={game.id} {...game} />)}
       </div>
     </div>

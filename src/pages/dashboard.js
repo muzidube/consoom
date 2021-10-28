@@ -16,7 +16,7 @@ export default function Dashboard1() {
   return (
     <div className="bg-gray-background">
       <Header />
-      <main className="mx-auto justify-center items-center">
+      <main className="mt-16 mx-auto justify-center items-center">
         <HeroSearch />
         <ShowMovies />
         <ShowTV />

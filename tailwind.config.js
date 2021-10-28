@@ -55,16 +55,22 @@ module.exports = {
       fontSize: {
         '3em': '3em',
         '2em': '2em',
+        '1.5em': '1.5em',
         '1.1em': '1.1em',
+        '1em': '1em',
+        '1rem': '1rem',
         '0.6em': '0.6em',
-        '0.4rem': '0.4rem',
-        '1em': '1em'
+        '0.4rem': '0.4rem'
       },
       strokeWidth: {
         '10s': '10'
       },
       backgroundPosition: {
-        'top-center': 'top center'
+        'top-center': 'top center',
+        '50-50': '50% 50%'
+      },
+      zIndex: {
+        1: '1'
       },
       fill: {
         none: 'none'

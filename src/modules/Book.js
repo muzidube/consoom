@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as URLS from './urls';
 
 const Book = ({ title, book_image, rank, author, description, primary_isbn10 }) => (
-  <div className="book ml-10 w-150px min-w-150px bg-transparent mt-0 border-none shadow-none rounded-lg overflow-visible mt-0 relative top-0 left-0 flex flex-wrap content-start whitespace-nowrap">
+  <div className="media-item book ml-10 w-150px min-w-150px bg-transparent mt-0 border-none shadow-none rounded-lg overflow-visible mt-0 relative top-0 left-0 flex flex-wrap content-start whitespace-nowrap">
     <div className="image shadow-md rounded-lg w-full h-225px overflow-hidden bg-grey-background whitespace-nowrap">
       <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
         <a className="image inline-block w-full h-full whitespace-nowrap" href="/" title={title}>
