@@ -19,6 +19,7 @@ module.exports = {
         }
       },
       spacing: {
+        heroHeight: 'calc(100vh / 2.5)',
         '-999em': '-999em',
         '600px': '600px',
         '500px': '500px',
@@ -35,16 +36,35 @@ module.exports = {
         '200px': '200px',
         '150px': '150px'
       },
+      maxHeight: {
+        '600px': '600px',
+        '360px': '360px',
+        '300px': '300px',
+        '200px': '200px',
+        '150px': '150px'
+      },
+      minHeight: {
+        '600px': '600px',
+        '300px': '300px',
+        '200px': '200px',
+        '150px': '150px'
+      },
       borderRadius: {
         '50%': '50%'
       },
       fontSize: {
+        '3em': '3em',
+        '2em': '2em',
+        '1.1em': '1.1em',
         '0.6em': '0.6em',
         '0.4rem': '0.4rem',
         '1em': '1em'
       },
       strokeWidth: {
         '10s': '10'
+      },
+      backgroundPosition: {
+        'top-center': 'top center'
       },
       fill: {
         none: 'none'

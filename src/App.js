@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
+import { heroSearchBG } from './modules/heroSearchBG';
 import Movie from './modules/Movie';
 
 const Login = lazy(() => import('./pages/login'));
@@ -8,6 +9,7 @@ const SignUp = lazy(() => import('./pages/sign-up'));
 const Profile = lazy(() => import('./pages/profile'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
 const NotFound = lazy(() => import('./pages/not-found'));
+heroSearchBG();
 
 export default function App() {
   return (

@@ -1,6 +1,4 @@
-/* eslint-disable camelcase */
 import { useEffect, useState } from 'react';
-import * as URLS from './urls';
 import TV from './TV';
 
 export default function ShowTV() {
@@ -17,8 +15,8 @@ export default function ShowTV() {
   }, []);
 
   return (
-    <div className="tv-container container w-full flex justify-center flex-wrap items-start content-start">
-      <div className="h-auto w-full max-w-screen-lg overflow-x-scroll overflow-y-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
+    <div className="tv-container container max-w-screen-xl w-full flex justify-center flex-wrap items-start content-start mx-auto">
+      <div className="h-auto w-full  overflow-x-scroll overflow-y-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
         {tv.length > 0 && tv.map((tv) => <TV key={tv.id} {...tv} />)}
       </div>
     </div>
