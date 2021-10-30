@@ -21,22 +21,40 @@ module.exports = {
       spacing: {
         heroHeight: 'calc(100vh / 2.5)',
         '-999em': '-999em',
+        '1em': '1em',
+        '900px': '900px',
         '600px': '600px',
         '500px': '500px',
+        '450px': '450px',
+        '300px': '300px',
         '225px': '225px',
         '200px': '200px',
         '150px': '150px',
+        '141px': '141px',
+        '94px': '94px',
+        '68px': '68px',
         '48px': '48px',
+        '46px': '46px',
         '38px': '38px',
         '34px': '34px',
         '5px': '5px'
       },
       minWidth: {
+        '1em': '1em',
         '600px': '600px',
+        '300px': '300px',
+        '200px': '200px',
+        '150px': '150px'
+      },
+      maxWidth: {
+        '1em': '1em',
+        '600px': '600px',
+        '300px': '300px',
         '200px': '200px',
         '150px': '150px'
       },
       maxHeight: {
+        '1em': '1em',
         '600px': '600px',
         '360px': '360px',
         '300px': '300px',
@@ -44,10 +62,12 @@ module.exports = {
         '150px': '150px'
       },
       minHeight: {
+        '1em': '1em',
         '600px': '600px',
         '300px': '300px',
         '200px': '200px',
-        '150px': '150px'
+        '150px': '150px',
+        '2px': '2px'
       },
       borderRadius: {
         '50%': '50%'
@@ -56,6 +76,7 @@ module.exports = {
         '3em': '3em',
         '2em': '2em',
         '1.5em': '1.5em',
+        '1.3em': '1.3em',
         '1.1em': '1.1em',
         '1em': '1em',
         '1rem': '1rem',

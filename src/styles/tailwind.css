@@ -20,10 +20,6 @@ body {
   font-size: 1rem;
 }
 
-.hero {
-  background-color: linear-gradient(to right, rgba(248, 118, 102, 0.8), rgba(248, 118, 102, 1));
-}
-
 /* .search:focus::placeholder {
   opacity: 0;
 }
@@ -31,39 +27,6 @@ body {
 .search::placeholder {
   opacity: 1;
   transition: all 250ms ease-in-out;
-} */
-/* .progress-ring__circle {
-  stroke-dasharray: 120;
-  stroke-dashoffset: 120;
-}
-
-.box .percent svg circle:nth-child(1) {
-  stroke-dashoffset: 0;
-  stroke: black;
-}
-
-.box .percent svg circle:nth-child(2) {
-  stroke-dashoffset: calc(120 - (120 * 87) / 100);
-  stroke: white;
-} */
-
-/* .movie-info span {
-  background-color: red;
-  padding: 0.25rem 0.5rem;
-  border-radius: 3px;
-  font-weight: bold;
-}
-
-.movie-info span.green {
-  color: lightgreen;
-}
-
-.movie-info span.orange {
-  color: orange;
-}
-
-.movie-info span.red {
-  color: red;
 } */
 
 /* .overview {
