@@ -14,7 +14,6 @@ export default function MediaPage() {
 
   return (
     <div className="bg-gray-background">
-      console.log('This Is Media');
       <Header />
       <main className="mt-16 mx-auto justify-center items-center">
         <MediaHero />

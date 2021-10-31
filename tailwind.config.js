@@ -21,7 +21,9 @@ module.exports = {
       spacing: {
         heroHeight: 'calc(100vh / 2.5)',
         '-999em': '-999em',
+        '2em': '2em',
         '1em': '1em',
+        '33%': '33%',
         '900px': '900px',
         '600px': '600px',
         '500px': '500px',
@@ -33,6 +35,7 @@ module.exports = {
         '141px': '141px',
         '94px': '94px',
         '68px': '68px',
+        '65px': '65px',
         '48px': '48px',
         '46px': '46px',
         '38px': '38px',
@@ -44,7 +47,8 @@ module.exports = {
         '600px': '600px',
         '300px': '300px',
         '200px': '200px',
-        '150px': '150px'
+        '150px': '150px',
+        '140px': '140px'
       },
       maxWidth: {
         '1em': '1em',
@@ -79,6 +83,7 @@ module.exports = {
         '1.3em': '1.3em',
         '1.1em': '1.1em',
         '1em': '1em',
+        '0.9em': '0.9em',
         '1rem': '1rem',
         '0.6em': '0.6em',
         '0.4rem': '0.4rem'

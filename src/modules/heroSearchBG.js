@@ -14,5 +14,5 @@ export async function heroSearchBG() {
   document.querySelector(
     '.hero'
   ).style.backgroundImage = `linear-gradient(to right, rgba(248, 118, 102, 1), rgba(248, 118, 102, 0.3)), url(
-  https://image.tmdb.org/t/p/w1280${selectBG}`;
+  https://image.tmdb.org/t/p/w1920_and_h600_multi_faces${selectBG}`;
 }
