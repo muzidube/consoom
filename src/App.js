@@ -8,7 +8,8 @@ const SignUp = lazy(() => import('./pages/sign-up'));
 const Profile = lazy(() => import('./pages/profile'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
 const NotFound = lazy(() => import('./pages/not-found'));
-const MediaPage = lazy(() => import('./pages/media-page'));
+const MoviePage = lazy(() => import('./pages/movie-page'));
+const TVShowPage = lazy(() => import('./pages/tv-show-page'));
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
         <Switch>
           <Route path={ROUTES.LOGIN} component={Login} />
           <Route path={ROUTES.SIGN_UP} component={SignUp} />
-          <Route path={ROUTES.MEDIA_PAGE} component={MediaPage} />
+          <Route path={ROUTES.MOVIE_PAGE} component={MoviePage} />
+          <Route path={ROUTES.TVSHOW_PAGE} component={TVShowPage} />
           <Route path={ROUTES.DASHBOARD} component={Dashboard} />
           <Route path={ROUTES.PROFILE} component={Profile} />
           <Route component={NotFound} />

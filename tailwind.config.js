@@ -93,6 +93,7 @@ module.exports = {
       },
       backgroundPosition: {
         'top-center': 'top center',
+        'right-hero': 'right -200px top',
         '50-50': '50% 50%'
       },
       zIndex: {
