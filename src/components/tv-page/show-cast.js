@@ -8,7 +8,7 @@ export default function ShowCast(movieID) {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
+      `https://api.themoviedb.org/3/tv/${id}/credits?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
     )
       .then((res) => res.json())
       .then((data) => {

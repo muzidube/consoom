@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import * as URLS from '../../modules/urls';
+import * as URLS from '../../constants/urls';
 
 const Cast = ({ name, profile_path, character, id }) => (
   <div className="media-item movie ml-10 w-150px min-w-150px bg-transparent mt-0 border-none shadow-none rounded-lg overflow-visible mt-0 relative top-0 left-0 flex flex-wrap content-start whitespace-nowrap">

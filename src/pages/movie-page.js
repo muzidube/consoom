@@ -1,13 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../components/header';
-import ShowMovies from '../modules/showMovies';
-import ShowBooks from '../modules/showBooks';
-import ShowTV from '../modules/showTV';
-import ShowGames from '../modules/showGames';
 import MovieHero from '../components/movie-page/movie-hero';
-import ShowCast from '../components/movie-page/showCast';
-// import Dashboard from '../components/dashboard/dashboard';
+import ShowCast from '../components/movie-page/show-cast';
 
 export default function MoviePage() {
   const [movie, setMovie] = useState('');
@@ -33,16 +28,6 @@ export default function MoviePage() {
       <main className="mt-16 mx-auto justify-center items-center">
         <MovieHero key={movie.id} {...movie} />
         <ShowCast id={id} />
-        <ShowMovies />
-        <ShowTV />
-        <ShowBooks />
-        <ShowGames />
-        {/* <HeroSearch />
-      <MediaRow /> */}
-        {/* <div className = 'grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg'>
-                <Home />
-                <Sidebar />
-            </div> */}
       </main>
     </div>
   );

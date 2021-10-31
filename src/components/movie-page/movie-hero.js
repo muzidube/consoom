@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
-import { movieHeroBG } from '../../modules/movieHeroBG';
-import * as URLS from '../../modules/urls';
-import SearchBar from '../../modules/searchBar.js';
-import HeroSearch from '../dashboard/hero-search';
+import { movieHeroBG } from './movie-hero-bg';
+import * as URLS from '../../constants/urls';
+import SearchBar from '../dashboard/hero-search/search-bar.js';
+import HeroSearch from '../dashboard/hero-search/hero-search';
 import KeyFacts from './key-facts';
 
 export default function MovieHero({
@@ -38,14 +38,14 @@ export default function MovieHero({
   // }
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
-      <div className="flex content-center justify-center flex-wrap box-border">
+      <div className="flex content-center justify-center flex-wrap box-border bg-hero-gradient">
         <div className="py-7 px-10 max-w-screen-xl w-full z-0 box-border">
           <section className="original-header content-wrapper flex flex-nowrap box-border text-white">
             <div className="poster-wrapper h-auto w-300px min-w-300px border-0 overflow-hidden rounded-lg box-border flex text-white items-center">
               <div className="poster text-white block min-w-300px w-300px h-450px relative top-0 left-0 box-border">
                 <div className="image-content backdrop text-white w-full min-w-full h-full box-border">
                   <img
-                    className="block w-full min-w-full h-full min-h-full border-0 outline-none text-white"
+                    className="block w-full min-w-full h-full min-h-full border-0 outline-none text-whit rounded-lg"
                     src={URLS.IMG_URL + poster_path}
                     alt={original_title}
                   />

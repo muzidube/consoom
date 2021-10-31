@@ -96,6 +96,9 @@ module.exports = {
         'right-hero': 'right -200px top',
         '50-50': '50% 50%'
       },
+      backgroundImage: {
+        'hero-gradient': 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))'
+      },
       zIndex: {
         1: '1'
       },

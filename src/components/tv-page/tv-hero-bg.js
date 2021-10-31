@@ -9,8 +9,6 @@ export async function TVHeroBG(id) {
       bg = data.backdrop_path;
     });
 
-  document.querySelector(
-    '.hero'
-  ).style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)), url(
+  document.querySelector('.hero').style.backgroundImage = `url(
       https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bg}`;
 }

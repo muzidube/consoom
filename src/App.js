@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
-import { heroSearchBG } from './modules/heroSearchBG';
+import { heroSearchBG } from './components/dashboard/hero-search/hero-search-bg';
 
 const Login = lazy(() => import('./pages/login'));
 const SignUp = lazy(() => import('./pages/sign-up'));

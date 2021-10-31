@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import Header from '../components/header';
 import MediaRow from '../components/dashboard/media-row';
-import ShowMovies from '../modules/showMovies';
-import ShowBooks from '../modules/showBooks';
-import ShowTV from '../modules/showTV';
-import ShowGames from '../modules/showGames';
-import HeroSearch from '../components/dashboard/hero-search';
+import ShowMovies from '../components/dashboard/movie-row/show-movies';
+import ShowBooks from '../components/dashboard/book-row/show-books';
+import ShowTV from '../components/dashboard/tv-row/show-tv';
+import ShowGames from '../components/dashboard/game-row/show-games';
+import HeroSearch from '../components/dashboard/hero-search/hero-search';
 // import Dashboard from '../components/dashboard/dashboard';
 
 export default function Dashboard1() {

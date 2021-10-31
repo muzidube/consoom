@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { useClickOutside } from 'react-click-outside-hook';
 import axios from 'axios';
 import MoonLoader from 'react-spinners/MoonLoader';
-import SearchContent from './searchContent';
-import useDebounce from '../hooks/debounceHook';
-import SearchResultMedia from './searchResults';
-import Movie from './Movie';
+import SearchContent from './search-content';
+import useDebounce from '../../../hooks/debounce-hook';
+import SearchResultMedia from './search-results';
+import Movie from '../movie-row/Movie';
 
 const containerVariants = {
   expanded: {
