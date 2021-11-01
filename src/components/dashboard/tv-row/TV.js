@@ -18,8 +18,8 @@ const TV = ({ name, poster_path, vote_average, first_air_date, overview, id }) =
         </div>
       </div>
     </Link>
-    <div className="tv-info pt-6 pb-0 px-2.5 relative whitespace-normal flex flex-wrap content-start w-full">
-      <Link to={`/movie/${id}`}>
+    <div className="tv-info pt-6 pb-0 px-2.5 relative whitespace-normal grid content-start w-full">
+      <Link to={`/tv/${id}`}>
         <h2 className="m-0 p-0 w-full font-bold break-words text-1em no-underline">{name}</h2>
       </Link>
       <div className="absolute -top-5 left-2.5 inline-block whitespace-normal">
@@ -72,16 +72,8 @@ const TV = ({ name, poster_path, vote_average, first_air_date, overview, id }) =
           </div>
         </div>
       </div>
-      <p className="m-0 p-0 whitespace-normal">{first_air_date}</p>
+      <p className="m-0 p-0 whitespace-normal font-normal">{first_air_date}</p>
     </div>
-    {/* <div className="overview">
-      <h3>Overview</h3>
-      {overview}
-      <br />
-      <button type="button" className="know-more" id={id}>
-        Know More
-      </button>
-    </div> */}
   </div>
 );
 

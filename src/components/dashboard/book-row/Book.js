@@ -1,22 +1,27 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as URLS from '../../../constants/urls';
 
-const Book = ({ title, book_image, rank, author, description, primary_isbn10 }) => (
+const Book = ({ title, book_image, rank, author, primary_isbn10 }) => (
   <div className="media-item book ml-10 w-150px min-w-150px bg-transparent mt-0 border-none shadow-none rounded-lg overflow-visible mt-0 relative top-0 left-0 flex flex-wrap content-start whitespace-nowrap">
-    <div className="image shadow-md rounded-lg w-full h-225px overflow-hidden bg-grey-background whitespace-nowrap">
-      <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
-        <a className="image inline-block w-full h-full whitespace-nowrap" href="/" title={title}>
-          <img
-            className="poster inline-block w-full h-full outline-none border-none"
-            src={book_image}
-            alt={title}
-          />
-        </a>
+    <Link to={`/book/${primary_isbn10}`}>
+      <div className="image shadow-md rounded-lg w-full h-225px overflow-hidden bg-grey-background whitespace-nowrap">
+        <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
+          <a className="image inline-block w-full h-full whitespace-nowrap" href="/" title={title}>
+            <img
+              className="poster inline-block w-full h-full outline-none border-none"
+              src={book_image}
+              alt={title}
+            />
+          </a>
+        </div>
       </div>
-    </div>
-    <div className="book-info pt-6 pb-0 px-2.5 relative whitespace-normal flex flex-wrap content-start w-full">
-      <h2 className="m-0 p-0 w-full font-bold break-words text-1em no-underline">{title}</h2>
+    </Link>
+    <div className="book-info pt-6 pb-0 px-2.5 relative whitespace-normal grid content-start w-full">
+      <Link to={`/book/${primary_isbn10}`}>
+        <h2 className="m-0 p-0 w-full font-bold break-words text-1em no-underline">{title}</h2>
+      </Link>
       <div className="absolute -top-5 left-2.5 inline-block whitespace-normal">
         <div className="outer-ring mr-0 w-38px h-38px p-0.5 rounded-50% inline-block whitespace-normal bg-black">
           <div className="relative inline-block w-full h-full text-center">
@@ -67,16 +72,8 @@ const Book = ({ title, book_image, rank, author, description, primary_isbn10 }) 
           </div>
         </div>
       </div>
-      <p className="m-0 p-0 whitespace-normal">{author}</p>
+      <p className="m-0 p-0 whitespace-normal font-normal">{author}</p>
     </div>
-    {/* <div className="description">
-      <h3>Description</h3>
-      {description}
-      <br />
-      <button type="button" className="know-more" id={id}>
-        Know More
-      </button>
-    </div> */}
   </div>
 );
 
@@ -85,7 +82,6 @@ Book.propTypes = {
   book_image: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   rank: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
   primary_isbn10: PropTypes.string.isRequired
 };
 

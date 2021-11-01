@@ -1,20 +1,19 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
-import { TVHeroBG } from './tv-hero-bg';
-import * as URLS from '../../constants/urls';
+import { bookHeroBG } from './book-hero-bg';
 
-export default function TVShowHero({
-  name,
-  poster_path,
-  vote_average,
-  first_air_date,
-  overview,
-  tagline,
-  status,
+export default function BookHero({
+  title,
+  averageRating,
+  publishedDate,
+  description,
+  textSnippet,
+  ISBN_13,
+  author,
+  pageCount,
   id
 }) {
-  TVHeroBG(id);
-
+  bookHeroBG(id);
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
       <div className="flex content-center justify-center flex-wrap box-border bg-hero-gradient">
@@ -24,9 +23,9 @@ export default function TVShowHero({
               <div className="poster text-white block min-w-300px w-300px h-450px relative top-0 left-0 box-border">
                 <div className="image-content backdrop text-white w-full min-w-full h-full box-border">
                   <img
-                    className="block w-full min-w-full h-full min-h-full border-0 outline-none text-white rounded-lg"
-                    src={URLS.IMG_URL + poster_path}
-                    alt={name}
+                    className="block w-full min-w-full h-full min-h-full border-0 outline-none text-whit rounded-lg"
+                    src={`https://storage.googleapis.com/du-prd/books/images/${ISBN_13}.jpg`}
+                    alt={title}
                   />
                 </div>
               </div>
@@ -36,13 +35,12 @@ export default function TVShowHero({
                 <div className="title text-white w-full mb-6 flex flex-wrap box-border">
                   <h2 className="text-white w-full m-0 p-0 text-4xl flex font-semibold box-border items-center">
                     <p className="text-white font-bold decoration-none box-border bg-transparent text-4xl">
-                      {name}
+                      {title}
                     </p>
                     <span className="font-normal text-gray-600 box-border text-3xl ml-3">
-                      ({first_air_date})
+                      ({publishedDate})
                     </span>
                   </h2>
-                  <div className="facts flex text-white italic text-gray-500">{status}</div>
                 </div>
                 <ul className="actions text-white m-0 p-0 mb-5 w-full h-68px flex items-center content-start list-none box-border">
                   <li className="h-full bg-transparent inline-flex items-center justify-center box-border mr-5 text-white list-none">
@@ -62,16 +60,16 @@ export default function TVShowHero({
                           className="progress-ring__circle w-65px h-65px transform translate-x-5px translate-y-5px fill-none"
                           strokeWidth="2.2"
                           strokeDasharray="175"
-                          strokeDashoffset={175 - (175 * (vote_average * 10)) / 100}
+                          strokeDashoffset={175 - (175 * (averageRating * 10)) / 100}
                           strokeLinecap="round"
                           stroke={(() => {
-                            if (vote_average >= 9.5) {
+                            if (averageRating >= 9.5) {
                               return 'gold';
                             }
-                            if (vote_average >= 7) {
+                            if (averageRating >= 7) {
                               return '#21d07a';
                             }
-                            if (vote_average >= 5) {
+                            if (averageRating >= 5) {
                               return '#d2d531';
                             }
                             return 'red';
@@ -83,7 +81,7 @@ export default function TVShowHero({
                       </svg>
                       <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
                         <h2 className="pl-px pt-px text-xs items-center justify-center text-center whitespace-normal">
-                          {vote_average * 10}
+                          {averageRating * 10}
                           <span className="text-0.4rem">%</span>
                         </h2>
                       </div>
@@ -167,15 +165,33 @@ export default function TVShowHero({
                   </li>
                 </ul>
                 <div className="details text-white w-full box-border">
-                  <h3 className="tagline text-gray-500 m-0 p-0 text-1.1em font-normal italic w-full box-border">
-                    {tagline}
+                  <h3 className="textSnippet text-gray-500 m-0 p-0 text-1.1em font-normal italic w-full box-border">
+                    {textSnippet}
                   </h3>
-                  <h3 className="overview mt-2.5 text-whitew-full mb-2 font-semibold text-1.3em p-0 box-border">
+                  <h3 className="description mt-2.5 text-whitew-full mb-2 font-semibold text-1.3em p-0 box-border">
                     Overview
                   </h3>
                   <div className="text-white box-border">
-                    <p className="m-0 text-white text-1em p-0 box-border">{overview}</p>
+                    <p className="m-0 text-white text-1em p-0 box-border">{description}</p>
                   </div>
+                  <ol className="text-white m-0 mt-5 content-start flex flex-wrap list-none list-inside p-0 relative top-0 left-0 box-border">
+                    <li className="profile bg-transparent h-auto mb-0 text-white w-33% text-left mr-0 box-border pr-5 min-w-140px list-none list-inside">
+                      <p className="text-white p-0 text-1em m-0 overflow-hidden overflow-ellipsis box-border text-left list-none list-inside font-bold decoration-none bg-transparent">
+                        {author}
+                      </p>
+                      <p className="text-white p-0 text-0.9em m-0 overflow-hidden overflow-ellipsis box-border text-left list-none list-inside decoration-none bg-transparent">
+                        Author
+                      </p>
+                    </li>
+                    <li className="profile bg-transparent h-auto mb-0 text-white w-33% text-left mr-0 box-border pr-5 min-w-140px list-none list-inside">
+                      <p className="text-white p-0 text-1em m-0 overflow-hidden overflow-ellipsis box-border text-left list-none list-inside font-bold decoration-none bg-transparent">
+                        {pageCount}
+                      </p>
+                      <p className="text-white p-0 text-0.9em m-0 overflow-hidden overflow-ellipsis box-border text-left list-none list-inside decoration-none bg-transparent">
+                        Page Count
+                      </p>
+                    </li>
+                  </ol>
                 </div>
               </section>
             </div>
@@ -186,13 +202,14 @@ export default function TVShowHero({
   );
 }
 
-TVShowHero.propTypes = {
-  name: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
-  first_air_date: PropTypes.string.isRequired,
-  vote_average: PropTypes.number.isRequired,
-  overview: PropTypes.string.isRequired,
-  tagline: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
+BookHero.propTypes = {
+  title: PropTypes.string.isRequired,
+  publishedDate: PropTypes.string.isRequired,
+  averageRating: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  textSnippet: PropTypes.string.isRequired,
+  ISBN_13: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  pageCount: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired
 };

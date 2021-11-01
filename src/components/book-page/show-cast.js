@@ -4,6 +4,7 @@ import Cast from './cast';
 export default function ShowCast(movieID) {
   const [cast, setCast] = useState([]);
   const { id } = movieID;
+  console.log('thisisis', id);
 
   useEffect(() => {
     fetch(

@@ -18,7 +18,7 @@ const Movie = ({ title, poster_path, vote_average, release_date, overview, id })
         </div>
       </div>
     </Link>
-    <div className="movie-info pt-6 pb-0 px-2.5 relative whitespace-normal flex flex-wrap content-start w-full">
+    <div className="movie-info pt-6 pb-0 px-2.5 relative whitespace-normal grid content-start w-full">
       <Link to={`/movie/${id}`}>
         <h2 className="m-0 p-0 w-full font-bold break-words text-1em no-underline">{title}</h2>
       </Link>
@@ -72,7 +72,7 @@ const Movie = ({ title, poster_path, vote_average, release_date, overview, id })
           </div>
         </div>
       </div>
-      <p className="m-0 p-0 whitespace-normal">{release_date}</p>
+      <p className="m-0 p-0 whitespace-normal font-normal">{release_date}</p>
     </div>
   </div>
 );
