@@ -1,5 +1,6 @@
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/no-onchange */
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useParams } from 'react';
 import { motion } from 'framer-motion';
 import { useClickOutside } from 'react-click-outside-hook';
 import axios from 'axios';
@@ -33,6 +34,12 @@ export default function SearchBar(props) {
   const [isLoading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const isEmpty = !searchResults || searchResults.length === 0;
+
+  const [book, setBook] = useState('');
+  const [ISBN_13, setISBN_13] = useState('');
+  const [textSnippet, setTextSnippet] = useState('');
+  const [author, setAuthor] = useState('');
+  const [pageCount, setPageCount] = useState('');
 
   const changeHandler = (e) => {
     e.preventDefault();
@@ -84,12 +91,23 @@ export default function SearchBar(props) {
 
     const URL = prepareSearchQuery(searchQuery);
 
-    const response = await axios.get(URL).catch((err) => {
-      console.log('Error: ', err);
-    });
+    if (dropdownOption === 'Book') {
+      const response = await axios.get(URL).catch((err) => {
+        console.log('Error: ', err);
+      });
 
-    if (response) {
-      setSearchResults(response.data.results);
+      if (response) {
+        console.log(response.data.items[0].volumeInfo.imageLinks.thumbnail);
+        setSearchResults(response.data.items);
+      }
+    } else {
+      const response = await axios.get(URL).catch((err) => {
+        console.log('Error: ', err);
+      });
+
+      if (response) {
+        setSearchResults(response.data.results);
+      }
     }
 
     setLoading(false);
@@ -98,7 +116,7 @@ export default function SearchBar(props) {
   useEffect(() => {
     if (isClickedOutside) collapseContainer();
   }, [isClickedOutside]);
-  useDebounce(searchQuery, 500, searchTVShow);
+  useDebounce(searchQuery, 1000, searchTVShow);
 
   return (
     <motion.div
@@ -198,7 +216,15 @@ export default function SearchBar(props) {
               <span className="mt-3 search-separator flex min-w-full min-h-2px bg-gray-200" />
               <div className="w-full h-full flex flex-col p-1 text-black overflow-x-hidden overflow-y-scroll justify-start items-start content-start ">
                 {searchResults.map((searchResult) => (
-                  <SearchResultBook key={searchResult.primary_isbn10} {...searchResult} />
+                  <SearchResultBook
+                    key={searchResult.id}
+                    {...searchResult}
+                    title={searchResult.volumeInfo.title}
+                    author={searchResult.volumeInfo.authors[0]}
+                    textSnippet={searchResult.searchInfo.textSnippet}
+                    primary_isbn10={searchResult.volumeInfo.industryIdentifiers[1].identifier}
+                    book_image={searchResult.volumeInfo.imageLinks.thumbnail}
+                  />
                 ))}
                 {(() => {
                   if (isLoading) {

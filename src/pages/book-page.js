@@ -10,6 +10,7 @@ export default function BookPage() {
   const [textSnippet, setTextSnippet] = useState('');
   const [author, setAuthor] = useState('');
   const [pageCount, setPageCount] = useState('');
+  const [book_Image, setBookImage] = useState('');
   const { primary_isbn10 } = useParams();
 
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function BookPage() {
         );
         setAuthor(json.items[0].volumeInfo.authors[0]);
         setPageCount(json.items[0].volumeInfo.pageCount);
+        setBookImage(json.items[0].volumeInfo.imageLinks.thumbnail);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -51,6 +53,7 @@ export default function BookPage() {
           author={author}
           textSnippet={textSnippet}
           pageCount={pageCount}
+          book_Image={book_Image}
         />
       </main>
     </div>

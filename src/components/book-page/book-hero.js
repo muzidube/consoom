@@ -11,9 +11,14 @@ export default function BookHero({
   ISBN_13,
   author,
   pageCount,
+  book_Image,
   id
 }) {
   bookHeroBG(id);
+
+  function addDefaultSrc(e) {
+    e.target.src = book_Image;
+  }
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
       <div className="flex content-center justify-center flex-wrap box-border bg-hero-gradient">
@@ -24,6 +29,7 @@ export default function BookHero({
                 <div className="image-content backdrop text-white w-full min-w-full h-full box-border">
                   <img
                     className="block w-full min-w-full h-full min-h-full border-0 outline-none text-whit rounded-lg"
+                    onError={addDefaultSrc}
                     src={`https://storage.googleapis.com/du-prd/books/images/${ISBN_13}.jpg`}
                     alt={title}
                   />
@@ -210,6 +216,7 @@ BookHero.propTypes = {
   textSnippet: PropTypes.string.isRequired,
   ISBN_13: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  pageCount: PropTypes.number.isRequired,
+  book_Image: PropTypes.string.isRequired,
+  pageCount: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired
 };
