@@ -120,6 +120,17 @@ export default function SearchBar(props) {
     return true;
   };
 
+  const customStyles = {
+    container: () => ({
+      width: 200
+    }),
+    control: (base) => ({
+      ...base,
+      border: 0,
+      boxShadow: 'none'
+    })
+  };
+
   useEffect(() => {
     if (isClickedOutside) collapseContainer();
   }, [isClickedOutside]);
@@ -152,11 +163,12 @@ export default function SearchBar(props) {
           />
         </label>
         <Select
-          className="dropdown-menu inline-flex justify-center align-center content-center h-11 py-2.5 px-6 border-none bg-red-primary rounded-3xl absolute top-0 -right-px text-white font-bold cursor-pointer leading-normal"
+          styles={customStyles}
+          className="dropdown-menu inline-flex justify-center align-center content-center h-11 border-none rounded-3xl absolute -right-px text-red-primary cursor-pointer leading-normal outline-none"
           options={dropdownOptions}
           onChange={dropdownHandler}
         />
-        <select
+        {/* <select
           className="dropdown-menu inline-flex justify-center align-center content-center h-11 py-2.5 px-6 border-none bg-red-primary rounded-3xl absolute top-0 -right-px text-white font-bold cursor-pointer leading-normal"
           onChange={dropdownHandler}
         >
@@ -166,7 +178,7 @@ export default function SearchBar(props) {
           <option value="TV Show">TV Show</option>
           <option value="Book">Book</option>
           <option value="Game">Game</option>
-        </select>
+        </select> */}
       </form>
       {/* <span className="search-separator flex min-w-full min-h-2px bg-gray-900" /> */}
       {/* <SearchContent>{isLoading}</SearchContent> */}
@@ -174,7 +186,7 @@ export default function SearchBar(props) {
         if (isExpanded && dropdownOption === 'Movie') {
           return (
             <>
-              <span className="mt-3 search-separator flex min-w-full min-h-2px bg-gray-200" />
+              <span className="mt-1 search-separator flex min-w-full min-h-2px bg-gray-200" />
               <div className="w-full h-full flex flex-col p-1 text-black overflow-x-hidden overflow-y-scroll justify-start items-start content-start ">
                 {searchResults.map((searchResult) => (
                   <SearchResultMovie key={searchResult.id} {...searchResult} />
@@ -197,7 +209,7 @@ export default function SearchBar(props) {
         if (isExpanded && dropdownOption === 'TV Show') {
           return (
             <>
-              <span className="mt-3 search-separator flex min-w-full min-h-2px bg-gray-200" />
+              <span className="mt-1 search-separator flex min-w-full min-h-2px bg-gray-200" />
               <div className="w-full h-full flex flex-col p-1 text-black overflow-x-hidden overflow-y-scroll justify-start items-start content-start ">
                 {searchResults.map((searchResult) => (
                   <SearchResultTV key={searchResult.id} {...searchResult} />
@@ -220,7 +232,7 @@ export default function SearchBar(props) {
         if (isExpanded && dropdownOption === 'Book') {
           return (
             <>
-              <span className="mt-3 search-separator flex min-w-full min-h-2px bg-gray-200" />
+              <span className="mt-1 search-separator flex min-w-full min-h-2px bg-gray-200" />
               <div className="w-full h-full flex flex-col p-1 text-black overflow-x-hidden overflow-y-scroll justify-start items-start content-start ">
                 {searchResults.map((searchResult) => (
                   <SearchResultBook
@@ -271,7 +283,7 @@ export default function SearchBar(props) {
         if (isExpanded && dropdownOption === 'Game') {
           return (
             <>
-              <span className="mt-3 search-separator flex min-w-full min-h-2px bg-gray-200" />
+              <span className="mt-1 search-separator flex min-w-full min-h-2px bg-gray-200" />
               <div className="w-full h-full flex flex-col p-1 text-black overflow-x-hidden overflow-y-scroll justify-start items-start content-start ">
                 {searchResults.map((searchResult) => (
                   <SearchResultMovie key={searchResult.id} {...searchResult} />
