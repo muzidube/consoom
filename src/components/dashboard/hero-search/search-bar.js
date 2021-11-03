@@ -113,6 +113,13 @@ export default function SearchBar(props) {
     setLoading(false);
   };
 
+  const doesValueExist = (value) => {
+    if (value === undefined || null) {
+      return false;
+    }
+    return true;
+  };
+
   useEffect(() => {
     if (isClickedOutside) collapseContainer();
   }, [isClickedOutside]);
@@ -219,11 +226,31 @@ export default function SearchBar(props) {
                   <SearchResultBook
                     key={searchResult.id}
                     {...searchResult}
-                    title={searchResult.volumeInfo.title}
-                    author={searchResult.volumeInfo.authors[0]}
-                    textSnippet={searchResult.searchInfo.textSnippet}
-                    primary_isbn10={searchResult.volumeInfo.industryIdentifiers[1].identifier}
-                    book_image={searchResult.volumeInfo.imageLinks.thumbnail}
+                    title={
+                      doesValueExist(searchResult.volumeInfo.title)
+                        ? searchResult.volumeInfo.title
+                        : 'Unknown'
+                    }
+                    author={
+                      doesValueExist(searchResult.volumeInfo.authors)
+                        ? searchResult.volumeInfo.authors[0]
+                        : 'Unknown'
+                    }
+                    textSnippet={
+                      doesValueExist(searchResult.searchInfo)
+                        ? searchResult.searchInfo.textSnippet
+                        : 'Unavailable'
+                    }
+                    primary_isbn10={
+                      doesValueExist(searchResult.volumeInfo.industryIdentifiers)
+                        ? searchResult.volumeInfo.industryIdentifiers[1].identifier
+                        : 'Unknown'
+                    }
+                    book_image={
+                      doesValueExist(searchResult.volumeInfo.imageLinks)
+                        ? searchResult.volumeInfo.imageLinks.thumbnail
+                        : null
+                    }
                   />
                 ))}
                 {(() => {
