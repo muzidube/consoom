@@ -164,9 +164,10 @@ export default function SearchBar(props) {
         </label>
         <Select
           styles={customStyles}
-          className="dropdown-menu inline-flex justify-center align-center content-center h-11 border-none rounded-3xl absolute -right-px text-red-primary cursor-pointer leading-normal outline-none"
+          className="dropdown-menu inline-flex justify-center align-center content-center h-11 border-none rounded-3xl absolute -right-px text-black cursor-pointer leading-normal outline-none"
           options={dropdownOptions}
           onChange={dropdownHandler}
+          isSearchable={false}
         />
         {/* <select
           className="dropdown-menu inline-flex justify-center align-center content-center h-11 py-2.5 px-6 border-none bg-red-primary rounded-3xl absolute top-0 -right-px text-white font-bold cursor-pointer leading-normal"

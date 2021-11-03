@@ -2,16 +2,51 @@ import { useEffect, useState } from 'react';
 import TV from './TV';
 
 export default function ShowTV() {
+  const [popularTV, setPopularTV] = useState([]);
+  const [latestTV, setLatestTV] = useState([]);
+  const [topRatedTV, setTopRatedTV] = useState([]);
   const [tv, setTV] = useState([]);
 
   useEffect(() => {
-    fetch(
-      'https://api.themoviedb.org/3/tv/popular?api_key=0375f153b709c9b683ba71849a873283&language=en-US&page=1'
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setTV(data.results);
-      });
+    const fetchPopularTV = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/tv/popular?api_key=0375f153b709c9b683ba71849a873283&language=en-US&page=1`
+        );
+        const json = await (await response).json();
+        setPopularTV(json.results);
+        setTV(json.results);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    const fetchLatestTV = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/tv/latest?api_key=0375f153b709c9b683ba71849a873283&page=1`
+        );
+        const json = await (await response).json();
+        setLatestTV(json.results);
+        console.log('Latest TV: ', json.results);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    const fetchTopRatedTV = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/tv/top_rated?api_key=0375f153b709c9b683ba71849a873283&language=en-US&page=1`
+        );
+        const json = await (await response).json();
+        setTopRatedTV(json.results);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+
+    fetchPopularTV();
+    fetchLatestTV();
+    fetchTopRatedTV();
   }, []);
 
   return (
@@ -25,23 +60,24 @@ export default function ShowTV() {
                 <div className="selector flex justify-start items-stretch content-center border rounded-3xl border-red-primary box-border text-black">
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <a className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent">
+                      <button
+                        type="button"
+                        className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent"
+                        onClick={() => setTV(popularTV)}
+                      >
                         Popular
-                      </a>
+                      </button>
                     </h3>
                   </div>
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <a className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent">
-                        Latest
-                      </a>
-                    </h3>
-                  </div>
-                  <div className="anchor relative top-0 left-0 z-1 box-border text-black">
-                    <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <a className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent">
+                      <button
+                        type="button"
+                        className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent"
+                        onClick={() => setTV(topRatedTV)}
+                      >
                         Top Rated
-                      </a>
+                      </button>
                     </h3>
                   </div>
                 </div>

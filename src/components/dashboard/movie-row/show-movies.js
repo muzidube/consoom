@@ -2,16 +2,62 @@ import { useEffect, useState } from 'react';
 import Movie from './Movie';
 
 export default function ShowMovies() {
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [latestMovies, setLatestMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch(
-      'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0375f153b709c9b683ba71849a873283&page=1'
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results);
-      });
+    const fetchPopularMovies = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0375f153b709c9b683ba71849a873283&page=1`
+        );
+        const json = await (await response).json();
+        setPopularMovies(json.results);
+        setMovies(json.results);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    const fetchLatestMovies = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/now_playing?api_key=0375f153b709c9b683ba71849a873283&page=1`
+        );
+        const json = await (await response).json();
+        setLatestMovies(json.results);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    const fetchTopRatedMovies = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/top_rated?api_key=0375f153b709c9b683ba71849a873283&page=1`
+        );
+        const json = await (await response).json();
+        setTopRatedMovies(json.results);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    const fetchUpcomingMovies = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=0375f153b709c9b683ba71849a873283&page=1`
+        );
+        const json = await (await response).json();
+        setUpcomingMovies(json.results);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchPopularMovies();
+    fetchLatestMovies();
+    fetchTopRatedMovies();
+    fetchUpcomingMovies();
   }, []);
 
   return (
@@ -25,30 +71,46 @@ export default function ShowMovies() {
                 <div className="selector flex justify-start items-stretch content-center border rounded-3xl border-red-primary box-border text-black">
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <a className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent">
+                      <button
+                        type="button"
+                        className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent"
+                        onClick={() => setMovies(popularMovies)}
+                      >
                         Popular
-                      </a>
+                      </button>
                     </h3>
                   </div>
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <a className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent">
+                      <button
+                        type="button"
+                        className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent"
+                        onClick={() => setMovies(latestMovies)}
+                      >
                         Latest
-                      </a>
+                      </button>
                     </h3>
                   </div>
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <a className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent">
+                      <button
+                        type="button"
+                        className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent"
+                        onClick={() => setMovies(topRatedMovies)}
+                      >
                         Top Rated
-                      </a>
+                      </button>
                     </h3>
                   </div>
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <a className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent">
+                      <button
+                        type="button"
+                        className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent"
+                        onClick={() => setMovies(upcomingMovies)}
+                      >
                         Upcoming
-                      </a>
+                      </button>
                     </h3>
                   </div>
                 </div>
