@@ -44,7 +44,6 @@ const KeyFacts = ({ id }) => {
     fetchData();
   }, []);
 
-  console.log('id: ', id);
   return (
     <ol className="text-white m-0 mt-5 content-start flex flex-wrap list-none list-inside p-0 relative top-0 left-0 box-border">
       <li className="profile bg-transparent h-auto mb-0 text-white w-33% text-left mr-0 box-border pr-5 min-w-140px list-none list-inside">

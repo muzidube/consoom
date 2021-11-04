@@ -5,7 +5,7 @@ import * as URLS from '../../../constants/urls';
 
 const SearchResultMovie = ({ title, poster_path, vote_average, release_date, overview, id }) => (
   <div className="result-container min-w-94px border-none shadow-none rounded-lg p-2 items-center flex">
-    <Link to={`/movie/${id}`}>
+    <Link to={`/movie/${id}/${title}`}>
       <div className="thumbnail w-94px h-141px flex rounded-lg">
         <img className="w-94px h-141px rounded-lg" src={URLS.IMG_URL + poster_path} alt={title} />
       </div>

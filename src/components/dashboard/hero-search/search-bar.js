@@ -67,7 +67,7 @@ export default function SearchBar(props) {
     } else if (dropdownOption === 'Book') {
       url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=5`;
     } else if (dropdownOption === 'Game') {
-      url = `https://api.themoviedb.org/3/search/tv?api_key=0375f153b709c9b683ba71849a873283&language=en-US&query=${query}&page=1&include_adult=false`;
+      url = `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&search=${query}`;
     }
     return encodeURI(url);
   };
@@ -100,17 +100,25 @@ export default function SearchBar(props) {
         console.log(response.data.items[0].volumeInfo.imageLinks.thumbnail);
         setSearchResults(response.data.items);
       }
-    } else {
+    } else if (dropdownOption === 'Game') {
       const response = await axios.get(URL).catch((err) => {
         console.log('Error: ', err);
       });
-
       if (response) {
+        console.log(response.data.results);
         setSearchResults(response.data.results);
-      }
-    }
+      } else {
+        const response = await axios.get(URL).catch((err) => {
+          console.log('Error: ', err);
+        });
 
-    setLoading(false);
+        if (response) {
+          setSearchResults(response.data.results);
+        }
+      }
+
+      setLoading(false);
+    }
   };
 
   const doesValueExist = (value) => {
@@ -287,7 +295,7 @@ export default function SearchBar(props) {
               <span className="mt-1 search-separator flex min-w-full min-h-2px bg-gray-200" />
               <div className="w-full h-full flex flex-col p-1 text-black overflow-x-hidden overflow-y-scroll justify-start items-start content-start ">
                 {searchResults.map((searchResult) => (
-                  <SearchResultMovie key={searchResult.id} {...searchResult} />
+                  <SearchResultGame key={searchResult.id} {...searchResult} />
                 ))}
                 {(() => {
                   if (isLoading) {

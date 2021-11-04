@@ -40,7 +40,6 @@ export default function ShowGames() {
         );
         const json = await (await response).json();
         setLatestGames(json.results);
-        console.log('Latest Games: ', json.results);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -48,7 +47,7 @@ export default function ShowGames() {
     const fetchTopRatedGamesYear = async () => {
       try {
         const response = await fetch(
-          `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&dates=${lastYear},${today}&metacritic=90,100&ordering=-metacritic`
+          `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&dates=${lastYear},${today}&metacritic=87,100&ordering=-metacritic`
         );
         const json = await (await response).json();
         setTopRatedGamesYear(json.results);

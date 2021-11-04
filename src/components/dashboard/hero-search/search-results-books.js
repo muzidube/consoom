@@ -5,7 +5,7 @@ import * as URLS from '../../../constants/urls';
 
 const SearchResultBook = ({ title, book_image, author, textSnippet, primary_isbn10 }) => (
   <div className="result-container min-w-94px border-none shadow-none rounded-lg p-2 items-center flex">
-    <Link to={`/book/${primary_isbn10}`}>
+    <Link to={`/book/${primary_isbn10}/${title}`}>
       <div className="thumbnail w-94px h-141px flex rounded-lg">
         <img className="w-94px h-141px rounded-lg" src={book_image} alt={title} />
       </div>

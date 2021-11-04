@@ -20,18 +20,6 @@ export default function ShowTV() {
         console.log('Error: ', error);
       }
     };
-    const fetchLatestTV = async () => {
-      try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/tv/latest?api_key=0375f153b709c9b683ba71849a873283&page=1`
-        );
-        const json = await (await response).json();
-        setLatestTV(json.results);
-        console.log('Latest TV: ', json.results);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
     const fetchTopRatedTV = async () => {
       try {
         const response = await fetch(
@@ -45,7 +33,6 @@ export default function ShowTV() {
     };
 
     fetchPopularTV();
-    fetchLatestTV();
     fetchTopRatedTV();
   }, []);
 
