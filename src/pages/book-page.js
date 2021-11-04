@@ -20,6 +20,7 @@ export default function BookPage() {
           `https://www.googleapis.com/books/v1/volumes?q=isbn:${primary_isbn10}`
         );
         const json = await (await response).json();
+        document.title = json.items[0].volumeInfo.title;
         setBook(json.items[0].volumeInfo);
         setISBN_13(json.items[0].volumeInfo.industryIdentifiers[0].identifier);
         setTextSnippet(
@@ -36,10 +37,6 @@ export default function BookPage() {
     };
 
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    document.title = book.title;
   }, []);
 
   return (

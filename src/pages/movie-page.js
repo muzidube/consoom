@@ -15,11 +15,8 @@ export default function MoviePage() {
       .then((res) => res.json())
       .then((data) => {
         setMovie(data);
+        document.title = data.original_title;
       });
-  }, []);
-
-  useEffect(() => {
-    document.title = movie.original_title;
   }, []);
 
   return (

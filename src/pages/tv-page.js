@@ -15,11 +15,8 @@ export default function TVPage() {
       .then((res) => res.json())
       .then((data) => {
         setTV(data);
+        document.title = data.name;
       });
-  }, []);
-
-  useEffect(() => {
-    document.title = tv.original_title;
   }, []);
 
   return (
