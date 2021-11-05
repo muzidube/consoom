@@ -1,4 +1,4 @@
-export async function movieHeroBG(id) {
+export default async function movieHeroBG(id) {
   let bg;
 
   await fetch(

@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 export default function getGameCovers(coverID) {
   const myHeaders = new Headers();
   myHeaders.append('Client-ID', 'fptl3q5j5e6ek4dksjm3yc7k76ssme');

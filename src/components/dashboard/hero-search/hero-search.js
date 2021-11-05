@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { heroSearchBG } from './hero-search-bg';
+import heroSearchBG from './hero-search-bg';
 import SearchBar from './search-bar.js';
 
 export default function HeroSearch() {

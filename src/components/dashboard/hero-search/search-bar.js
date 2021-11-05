@@ -1,18 +1,16 @@
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/no-onchange */
-import { useState, useEffect, useRef, useParams } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useClickOutside } from 'react-click-outside-hook';
 import axios from 'axios';
 import MoonLoader from 'react-spinners/MoonLoader';
 import Select from 'react-select';
-import SearchContent from './search-content';
 import useDebounce from '../../../hooks/debounce-hook';
 import SearchResultMovie from './search-results-movies';
 import SearchResultTV from './search-results-tv';
 import SearchResultBook from './search-results-books';
 import SearchResultGame from './search-results-games';
-import Movie from '../movie-row/Movie';
 
 const containerVariants = {
   expanded: {
@@ -22,7 +20,7 @@ const containerVariants = {
     height: '2.75rem'
   }
 };
-export default function SearchBar(props) {
+export default function SearchBar() {
   const [isExpanded, setExpanded] = useState(false);
   const [dropdownOption, setDropdownOption] = useState('');
   const [parentRef, isClickedOutside] = useClickOutside();
@@ -33,13 +31,6 @@ export default function SearchBar(props) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const isEmpty = !searchResults || searchResults.length === 0;
-
-  const [book, setBook] = useState('');
-  const [ISBN_13, setISBN_13] = useState('');
-  const [textSnippet, setTextSnippet] = useState('');
-  const [author, setAuthor] = useState('');
-  const [pageCount, setPageCount] = useState('');
 
   const changeHandler = (e) => {
     e.preventDefault();

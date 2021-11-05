@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
-import { bookHeroBG } from './book-hero-bg';
+import bookHeroBG from './book-hero-bg';
 
 export default function BookHero({
   title,
@@ -99,7 +99,7 @@ export default function BookHero({
                     </div>
                   </li>
                   <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-                    <a
+                    <div
                       className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
                       href="#"
                     >
@@ -119,10 +119,10 @@ export default function BookHero({
                           <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
                       </span>
-                    </a>
+                    </div>
                   </li>
                   <li className="add-list py-0.5 mr-5 text-white box-border list-none">
-                    <a
+                    <div
                       className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
                       href="#"
                     >
@@ -143,11 +143,11 @@ export default function BookHero({
                           />
                         </svg>
                       </span>
-                    </a>
+                    </div>
                   </li>
 
                   <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-                    <a
+                    <div
                       className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
                       href="#"
                     >
@@ -167,7 +167,7 @@ export default function BookHero({
                           <circle cx="12" cy="12" r="3" />
                         </svg>
                       </span>
-                    </a>
+                    </div>
                   </li>
                 </ul>
                 <div className="details text-white w-full box-border">

@@ -1,4 +1,4 @@
-export async function TVHeroBG(id) {
+export default async function TVHeroBG(id) {
   let bg;
 
   await fetch(

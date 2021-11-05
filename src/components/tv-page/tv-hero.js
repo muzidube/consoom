@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
-import { TVHeroBG } from './tv-hero-bg';
+import TVHeroBG from './tv-hero-bg';
 import * as URLS from '../../constants/urls';
 
 export default function TVShowHero({
@@ -95,7 +95,7 @@ export default function TVShowHero({
                     </div>
                   </li>
                   <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-                    <a
+                    <div
                       className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
                       href="#"
                     >
@@ -115,10 +115,10 @@ export default function TVShowHero({
                           <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
                       </span>
-                    </a>
+                    </div>
                   </li>
                   <li className="add-list py-0.5 mr-5 text-white box-border list-none">
-                    <a
+                    <div
                       className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
                       href="#"
                     >
@@ -139,11 +139,11 @@ export default function TVShowHero({
                           />
                         </svg>
                       </span>
-                    </a>
+                    </div>
                   </li>
 
                   <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-                    <a
+                    <div
                       className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
                       href="#"
                     >
@@ -163,7 +163,7 @@ export default function TVShowHero({
                           <circle cx="12" cy="12" r="3" />
                         </svg>
                       </span>
-                    </a>
+                    </div>
                   </li>
                 </ul>
                 <div className="details text-white w-full box-border">

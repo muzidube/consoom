@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import Header from '../components/header';
-import MediaRow from '../components/dashboard/media-row';
 import ShowMovies from '../components/dashboard/movie-row/show-movies';
 import ShowBooks from '../components/dashboard/book-row/show-books';
 import ShowTV from '../components/dashboard/tv-row/show-tv';

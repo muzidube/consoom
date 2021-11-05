@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/header';
 import GameHero from '../components/game-page/game-hero';
-import ShowCast from '../components/game-page/show-cast';
 
 export default function GamePage() {
   const [game, setGame] = useState('');
@@ -29,7 +28,6 @@ export default function GamePage() {
       <Header />
       <main className="mt-16 mx-auto justify-center items-center">
         <GameHero key={game.id} {...game} description={description} />
-        {/* <ShowCast id={id} /> */}
       </main>
     </div>
   );

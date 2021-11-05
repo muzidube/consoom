@@ -3,7 +3,6 @@ import TV from './TV';
 
 export default function ShowTV() {
   const [popularTV, setPopularTV] = useState([]);
-  const [latestTV, setLatestTV] = useState([]);
   const [topRatedTV, setTopRatedTV] = useState([]);
   const [tv, setTV] = useState([]);
 

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Game from './Game';
 
 export default function ShowGames() {

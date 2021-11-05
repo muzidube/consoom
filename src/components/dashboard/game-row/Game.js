@@ -1,20 +1,19 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import * as URLS from '../../../constants/urls';
 
 const Game = ({ name, metacritic, released, id }) => (
   <div className="media-item game ml-10 w-150px min-w-150px bg-transparent mt-0 border-none shadow-none rounded-lg overflow-visible mt-0 relative top-0 left-0 flex flex-wrap content-start whitespace-nowrap">
     <Link to={`/game/${id}/${name}`}>
       <div className="image shadow-md rounded-lg w-full h-225px overflow-hidden bg-grey-background whitespace-nowrap">
         <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
-          <a className="image inline-block w-full h-full whitespace-nowrap" href="/" name={name}>
+          <p className="image inline-block w-full h-full whitespace-nowrap" href="/" name={name}>
             <img
               className="poster inline-block w-full h-full outline-none border-none"
               src="/images/Consume-Big.jpg"
               alt={name}
             />
-          </a>
+          </p>
         </div>
       </div>
     </Link>
@@ -82,7 +81,7 @@ Game.propTypes = {
   // background_image: PropTypes.string.isRequired,
   released: PropTypes.string.isRequired,
   metacritic: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.number.isRequired
 };
 
 export default Game;

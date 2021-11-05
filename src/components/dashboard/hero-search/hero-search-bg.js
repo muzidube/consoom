@@ -1,4 +1,4 @@
-export async function heroSearchBG() {
+export default async function heroSearchBG() {
   let bgArray;
 
   await fetch(

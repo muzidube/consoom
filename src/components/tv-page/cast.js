@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import * as URLS from '../../constants/urls';
 
-const Cast = ({ name, profile_path, character, id }) => (
+const Cast = ({ name, profile_path, character }) => (
   <div className="media-item movie ml-10 w-150px min-w-150px bg-transparent mt-0 border-none shadow-none rounded-lg overflow-visible mt-0 relative top-0 left-0 flex flex-wrap content-start whitespace-nowrap">
     <div className="image shadow-md rounded-lg w-full h-225px overflow-hidden bg-grey-background whitespace-nowrap">
       <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
@@ -27,8 +26,7 @@ const Cast = ({ name, profile_path, character, id }) => (
 Cast.propTypes = {
   name: PropTypes.string.isRequired,
   profile_path: PropTypes.string.isRequired,
-  character: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
+  character: PropTypes.string.isRequired
 };
 
 export default Cast;
