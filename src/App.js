@@ -23,8 +23,8 @@ export default function App() {
           <Route path={ROUTES.TVSHOW_PAGE} component={TVShowPage} />
           <Route path={ROUTES.BOOK_PAGE} component={BookPage} />
           <Route path={ROUTES.GAME_PAGE} component={GamePage} />
-          <Route path={ROUTES.DASHBOARD} component={Dashboard} />
           <Route path={ROUTES.PROFILE} component={Profile} />
+          <Route path={ROUTES.DASHBOARD} component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>

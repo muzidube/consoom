@@ -7,15 +7,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        white: '#ffffff',
         grey: {
           background: '#dbdbdb'
         },
         red: {
-          primary: '#F87666'
+          primary: '#F87666',
+          secondary: '#ed4956'
         },
         blue: {
           primary: '#22254B',
-          secondary: '#373b69'
+          secondary: '#373b69',
+          medium: '#005c98'
+        },
+        orange: {
+          medium: '#ffa02a'
+        },
+        green: {
+          medium: '#46dfcd'
+        },
+        pink: {
+          medium: '#ff7ece'
+        },
+        gray: {
+          base: '#616161',
+          background: '#fafafa',
+          primary: '#dbdbdb'
         }
       },
       spacing: {
