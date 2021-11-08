@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 
+import { AuthContext } from '../context/auth';
+
 export default function Header() {
-  let user;
-  //   useContext(UserContext);
+  const { user, logout } = useContext(AuthContext);
+
   return (
     <header className="h-16 bg-red-primary fixed top-0 left-0 w-full z-10">
       <div className="container mx-auto max-w-screen-lg h-full">
@@ -16,7 +18,7 @@ export default function Header() {
                 <img src="/images/Consume-Media-Logo.png" alt="Consume" className="my-2 w-6/12" />
               </Link>
             </h1>
-            <>
+            {/* <>
               <Link to={ROUTES.LOGIN}>
                 <button
                   type="button"
@@ -49,7 +51,7 @@ export default function Header() {
                   Books
                 </button>
               </Link>
-            </>
+            </> */}
           </div>
           <div className="text-gray-700 text-center flex items-center align-items">
             {user ? (
@@ -71,7 +73,7 @@ export default function Header() {
                   </svg>
                 </Link>
 
-                <button type="button" title="Sign Out">
+                <button type="button" title="Sign Out" onClick={logout}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="mr-6 w-8 cursor-pointer"
@@ -92,7 +94,7 @@ export default function Header() {
                     <img
                       className="rounded-full h-8 w-8 flex"
                       src={`/images/avatars/${user.displayName}.jpg`}
-                      alt={`${user.displayName} profile`}
+                      alt={user.username}
                     />
                   </Link>
                 </div>
@@ -100,18 +102,12 @@ export default function Header() {
             ) : (
               <>
                 <Link to={ROUTES.LOGIN}>
-                  <button
-                    type="button"
-                    className="bg-orange-medium font-bold text-sm rounded text-white w-20 h-8"
-                  >
+                  <button type="button" className="font-bold text-sm rounded text-white w-20 h-8">
                     Log In
                   </button>
                 </Link>
                 <Link to={ROUTES.SIGN_UP}>
-                  <button
-                    type="button"
-                    className="font-bold text-sm rounded text-orange-medium w-20 h-8"
-                  >
+                  <button type="button" className="font-bold text-sm rounded text-black w-20 h-8">
                     Sign Up
                   </button>
                 </Link>

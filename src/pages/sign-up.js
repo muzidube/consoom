@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import * as ROUTES from '../constants/routes';
 
+import { AuthContext } from '../context/auth';
 import { useForm } from '../hooks/login-sign-up-hooks';
 
 const REGISTER_USER = gql`
@@ -33,15 +34,10 @@ const REGISTER_USER = gql`
 `;
 
 export default function SignUp() {
+  const context = useContext(AuthContext);
   const history = useHistory();
 
   const [errors, setErrors] = useState({});
-  const initialState = {
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  };
 
   // eslint-disable-next-line no-use-before-define
   const { onChange, onSubmit, values } = useForm(registerUser, {
@@ -52,11 +48,12 @@ export default function SignUp() {
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    update(_, result) {
+    update(_, { data: { register: userData } }) {
+      context.login(userData);
       history.push(ROUTES.DASHBOARD);
     },
     onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: values
   });
@@ -130,11 +127,20 @@ export default function SignUp() {
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 border border-gray-primary rounded">
           <p className="text-sm">
             Have an account?
-            <Link to={ROUTES.LOGIN} className="font-bold text-green-medium">
+            <Link to={ROUTES.LOGIN} className="font-bold text-green-medium ml-1">
               Log In
             </Link>
           </p>
         </div>
+        {Object.keys(errors).length > 0 && (
+          <div className="ui-error-message mt-2 text-red-900">
+            <ul className="list-disc">
+              {Object.values(errors).map((value) => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
