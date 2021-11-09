@@ -13,6 +13,7 @@ const listSchema = new Schema({
   ],
   comments: [
     {
+      id: String,
       body: String,
       username: String,
       createdAt: String
@@ -20,6 +21,7 @@ const listSchema = new Schema({
   ],
   likes: [
     {
+      id: String,
       username: String,
       createdAt: String
     }

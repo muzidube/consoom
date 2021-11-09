@@ -34,7 +34,9 @@ const FETCH_LISTS_QUERY = gql`
 
 export default function Profile() {
   const { loading, data } = useQuery(FETCH_LISTS_QUERY);
-  const lists = data.getLists;
+  console.log('data: ', data);
+  const lists = data;
+
   return (
     <div>
       <p>Hello World!</p>

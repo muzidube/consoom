@@ -6,6 +6,7 @@ module.exports = gql`
     name: String!
     type: String!
     username: String!
+    user: String!
     createdAt: String!
     comments: [Comment]!
     likes: [Like]!
@@ -45,6 +46,7 @@ module.exports = gql`
   }
   type Query {
     getLists: [List]
+    getUserLists(userID: ID!): [List]
     getList(listID: ID!): List
   }
   type Mutation {

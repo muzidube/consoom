@@ -23,6 +23,17 @@ module.exports = {
       } catch (err) {
         throw new Error(err);
       }
+    },
+    async getUserLists(_, { userID }) {
+      try {
+        const list = await List.find({ user: userID });
+        if (list) {
+          return list;
+        }
+        throw new Error('List not found');
+      } catch (err) {
+        throw new Error(err);
+      }
     }
   },
   Mutation: {
