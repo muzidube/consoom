@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/header';
-import GameHero from '../components/game-page/game-hero';
+import GameHero from '../components/pages/game-page/game-hero';
 
 export default function GamePage() {
   const [game, setGame] = useState('');

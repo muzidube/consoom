@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/header';
-import BookHero from '../components/book-page/book-hero';
+import BookHero from '../components/pages/book-page/book-hero';
 
 export default function BookPage() {
   const [book, setBook] = useState('');

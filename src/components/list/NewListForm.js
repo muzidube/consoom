@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { useState, useContext, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/login-sign-up-hooks';
@@ -8,7 +9,8 @@ const CREATE_LIST_MUTATION = gql`
   mutation createList($name: String!, $type: String!) {
     createList(name: $name, type: $type) {
       id
-      body
+      name
+      type
       createdAt
       username
       user
@@ -36,6 +38,7 @@ const CREATE_LIST_MUTATION = gql`
 `;
 
 export default function ListForm() {
+  const [errors, setErrors] = useState({});
   // eslint-disable-next-line no-use-before-define
   const { values, onChange, onSubmit } = useForm(createListCallback, {
     name: '',
@@ -43,10 +46,16 @@ export default function ListForm() {
   });
 
   const [createList, { error }] = useMutation(CREATE_LIST_MUTATION, {
-    variables: values,
     update(_, result) {
       console.log(result);
-      values.body = '';
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'please',
+      type: 'ok'
     }
   });
 
@@ -62,21 +71,21 @@ export default function ListForm() {
 
         <form onSubmit={onSubmit} noValidate>
           <input
-            aria-label="Enter your username"
+            aria-label="Enter your name"
             type="text"
-            placeholder="Username"
-            name="username"
+            placeholder="Name"
+            name="name"
             className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
-            value={values.username}
+            value={values.name}
             onChange={onChange}
           />
           <input
-            aria-label="Enter your password"
-            type="password"
-            placeholder="Password"
-            name="password"
+            aria-label="Enter your type"
+            type="type"
+            placeholder="Type"
+            name="type"
             className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
-            value={values.password}
+            value={values.type}
             onChange={onChange}
           />
           <button
@@ -84,27 +93,10 @@ export default function ListForm() {
             type="submit"
             className="bg-orange-medium text-white w-full rounded h-8 font-bold"
           >
-            Log In
+            Create List
           </button>
         </form>
       </div>
-      <div className="flex justify-center items-center flex-col w-full bg-white p-4 border border-gray-primary rounded">
-        <p className="text-sm">
-          Don't have an account?
-          <Link to={ROUTES.SIGN_UP} className="font-bold text-green-medium ml-1">
-            Sign Up
-          </Link>
-        </p>
-      </div>
-      {/* {Object.keys(errors).length > 0 && (
-        <div className="ui-error-message mt-2 text-red-900">
-          <ul className="list-disc">
-            {Object.values(errors).map((value) => (
-              <li key={value}>{value}</li>
-            ))}
-          </ul>
-        </div>
-      )} */}
     </div>
   );
 }

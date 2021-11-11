@@ -8,6 +8,7 @@ import * as ROUTES from '../constants/routes';
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../hooks/login-sign-up-hooks';
+import { DefaultLists } from '../graphql/resolvers/actualDefaults';
 
 const REGISTER_USER = gql`
   mutation register(
@@ -33,6 +34,38 @@ const REGISTER_USER = gql`
   }
 `;
 
+const CREATE_LIST_MUTATION = gql`
+  mutation createList($name: String!, $type: String!) {
+    createList(name: $name, type: $type) {
+      id
+      name
+      type
+      createdAt
+      username
+      user
+      items {
+        id
+        addedAt
+      }
+      itemCount
+      likeCount
+      likes {
+        id
+        username
+        createdAt
+      }
+      likeCount
+      comments {
+        id
+        body
+        username
+        createdAt
+      }
+      commentCount
+    }
+  }
+`;
+
 export default function SignUp() {
   const context = useContext(AuthContext);
   const history = useHistory();
@@ -44,12 +77,229 @@ export default function SignUp() {
     username: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    name: '',
+    type: ''
+  });
+
+  const [MoviesWatchlist, { error }] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Movies - Watchlist',
+      type: 'Movies'
+    }
+  });
+  const [MoviesFavourites] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Movies - Favourites',
+      type: 'Movies'
+    }
+  });
+  const [MoviesWatched] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Movies - Watched',
+      type: 'Movies'
+    }
+  });
+  const [TVWatchlist] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'TV - Watchlist',
+      type: 'TV'
+    }
+  });
+  const [TVFavourites] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'TV - Favourites',
+      type: 'TV'
+    }
+  });
+  const [TVWatched] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'TV - Watched',
+      type: 'TV'
+    }
+  });
+  const [BooksToRead] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Books - To Read',
+      type: 'Books'
+    }
+  });
+  const [BooksFavourites] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Books - Favourites',
+      type: 'Books'
+    }
+  });
+  const [BooksRead] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Books - Read',
+      type: 'Books'
+    }
+  });
+  const [GamesToPlay] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Games - To Play',
+      type: 'Games'
+    }
+  });
+  const [GamesFavourites] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Games - Favourites',
+      type: 'Games'
+    }
+  });
+  const [GamesPlayed] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Games - Played',
+      type: 'Games'
+    }
+  });
+  const [MusicToListen] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Music - To Listen',
+      type: 'Music'
+    }
+  });
+  const [MusicFavourites] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Music - Favourites',
+      type: 'Music'
+    }
+  });
+  const [MusicListened] = useMutation(CREATE_LIST_MUTATION, {
+    update(_, result) {
+      console.log(result);
+    },
+    onError(err) {
+      console.log('errors: ', err.graphQLErrors[0]);
+      // setErrors(err.graphQLErrors[0].extensions.errors);
+    },
+    variables: {
+      name: 'Music - Listened',
+      type: 'Music'
+    }
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(_, { data: { register: userData } }) {
       context.login(userData);
+      MoviesWatchlist();
+      MoviesFavourites();
+      MoviesWatched();
+
+      TVWatchlist();
+      TVFavourites();
+      TVWatched();
+
+      BooksToRead();
+      BooksFavourites();
+      BooksRead();
+
+      GamesToPlay();
+      GamesFavourites();
+      GamesPlayed();
+
+      MusicToListen();
+      MusicFavourites();
+      MusicListened();
       history.push(ROUTES.DASHBOARD);
     },
     onError(err) {
@@ -77,7 +327,6 @@ export default function SignUp() {
           <h1 className="flex justify-center w-full mb-5">
             <img src="/images/Consume-Media-Logo.png" alt="Consume" className="mt-2 w-6/12" />
           </h1>
-
           <form onSubmit={onSubmit} noValidate>
             <input
               aria-label="Enter your username"

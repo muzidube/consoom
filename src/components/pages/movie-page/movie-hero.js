@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import movieHeroBG from './movie-hero-bg';
-import * as URLS from '../../constants/urls';
+import * as URLS from '../../../constants/urls';
 import KeyFacts from './key-facts';
 
 export default function MovieHero({
