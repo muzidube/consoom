@@ -1,8 +1,12 @@
 /* eslint-disable camelcase */
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import movieHeroBG from './movie-hero-bg';
 import * as URLS from '../../../constants/urls';
 import KeyFacts from './key-facts';
+
+import WatchlistBtn from '../watchlist-btn';
+import { AuthContext } from '../../../context/auth';
 
 export default function MovieHero({
   original_title,
@@ -95,29 +99,7 @@ export default function MovieHero({
                       Score
                     </div>
                   </li>
-                  <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-                    <div
-                      className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
-                      href="#"
-                    >
-                      <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#fff"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <line x1="12" y1="5" x2="12" y2="19" />
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
-                      </span>
-                    </div>
-                  </li>
+                  <WatchlistBtn itemID={id} />
                   <li className="add-list py-0.5 mr-5 text-white box-border list-none">
                     <div
                       className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"

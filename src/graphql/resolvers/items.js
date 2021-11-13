@@ -5,36 +5,41 @@ const checkAuth = require('../../util/check-auth');
 
 module.exports = {
   Mutation: {
-    addItem: async (_, { listId, ID }, context) => {
+    addItem: async (_, { listID, itemID }, context) => {
       const { username } = checkAuth(context);
-      if (ID.trim() === '') {
+      if (itemID.trim() === '') {
         throw new UserInputError('No item ID', {
           errors: {
-            ID: 'Item must have ID'
+            itemID: 'Item must have ID'
           }
         });
       }
-      const list = await List.findById(listId);
-
-      if (list) {
-        list.items.unshift({
-          ID,
-          username,
-          addedAt: new Date().toISOString()
-        });
-        await list.save();
-        return list;
+      try {
+        const list = await List.findById(listID);
+        if (username === list.username) {
+          if (list) {
+            list.items.unshift({
+              id: itemID,
+              username,
+              addedAt: new Date().toISOString()
+            });
+            await list.save();
+            return list;
+          }
+        }
+        throw new UserInputError('List not found');
+      } catch (err) {
+        throw new Error(err);
       }
-      throw new UserInputError('List not found');
     },
-    async deleteItem(_, { listId, itemId }, context) {
+    async deleteItem(_, { listId, itemID }, context) {
       const { username } = checkAuth(context);
 
-      const list = await List.findById(listId);
+      const list = await List.findOne({ id: listId });
       if (list) {
-        const itemIndex = list.items.findIndex((i) => i.id === itemId);
+        const itemIndex = list.items.findIndex((i) => i.id === itemID);
 
-        if (list.items[itemIndex].username === username) {
+        if (username === list.username) {
           list.items.splice(itemIndex, 1);
           await list.save();
           return list;

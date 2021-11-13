@@ -2,8 +2,8 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Header from '../components/header';
-import MovieHero from '../components/movie-page/movie-hero';
-import ShowCast from '../components/movie-page/show-cast';
+import MovieHero from '../components/pages/movie-page/movie-hero';
+import ShowCast from '../components/pages/movie-page/show-cast';
 
 import { AuthContext } from '../context/auth';
 

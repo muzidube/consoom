@@ -33,9 +33,7 @@ const FETCH_LISTS_QUERY = gql`
 `;
 
 export default function Profile() {
-  const { loading, data } = useQuery(FETCH_LISTS_QUERY);
-  console.log('data: ', data);
-  const lists = data.getLists;
+  const { loading, error, data } = useQuery(FETCH_LISTS_QUERY);
 
   return (
     <div>
@@ -44,8 +42,8 @@ export default function Profile() {
         {loading ? (
           <h1>Loading lists...</h1>
         ) : (
-          lists &&
-          lists.map((list) => (
+          data.getLists &&
+          data.getLists.map((list) => (
             <div>
               <Thing key={list.id} list={list} />
             </div>

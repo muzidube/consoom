@@ -15,7 +15,7 @@ module.exports = {
     },
     async getList(_, { listId }) {
       try {
-        const list = await List.findById(listId);
+        const list = await List.findOne({ id: listId });
         if (list) {
           return list;
         }
@@ -27,6 +27,17 @@ module.exports = {
     async getUserLists(_, { userID }) {
       try {
         const list = await List.find({ user: userID });
+        if (list) {
+          return list;
+        }
+        throw new Error('List not found');
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+    async getUserList(_, { userID, listName }) {
+      try {
+        const list = await List.findOne({ user: userID, name: listName });
         if (list) {
           return list;
         }

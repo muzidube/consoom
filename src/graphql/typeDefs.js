@@ -46,8 +46,9 @@ module.exports = gql`
   }
   type Query {
     getLists: [List]
-    getUserLists(userID: ID!): [List]
     getList(listID: ID!): List
+    getUserLists(userID: ID!): [List]
+    getUserList(userID: ID!, listName: String!): List
   }
   type Mutation {
     register(registerInput: RegisterInput): User!
@@ -57,7 +58,7 @@ module.exports = gql`
     createList(name: String!, type: String!): List!
     createList2: List!
     deleteList(listID: ID!): String!
-    addItem(listID: ID!, id: ID!): List!
+    addItem(listID: ID!, itemID: ID!): List!
     deleteItem(listID: ID!, itemID: ID!): List!
     createComment(listID: String!, body: String!): List!
     deleteComment(listID: ID!, commentID: ID!): List!
