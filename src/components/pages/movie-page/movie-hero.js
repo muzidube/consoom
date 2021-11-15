@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import movieHeroBG from './movie-hero-bg';
 import * as URLS from '../../../constants/urls';
@@ -18,7 +18,12 @@ export default function MovieHero({
   status,
   id
 }) {
-  movieHeroBG(id);
+  const [itemID, setItemID] = useState('');
+  useEffect(() => {
+    movieHeroBG(id);
+    console.log(id);
+    setItemID(id);
+  }, []);
 
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
@@ -99,7 +104,7 @@ export default function MovieHero({
                       Score
                     </div>
                   </li>
-                  <WatchlistBtn itemID={id} />
+                  <WatchlistBtn itemID={itemID} />
                   <li className="add-list py-0.5 mr-5 text-white box-border list-none">
                     <div
                       className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"

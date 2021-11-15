@@ -34,12 +34,15 @@ module.exports = {
     },
     async deleteItem(_, { listId, itemID }, context) {
       const { username } = checkAuth(context);
+      console.log('username: ', username);
 
       const list = await List.findOne({ id: listId });
       if (list) {
         const itemIndex = list.items.findIndex((i) => i.id === itemID);
 
         if (username === list.username) {
+          console.log('listusername: ', list.username);
+          console.log('itemIndex: ', itemIndex);
           list.items.splice(itemIndex, 1);
           await list.save();
           return list;
