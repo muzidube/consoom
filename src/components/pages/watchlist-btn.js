@@ -2,24 +2,16 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
-import * as ROUTES from '../../constants/routes';
+import { useMutation } from '@apollo/client';
 import { AuthContext } from '../../context/auth';
 
+import * as ROUTES from '../../constants/routes';
 import ADD_ITEM_MUTATION from '../../graphql/mutations/add-item';
 import DELETE_ITEM_MUTATION from '../../graphql/mutations/delete-item';
-import GET_USER_LIST_QUERY from '../../graphql/queries/get-user-list';
 import UserListQuery from '../../graphql/queries/use-get-user-lists';
 
 export default function WatchlistBtn() {
-  // GET USER, AND STORE USER INFORMATION
-  // USE USERID TO GET USER LIST
-  // GET id FROM MOVIE HERO
-  // USE id TO SEARCH USER LIST FOR ITEM
-
   const { user } = useContext(AuthContext);
-
   const { id } = useParams();
 
   const [userInfo, setUserInfo] = useState(user ? user.id : '');
@@ -27,20 +19,18 @@ export default function WatchlistBtn() {
   const [listValueID, setListValueID] = useState('');
   const [listValueItems, setListValueItems] = useState([]);
 
-  useEffect(() => {
-    setUserInfo(user ? user.id : '');
-    console.log('userid: ', user.id);
-  }, [userInfo]);
-
   const QueryValues = UserListQuery(userInfo);
 
   useEffect(() => {
-    if (!QueryValues.loading) {
+    setUserInfo(user ? user.id : '');
+    if (user && !QueryValues.loading) {
       setListValueID(QueryValues.data.getUserList.id);
       setListValueItems(QueryValues.data.getUserList.items);
-      console.log(user.id);
     }
-  }, [userInfo]);
+    if (user && listValueItems.find((item) => item.id === id.toString())) {
+      setAdded(true);
+    } else setAdded(false);
+  });
 
   const [addItem] = useMutation(ADD_ITEM_MUTATION, {
     update(_, data) {
@@ -63,19 +53,6 @@ export default function WatchlistBtn() {
     },
     variables: { listID: listValueID, itemID: id }
   });
-
-  function MovieID() {
-    console.log(listValueItems);
-  }
-
-  useEffect(() => {
-    if (user && listValueItems.find((item) => item.id === id.toString())) {
-      setAdded(true);
-    } else setAdded(false);
-  }, [user, listValueItems]);
-
-  console.log('id: ', id);
-  console.log('listID: ', listValueID);
 
   const watchlistButton = user ? (
     added ? (
@@ -131,7 +108,7 @@ export default function WatchlistBtn() {
   ) : (
     <Link to={ROUTES.LOGIN}>
       <div
-        className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-gray-primary"
+        className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-transparent"
         href="#"
       >
         <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">

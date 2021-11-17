@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/header';
-import ShowCast from '../components/tv-page/show-cast';
-import TVShowHero from '../components/tv-page/tv-hero';
+import ShowCast from '../components/pages/tv-page/show-cast';
+import TVShowHero from '../components/pages/tv-page/tv-hero';
 
 export default function TVPage() {
   const [tv, setTV] = useState('');

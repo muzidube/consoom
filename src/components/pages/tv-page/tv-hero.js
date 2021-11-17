@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import TVHeroBG from './tv-hero-bg';
-import * as URLS from '../../constants/urls';
+import * as URLS from '../../../constants/urls';
 
 export default function TVShowHero({
   name,

@@ -16,7 +16,8 @@ module.exports = {
       }
       try {
         const list = await List.findById(listID);
-        if (username === list.username) {
+        const itemIndex = list.items.findIndex((i) => i.id === Number(itemID));
+        if (username === list.username && itemIndex === -1) {
           if (list) {
             list.items.unshift({
               id: itemID,
@@ -34,18 +35,17 @@ module.exports = {
     },
     async deleteItem(_, { listId, itemID }, context) {
       const { username } = checkAuth(context);
-      console.log('username: ', username);
 
       const list = await List.findOne({ id: listId });
       if (list) {
-        const itemIndex = list.items.findIndex((i) => i.id === itemID);
+        const itemIndex = list.items.findIndex((i) => i.id === Number(itemID));
 
         if (username === list.username) {
-          console.log('listusername: ', list.username);
-          console.log('itemIndex: ', itemIndex);
-          list.items.splice(itemIndex, 1);
-          await list.save();
-          return list;
+          if (itemIndex > -1) {
+            list.items.splice(itemIndex, 1);
+            await list.save();
+            return list;
+          }
         }
         throw new AuthenticationError('Action not allowed');
       } else {
