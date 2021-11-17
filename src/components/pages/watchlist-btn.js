@@ -19,7 +19,9 @@ export default function WatchlistBtn() {
   const [listValueID, setListValueID] = useState('');
   const [listValueItems, setListValueItems] = useState([]);
 
-  const QueryValues = UserListQuery(userInfo);
+  const listFor = 'Movies - Watchlist';
+
+  const QueryValues = UserListQuery(userInfo, listFor);
 
   useEffect(() => {
     setUserInfo(user ? user.id : '');
