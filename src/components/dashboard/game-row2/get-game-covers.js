@@ -24,7 +24,7 @@ const axios = require('axios');
 // }
 
 const data =
-  'fields name,rating, first_release_date, rating_count, cover, storyline;where first_release_date > 1627464120 & rating_count > 0; sort rating_count desc; limit 100;';
+  'fields name,rating, first_release_date, rating_count, cover;where first_release_date > 1627464120 & rating_count > 0; sort rating_count desc; limit 100;';
 
 const config = {
   method: 'post',
@@ -45,4 +45,4 @@ axios(config)
     console.log(error);
   });
 
-// https://images.igdb.com/igdb/image/upload/t_cover_big/co3r51.png
+// images.igdb.com/igdb/image/upload/t_thumb/co1sod.jpg"

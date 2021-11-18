@@ -11,7 +11,7 @@ import ADD_ITEM_MUTATION from '../../graphql/mutations/add-item';
 import DELETE_ITEM_MUTATION from '../../graphql/mutations/delete-item';
 import UserListQuery from '../../graphql/queries/use-get-user-lists';
 
-export default function WatchlistBtn({ listToAdd }) {
+export default function FavouriteBtn({ listToAdd }) {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
 
@@ -27,8 +27,11 @@ export default function WatchlistBtn({ listToAdd }) {
   useEffect(() => {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
+      setListValueID('');
+      setListValueItems('');
       setListValueID(QueryValues.data.getUserList.id);
       setListValueItems(QueryValues.data.getUserList.items);
+      console.log('listValueID: ', listValueID);
     }
     if (user && listValueItems.find((item) => item.id === id.toString())) {
       setAdded(true);
@@ -57,7 +60,7 @@ export default function WatchlistBtn({ listToAdd }) {
     variables: { listID: listValueID, itemID: id }
   });
 
-  const watchlistButton = user ? (
+  const favouriteButton = user ? (
     added ? (
       <button className="" type="button" onClick={added ? deleteItem : addItem}>
         <div
@@ -67,17 +70,17 @@ export default function WatchlistBtn({ listToAdd }) {
           <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              fill="none"
+              fill="#f87666"
               viewBox="0 0 24 24"
               stroke="#f87666"
+              tabIndex={0}
+              className="w-8 select-none cursor-pointer focus:outline-none"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
             </svg>
           </span>
@@ -92,17 +95,18 @@ export default function WatchlistBtn({ listToAdd }) {
           <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
               fill="none"
-              stroke="#fff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              tabIndex={0}
+              className="w-8 select-none cursor-pointer focus:outline-none"
             >
-              <line x1="12" y1="5" x2="12" y2="19" />
-              <line x1="5" y1="12" x2="19" y2="12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              />
             </svg>
           </span>
         </div>
@@ -117,17 +121,18 @@ export default function WatchlistBtn({ listToAdd }) {
         <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
             fill="none"
-            stroke="#fff"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            tabIndex={0}
+            className="w-8 select-none cursor-pointer focus:outline-none"
           >
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            />
           </svg>
         </span>
       </div>
@@ -136,11 +141,11 @@ export default function WatchlistBtn({ listToAdd }) {
 
   return (
     <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-      {QueryValues.loading ? <MoonLoader loading color="#000" size={20} /> : watchlistButton}
+      {QueryValues.loading ? <MoonLoader loading color="#000" size={20} /> : favouriteButton}
     </li>
   );
 }
 
-WatchlistBtn.propTypes = {
+FavouriteBtn.propTypes = {
   listToAdd: PropTypes.string.isRequired
 };

@@ -11,7 +11,7 @@ import ADD_ITEM_MUTATION from '../../graphql/mutations/add-item';
 import DELETE_ITEM_MUTATION from '../../graphql/mutations/delete-item';
 import UserListQuery from '../../graphql/queries/use-get-user-lists';
 
-export default function WatchlistBtn({ listToAdd }) {
+export default function WatchedBtn({ listToAdd }) {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
 
@@ -27,8 +27,11 @@ export default function WatchlistBtn({ listToAdd }) {
   useEffect(() => {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
+      setListValueID('');
+      setListValueItems('');
       setListValueID(QueryValues.data.getUserList.id);
       setListValueItems(QueryValues.data.getUserList.items);
+      console.log('listValueID: ', listValueID);
     }
     if (user && listValueItems.find((item) => item.id === id.toString())) {
       setAdded(true);
@@ -40,7 +43,7 @@ export default function WatchlistBtn({ listToAdd }) {
       setAdded(true);
     },
     onError(err) {
-      console.log('errors: ', err);
+      console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: { listID: listValueID, itemID: id }
@@ -57,7 +60,7 @@ export default function WatchlistBtn({ listToAdd }) {
     variables: { listID: listValueID, itemID: id }
   });
 
-  const watchlistButton = user ? (
+  const watchedButton = user ? (
     added ? (
       <button className="" type="button" onClick={added ? deleteItem : addItem}>
         <div
@@ -69,16 +72,15 @@ export default function WatchlistBtn({ listToAdd }) {
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
-              fill="none"
               viewBox="0 0 24 24"
+              fill="none"
               stroke="#f87666"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
             </svg>
           </span>
         </div>
@@ -94,15 +96,16 @@ export default function WatchlistBtn({ listToAdd }) {
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
-              viewBox="0 0 24 24"
               fill="none"
-              stroke="#fff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <line x1="12" y1="5" x2="12" y2="19" />
-              <line x1="5" y1="12" x2="19" y2="12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+              />
             </svg>
           </span>
         </div>
@@ -119,15 +122,16 @@ export default function WatchlistBtn({ listToAdd }) {
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
-            viewBox="0 0 24 24"
             fill="none"
-            stroke="#fff"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+            />
           </svg>
         </span>
       </div>
@@ -136,11 +140,11 @@ export default function WatchlistBtn({ listToAdd }) {
 
   return (
     <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-      {QueryValues.loading ? <MoonLoader loading color="#000" size={20} /> : watchlistButton}
+      {QueryValues.loading ? <MoonLoader loading color="#000" size={20} /> : watchedButton}
     </li>
   );
 }
 
-WatchlistBtn.propTypes = {
+WatchedBtn.propTypes = {
   listToAdd: PropTypes.string.isRequired
 };

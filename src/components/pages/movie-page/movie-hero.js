@@ -1,12 +1,13 @@
 /* eslint-disable camelcase */
-import { useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import movieHeroBG from './movie-hero-bg';
 import * as URLS from '../../../constants/urls';
 import KeyFacts from './key-facts';
 
 import WatchlistBtn from '../watchlist-btn';
-import { AuthContext } from '../../../context/auth';
+import FavouriteBtn from '../favourite-btn';
+import WatchedBtn from '../watched-btn';
 
 export default function MovieHero({
   original_title,
@@ -18,12 +19,13 @@ export default function MovieHero({
   status,
   id
 }) {
-  const [itemID, setItemID] = useState('');
   useEffect(() => {
     movieHeroBG(id);
-    console.log(id);
-    setItemID(id);
   }, []);
+
+  const watchlist = 'Movies - Watchlist';
+  const favourites = 'Movies - Favourites';
+  const watched = 'Movies - Watched';
 
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
@@ -104,55 +106,9 @@ export default function MovieHero({
                       Score
                     </div>
                   </li>
-                  <WatchlistBtn itemID={itemID} />
-                  <li className="add-list py-0.5 mr-5 text-white box-border list-none">
-                    <div
-                      className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
-                      href="#"
-                    >
-                      <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          tabIndex={0}
-                          className="w-8 select-none cursor-pointer focus:outline-none"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </li>
-
-                  <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-                    <div
-                      className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
-                      href="#"
-                    >
-                      <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#fff"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                          <circle cx="12" cy="12" r="3" />
-                        </svg>
-                      </span>
-                    </div>
-                  </li>
+                  <WatchlistBtn listToAdd={watchlist} />
+                  <FavouriteBtn listToAdd={favourites} />
+                  <WatchedBtn listToAdd={watched} />
                 </ul>
                 <div className="details text-white w-full box-border">
                   <h3 className="tagline text-gray-500 m-0 p-0 text-1.1em font-normal italic w-full box-border">

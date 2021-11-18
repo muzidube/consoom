@@ -1,7 +1,12 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+
 import gameHeroBG from './game-hero-bg';
 import KeyFacts from './key-facts';
+import WatchlistBtn from '../watchlist-btn';
+import FavouriteBtn from '../favourite-btn';
+import WatchedBtn from '../watched-btn';
 
 export default function GameHero({
   name,
@@ -13,7 +18,13 @@ export default function GameHero({
   status,
   id
 }) {
-  gameHeroBG(id);
+  useEffect(() => {
+    gameHeroBG(id);
+  }, []);
+
+  const toPlay = 'Games - To Play';
+  const favourites = 'Games - Favourites';
+  const played = 'Games - Played';
 
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
@@ -94,77 +105,9 @@ export default function GameHero({
                       Score
                     </div>
                   </li>
-                  <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-                    <div
-                      className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
-                      href="#"
-                    >
-                      <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#fff"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <line x1="12" y1="5" x2="12" y2="19" />
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
-                      </span>
-                    </div>
-                  </li>
-                  <li className="add-list py-0.5 mr-5 text-white box-border list-none">
-                    <div
-                      className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
-                      href="#"
-                    >
-                      <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          tabIndex={0}
-                          className="w-8 select-none cursor-pointer focus:outline-none"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </li>
-
-                  <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-                    <div
-                      className="no_click box-border rounded-50% w-46px h-46px inline-flex items-center content-center justify-center text-white list-none bg-red-primary"
-                      href="#"
-                    >
-                      <span className="text-white relative top-0 left-0 inline-flex items-center content-center min-w-1em min-h-1em w-2em h-2em bg-center bg-no-repeat box-border font-normal list-none">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#fff"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                          <circle cx="12" cy="12" r="3" />
-                        </svg>
-                      </span>
-                    </div>
-                  </li>
+                  <WatchlistBtn listToAdd={toPlay} />
+                  <FavouriteBtn listToAdd={favourites} />
+                  <WatchedBtn listToAdd={played} />
                 </ul>
                 <div className="details text-white w-full box-border">
                   <h3 className="tagline text-gray-500 m-0 p-0 text-1.1em font-normal italic w-full box-border">

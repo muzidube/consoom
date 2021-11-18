@@ -33,10 +33,10 @@ module.exports = {
         throw new Error(err);
       }
     },
-    async deleteItem(_, { listId, itemID }, context) {
+    deleteItem: async (_, { listID, itemID }, context) => {
       const { username } = checkAuth(context);
 
-      const list = await List.findOne({ id: listId });
+      const list = await List.findById(listID);
       if (list) {
         const itemIndex = list.items.findIndex((i) => i.id === Number(itemID));
 
