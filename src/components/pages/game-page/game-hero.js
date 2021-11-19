@@ -22,9 +22,9 @@ export default function GameHero({
     gameHeroBG(id);
   }, []);
 
-  const toPlay = 'Games - To Play';
-  const favourites = 'Games - Favourites';
-  const played = 'Games - Played';
+  const toPlay = 'To Play';
+  const favourites = 'Favourites';
+  const played = 'Played';
 
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">

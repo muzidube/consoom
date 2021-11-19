@@ -91,7 +91,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Movies - Watchlist',
+      name: 'Watchlist',
       type: 'Movies'
     }
   });
@@ -104,7 +104,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Movies - Favourites',
+      name: 'Favourites',
       type: 'Movies'
     }
   });
@@ -117,7 +117,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Movies - Watched',
+      name: 'Watched',
       type: 'Movies'
     }
   });
@@ -130,7 +130,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'TV - Watchlist',
+      name: 'Watchlist',
       type: 'TV'
     }
   });
@@ -143,7 +143,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'TV - Favourites',
+      name: 'Favourites',
       type: 'TV'
     }
   });
@@ -156,7 +156,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'TV - Watched',
+      name: 'Watched',
       type: 'TV'
     }
   });
@@ -169,7 +169,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Books - To Read',
+      name: 'To Read',
       type: 'Books'
     }
   });
@@ -182,7 +182,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Books - Favourites',
+      name: 'Favourites',
       type: 'Books'
     }
   });
@@ -195,7 +195,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Books - Read',
+      name: 'Read',
       type: 'Books'
     }
   });
@@ -208,7 +208,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Games - To Play',
+      name: 'To Play',
       type: 'Games'
     }
   });
@@ -221,7 +221,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Games - Favourites',
+      name: 'Favourites',
       type: 'Games'
     }
   });
@@ -234,7 +234,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Games - Played',
+      name: 'Played',
       type: 'Games'
     }
   });
@@ -247,7 +247,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Music - To Listen',
+      name: 'To Listen',
       type: 'Music'
     }
   });
@@ -260,7 +260,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Music - Favourites',
+      name: 'Favourites',
       type: 'Music'
     }
   });
@@ -273,7 +273,7 @@ export default function SignUp() {
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
-      name: 'Music - Listened',
+      name: 'Listened',
       type: 'Music'
     }
   });

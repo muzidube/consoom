@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 const GET_USER_LIST_QUERY = gql`
-  query getUserList($userID: ID!, $listName: String!) {
-    getUserList(userID: $userID, listName: $listName) {
+  query getUserList($userID: ID!, $listName: String!, $listType: String!) {
+    getUserList(userID: $userID, listName: $listName, listType: $listType) {
       id
       name
       type

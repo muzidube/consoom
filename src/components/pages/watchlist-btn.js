@@ -13,7 +13,7 @@ import UserListQuery from '../../graphql/queries/use-get-user-lists';
 
 export default function WatchlistBtn({ listToAdd }) {
   const { user } = useContext(AuthContext);
-  const { id } = useParams();
+  const { id, type } = useParams();
 
   const [userInfo, setUserInfo] = useState(user ? user.id : '');
   const [added, setAdded] = useState(false);
@@ -21,8 +21,9 @@ export default function WatchlistBtn({ listToAdd }) {
   const [listValueItems, setListValueItems] = useState([]);
 
   const listFor = listToAdd;
+  const listTypeFor = document.URL.split('/')[3];
 
-  const QueryValues = UserListQuery(userInfo, listFor);
+  const QueryValues = UserListQuery(userInfo, listFor, listTypeFor);
 
   useEffect(() => {
     setUserInfo(user ? user.id : '');

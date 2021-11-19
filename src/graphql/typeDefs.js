@@ -48,7 +48,8 @@ module.exports = gql`
     getLists: [List]
     getList(listID: ID!): List
     getUserLists(userID: ID!): [List]
-    getUserList(userID: ID!, listName: String!): List
+    getUserList(userID: ID!, listName: String!, listType: String!): List
+    getListForPage(userID: ID!, listName: String!, listType: String!): List
   }
   type Mutation {
     register(registerInput: RegisterInput): User!

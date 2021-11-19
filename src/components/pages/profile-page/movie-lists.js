@@ -13,7 +13,7 @@ export default function MovieLists() {
               <div className="movie-container container max-w-screen-xl w-full flex justify-center flex-wrap items-start content-start mx-auto">
                 <div className="media-inner-container h-auto w-full flex justify-start items-start content-start whitespace-nowrap py-5">
                   {movieLists.length > 0 &&
-                    movieLists.map((movie) => <List key={movie.id} {...movie} type="Movies" />)}
+                    movieLists.map((movie) => <List key={movie.id} {...movie} type="Movie" />)}
                 </div>
               </div>
             </div>

@@ -43,6 +43,6 @@ body {
 
 @tailwind utilities;
 
-.media-item:first-child {
+.media-inner-container .media-item:first-child {
   margin-left: 0;
 }

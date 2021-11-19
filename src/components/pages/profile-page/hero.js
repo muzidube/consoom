@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../../../context/auth';
 
-export default function ProfileHero() {
+export default function Hero() {
   const { user } = useContext(AuthContext);
 
   const [memberSince, setMemberSince] = useState('Loading');
@@ -14,7 +14,7 @@ export default function ProfileHero() {
     document.querySelector('.hero').style.backgroundImage = 'url(/images/red-lines.svg)';
   });
   return (
-    <section className="hero w-full relative min-h-300px h-heroHeight max-h-360px bg-top-center bg-cover bg-no-repeat text-white flex flex-wrap justify-center items-start content-start w-full box-border mx-auto">
+    <section className="hero max-w-screen-xl min-h-300px h-heroHeight max-h-360px bg-top-center bg-cover bg-no-repeat text-white flex flex-wrap justify-center items-start content-start w-full box-border mx-auto">
       <div className="w-full h-full z-0 box-border bg-profile-gradient">
         <div className="media discover h-full flex content-center items-center justify-center w-full flex-wrap box-border text-white">
           <div className="w-full flex justify-center content-start items-start box-border text-white">

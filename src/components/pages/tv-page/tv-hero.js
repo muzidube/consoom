@@ -22,9 +22,9 @@ export default function TVShowHero({
     TVHeroBG(id);
   }, []);
 
-  const watchlist = 'TV - Watchlist';
-  const favourites = 'TV - Favourites';
-  const watched = 'TV - Watched';
+  const watchlist = 'Watchlist';
+  const favourites = 'Favourites';
+  const watched = 'Watched';
 
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
@@ -105,9 +105,9 @@ export default function TVShowHero({
                       Score
                     </div>
                   </li>
-                  <WatchlistBtn watchlist={watchlist} />
-                  <FavouriteBtn favourites={favourites} />
-                  <WatchedBtn watched={watched} />
+                  <WatchlistBtn listToAdd={watchlist} />
+                  <FavouriteBtn listToAdd={favourites} />
+                  <WatchedBtn listToAdd={watched} />
                 </ul>
                 <div className="details text-white w-full box-border">
                   <h3 className="tagline text-gray-500 m-0 p-0 text-1.1em font-normal italic w-full box-border">

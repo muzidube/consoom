@@ -15,6 +15,7 @@ const MoviePage = lazy(() => import('./pages/movie-page'));
 const TVShowPage = lazy(() => import('./pages/tv-page'));
 const BookPage = lazy(() => import('./pages/book-page'));
 const GamePage = lazy(() => import('./pages/game-page'));
+const ListPage = lazy(() => import('./pages/list-page'));
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
             <Route path={ROUTES.TVSHOW_PAGE} component={TVShowPage} />
             <Route path={ROUTES.BOOK_PAGE} component={BookPage} />
             <Route path={ROUTES.GAME_PAGE} component={GamePage} />
+            <Route path={ROUTES.LIST_PAGE} component={ListPage} />
             <RegisterRoute path={ROUTES.PROFILE} component={Profile} />
             <Route path={ROUTES.DASHBOARD} component={Dashboard} />
             <Route component={NotFound} />

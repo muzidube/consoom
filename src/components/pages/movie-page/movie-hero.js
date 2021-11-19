@@ -23,9 +23,9 @@ export default function MovieHero({
     movieHeroBG(id);
   }, []);
 
-  const watchlist = 'Movies - Watchlist';
-  const favourites = 'Movies - Favourites';
-  const watched = 'Movies - Watched';
+  const watchlist = 'Watchlist';
+  const favourites = 'Favourites';
+  const watched = 'Watched';
 
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">

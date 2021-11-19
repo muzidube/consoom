@@ -27,9 +27,9 @@ export default function BookHero({
     e.target.src = book_Image;
   }
 
-  const toRead = 'Books - To Read';
-  const favourites = 'Books - Favourites';
-  const read = 'Books - Read';
+  const toRead = 'To Read';
+  const favourites = 'Favourites';
+  const read = 'Read';
   return (
     <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
       <div className="flex content-center justify-center flex-wrap box-border bg-hero-gradient">
