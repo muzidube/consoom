@@ -5,15 +5,12 @@ const mongoose = require('mongoose');
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
 const { MONGODB } = require('./config');
-const { default: GameDatabase } = require('./components/dashboard/game-row/get-game-covers');
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => ({ req })
 });
-
-GameDatabase();
 
 mongoose
   .connect(MONGODB, { useNewUrlParser: true })

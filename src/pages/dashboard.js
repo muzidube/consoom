@@ -9,7 +9,7 @@ import ListForm from '../components/list/NewListForm';
 // import ShowMusic from '../components/dashboard/music-row/show-music';
 // import Dashboard from '../components/dashboard/dashboard';
 
-export default function Dashboard1() {
+export default function Dashboard() {
   useEffect(() => {
     document.title = 'Consume';
   }, []);

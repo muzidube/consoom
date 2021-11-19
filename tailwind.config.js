@@ -94,6 +94,7 @@ module.exports = {
         '50%': '50%'
       },
       fontSize: {
+        '4em': '4em',
         '3em': '3em',
         '2em': '2em',
         '1.5em': '1.5em',
@@ -114,7 +115,9 @@ module.exports = {
         '50-50': '50% 50%'
       },
       backgroundImage: {
-        'hero-gradient': 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))'
+        'hero-gradient': 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))',
+        'profile-gradient': 'linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4))'
+        // 'profile-hero': 'url(/images/green-lines.svg)'
       },
       zIndex: {
         1: '1'
