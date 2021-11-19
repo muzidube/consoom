@@ -64,7 +64,6 @@ export default function SearchBar() {
   };
 
   const dropdownHandler = (value) => {
-    console.log('Value: ', value.value);
     setDropdownOption(value.value);
   };
 
@@ -88,7 +87,6 @@ export default function SearchBar() {
       });
 
       if (response) {
-        console.log(response.data.items[0].volumeInfo.imageLinks.thumbnail);
         setSearchResults(response.data.items);
       }
     } else if (dropdownOption === 'Game') {
@@ -96,16 +94,17 @@ export default function SearchBar() {
         console.log('Error: ', err);
       });
       if (response) {
-        console.log(response.data.results);
+        setSearchResults(response.data.results);
+      }
+    } else {
+      const response = await axios.get(URL).catch((err) => {
+        console.log('Error: ', err);
+      });
+
+      if (response) {
         setSearchResults(response.data.results);
       } else {
-        const response = await axios.get(URL).catch((err) => {
-          console.log('Error: ', err);
-        });
-
-        if (response) {
-          setSearchResults(response.data.results);
-        }
+        console.log('Error');
       }
 
       setLoading(false);

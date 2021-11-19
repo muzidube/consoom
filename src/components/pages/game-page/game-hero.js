@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import gameHeroBG from './game-hero-bg';
 import KeyFacts from './key-facts';
@@ -8,19 +9,33 @@ import WatchlistBtn from '../watchlist-btn';
 import FavouriteBtn from '../favourite-btn';
 import WatchedBtn from '../watched-btn';
 
-export default function GameHero({
-  name,
-  poster_path,
-  metacritic,
-  released,
-  description,
-  tagline,
-  status,
-  id
-}) {
+export default function GameHero({ name, metacritic, released, description, tagline, status, id }) {
+  const [gameCover, setGameCover] = useState('');
+  const [gameCover2, setGameCover2] = useState('');
+  const { title } = useParams();
+
   useEffect(() => {
     gameHeroBG(id);
-  }, []);
+    const fetchGameCover = async () => {
+      try {
+        const response = await fetch(
+          `https://guarded-mesa-01224.herokuapp.com/api/search/${title}`
+        );
+        const json = await (await response).json();
+        setGameCover(await json.pageOfItems.find((item) => item.name === title).cover.url);
+        setGameCover2(await json.pageOfItems[0].cover.url);
+        console.log('Results: ', json.pageOfItems.find((item) => item.name === title).cover.url);
+        console.log('Title: ', title);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchGameCover();
+  });
+
+  function addDefaultSrc(e) {
+    e.target.src = '/images/Consume-Big.jpg';
+  }
 
   const toPlay = 'To Play';
   const favourites = 'Favourites';
@@ -36,7 +51,8 @@ export default function GameHero({
                 <div className="image-content backdrop text-white w-full min-w-full h-full box-border">
                   <img
                     className="block w-full min-w-full h-full min-h-full border-0 outline-none text-whit rounded-lg"
-                    src="/images/Consume-Big.jpg"
+                    onError={addDefaultSrc}
+                    src={gameCover2 ? `https:${gameCover}` : `https:${gameCover2}`}
                     alt={name}
                   />
                 </div>
@@ -132,7 +148,6 @@ export default function GameHero({
 
 GameHero.propTypes = {
   name: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
   released: PropTypes.string.isRequired,
   metacritic: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,

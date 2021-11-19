@@ -5,14 +5,14 @@ import * as URLS from '../../../constants/urls';
 
 const SearchResultTV = ({ name, poster_path, vote_average, overview, id }) => (
   <div className="result-container min-w-94px border-none shadow-none rounded-lg p-2 items-center flex">
-    <Link to={`/tv/${id}/${name}`}>
+    <Link to={`/TV/${id}/${name}`}>
       <div className="thumbnail w-94px h-141px flex rounded-lg">
         <img className="w-94px h-141px rounded-lg" src={URLS.IMG_URL + poster_path} alt={name} />
       </div>
     </Link>
     <div className="tv-info w-auto h-full whitespace-normal content-start text-black grid ml-4">
       <div className="flex">
-        <Link to={`/tv/${id}/${name}`}>
+        <Link to={`/TV/${id}/${name}`}>
           <h2 className="m-0 p-0 w-auto font-bold break-words text-1em no-underline">{name}</h2>
         </Link>
         {/* <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white"> */}
