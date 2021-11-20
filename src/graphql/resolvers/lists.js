@@ -45,17 +45,6 @@ module.exports = {
       } catch (err) {
         throw new Error(err);
       }
-    },
-    async getListForPage(_, { userID, listName, listType }) {
-      try {
-        const list = await List.findOne({ user: userID, name: listName, type: listType });
-        if (list) {
-          return list;
-        }
-        throw new Error('List not found');
-      } catch (err) {
-        throw new Error(err);
-      }
     }
   },
   Mutation: {

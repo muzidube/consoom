@@ -13,7 +13,7 @@ import UserListQuery from '../../graphql/queries/use-get-user-lists';
 
 export default function FavouriteBtn({ listToAdd }) {
   const { user } = useContext(AuthContext);
-  const { id, type } = useParams();
+  const { id } = useParams();
 
   const [userInfo, setUserInfo] = useState(user ? user.id : '');
   const [added, setAdded] = useState(false);
@@ -39,7 +39,7 @@ export default function FavouriteBtn({ listToAdd }) {
   });
 
   const [addItem] = useMutation(ADD_ITEM_MUTATION, {
-    update(_, data) {
+    update() {
       setAdded(true);
     },
     onError(err) {
@@ -50,7 +50,7 @@ export default function FavouriteBtn({ listToAdd }) {
   });
 
   const [deleteItem] = useMutation(DELETE_ITEM_MUTATION, {
-    update(_, data) {
+    update() {
       setAdded(false);
     },
     onError(err) {

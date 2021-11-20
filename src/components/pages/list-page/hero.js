@@ -1,18 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { AuthContext } from '../../../context/auth';
 
 export default function Hero() {
   const { user } = useContext(AuthContext);
-  const { type, title } = useParams();
-
-  const [memberSince, setMemberSince] = useState('Loading');
-
-  console.log('user: ', user);
+  const { title } = useParams();
 
   useEffect(() => {
-    // setMemberSince(user.createdAt);
     document.querySelector('.hero').style.backgroundImage = 'url(/images/red-lines.svg)';
   });
   return (

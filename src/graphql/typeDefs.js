@@ -53,11 +53,8 @@ module.exports = gql`
   }
   type Mutation {
     register(registerInput: RegisterInput): User!
-    register2(registerInput: RegisterInput, name: String!, type: String!): User!
     login(username: String!, password: String!): User!
-    defaultLists(username: String!): List!
     createList(name: String!, type: String!): List!
-    createList2: List!
     deleteList(listID: ID!): String!
     addItem(listID: ID!, itemID: ID!): List!
     deleteItem(listID: ID!, itemID: ID!): List!

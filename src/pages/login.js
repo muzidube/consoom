@@ -32,7 +32,7 @@ export default function Login() {
     password: ''
   });
 
-  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+  const [loginUser] = useMutation(LOGIN_USER, {
     update(_, { data: { login: userData } }) {
       context.login(userData);
       history.push(ROUTES.DASHBOARD);

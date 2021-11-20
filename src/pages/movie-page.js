@@ -1,20 +1,10 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
 import Header from '../components/header';
 import MovieHero from '../components/pages/movie-page/movie-hero';
 import ShowCast from '../components/pages/movie-page/show-cast';
 
-import { AuthContext } from '../context/auth';
-
 export default function MoviePage() {
-  const { user } = useContext(AuthContext);
-
-  // const {
-  //   loading,
-  //   data: { getLists: lists }
-  // } = useQuery(FETCH_LISTS_QUERY);
-
   const [movie, setMovie] = useState('');
   const { id } = useParams();
 

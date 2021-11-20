@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from 'react';
-// import { useHistory } from 'react-router';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
@@ -8,7 +7,6 @@ import * as ROUTES from '../constants/routes';
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../hooks/login-sign-up-hooks';
-import { DefaultLists } from '../graphql/resolvers/actualDefaults';
 
 const REGISTER_USER = gql`
   mutation register(
@@ -82,7 +80,7 @@ export default function SignUp() {
     type: ''
   });
 
-  const [MoviesWatchlist, { error }] = useMutation(CREATE_LIST_MUTATION, {
+  const [MoviesWatchlist] = useMutation(CREATE_LIST_MUTATION, {
     update(_, result) {
       console.log(result);
     },
@@ -278,7 +276,7 @@ export default function SignUp() {
     }
   });
 
-  const [addUser, { loading }] = useMutation(REGISTER_USER, {
+  const [addUser] = useMutation(REGISTER_USER, {
     update(_, { data: { register: userData } }) {
       context.login(userData);
       MoviesWatchlist();

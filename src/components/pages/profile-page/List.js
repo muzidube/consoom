@@ -2,10 +2,9 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import * as URLS from '../../../constants/urls';
 import { AuthContext } from '../../../context/auth';
 
-export default function List({ title, type, poster_path }) {
+export default function List({ title, type }) {
   const { user } = useContext(AuthContext);
 
   return (
@@ -38,6 +37,5 @@ export default function List({ title, type, poster_path }) {
 
 List.propTypes = {
   title: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired
 };
