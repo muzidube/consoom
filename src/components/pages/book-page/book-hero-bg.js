@@ -9,6 +9,8 @@ export default async function bookHeroBG(id) {
       bg = data.backdrop_path;
     });
 
-  document.querySelector('.hero').style.backgroundImage = `url(
+  if (document.querySelector('.book-page-hero')) {
+    document.querySelector('.book-page-hero').style.backgroundImage = `url(
     https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bg}`;
+  }
 }

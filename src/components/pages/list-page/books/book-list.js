@@ -17,16 +17,12 @@ export default function BooksList() {
   const listTypeFor = type;
 
   const QueryValues = ListForPageQuery(userInfo, listFor, listTypeFor);
-  console.log(QueryValues);
 
   useEffect(() => {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
       setListValueItems(QueryValues.data.getListForPage.items);
     }
-    // if (user && listValueItems.find((item) => item.id === id.toString())) {
-    //   setAdded(true);
-    // } else setAdded(false);
   });
 
   return (

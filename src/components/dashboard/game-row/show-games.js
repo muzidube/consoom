@@ -79,7 +79,7 @@ export default function ShowGames() {
           <div className="column w-full box-border text-black text-1em font-semibold p-0 box-border text-black">
             <div className="column-header px-10 flex flex-wrap justify-start items-center content-center box-border text-black">
               <h2 className="m-0 mr-5 whitespace-nowrap text-1.5em">Games</h2>
-              <div className="selector-wrap box-border text-black">
+              <div className="selector-wrap box-border text-black py-1.5">
                 <div className="selector flex justify-start items-stretch content-center border rounded-3xl border-red-primary box-border text-black">
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
@@ -92,7 +92,7 @@ export default function ShowGames() {
                       </button>
                     </h3>
                   </div>
-                  <div className="anchor relative top-0 left-0 z-1 box-border text-black">
+                  {/* <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
                       <button
                         type="button"
@@ -102,7 +102,7 @@ export default function ShowGames() {
                         Latest
                       </button>
                     </h3>
-                  </div>
+                  </div> */}
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
                       <button
@@ -114,7 +114,7 @@ export default function ShowGames() {
                       </button>
                     </h3>
                   </div>
-                  <div className="anchor relative top-0 left-0 z-1 box-border text-black">
+                  {/* <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
                       <button
                         type="button"
@@ -124,7 +124,7 @@ export default function ShowGames() {
                         Top Rated All Time
                       </button>
                     </h3>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="games-container container max-w-screen-xl w-full flex justify-center flex-wrap items-start content-start mx-auto">

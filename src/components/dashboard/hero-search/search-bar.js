@@ -136,7 +136,7 @@ export default function SearchBar() {
 
   return (
     <motion.div
-      className="search-container mt-7  max-w-screen-xl w-full h-11 box-border text-white flex flex-col box-border bg-white rounded-3xl"
+      className="search-container mt-7  max-w-screen-xl w-full h-11 box-border text-white flex flex-col box-border bg-white rounded-3xl z-10"
       animate={isExpanded ? 'expanded' : 'collapsed'}
       variants={containerVariants}
       transition={containerTransition}
@@ -153,7 +153,7 @@ export default function SearchBar() {
             autoCorrect="on"
             autoComplete="on"
             spellCheck="false"
-            placeholder="Search for a movie, tv show, book or game..."
+            placeholder="Search..."
             onFocus={expandContainer}
             ref={inputRef}
             value={searchQuery}
@@ -162,31 +162,18 @@ export default function SearchBar() {
         </label>
         <Select
           styles={customStyles}
-          className="dropdown-menu inline-flex justify-center align-center content-center h-11 border-none rounded-3xl absolute -right-px text-black cursor-pointer leading-normal outline-none"
+          className="dropdown-menu inline-flex justify-center align-center content-center h-11 border-none rounded-3xl absolute -right-px text-black cursor-pointer leading-normal outline-none w-150px z-10"
           options={dropdownOptions}
           onChange={dropdownHandler}
           isSearchable={false}
         />
-        {/* <select
-          className="dropdown-menu inline-flex justify-center align-center content-center h-11 py-2.5 px-6 border-none bg-red-primary rounded-3xl absolute top-0 -right-px text-white font-bold cursor-pointer leading-normal"
-          onChange={dropdownHandler}
-        >
-          <option value="Movie" selected="selected">
-            Movie
-          </option>
-          <option value="TV Show">TV Show</option>
-          <option value="Book">Book</option>
-          <option value="Game">Game</option>
-        </select> */}
       </form>
-      {/* <span className="search-separator flex min-w-full min-h-2px bg-gray-900" /> */}
-      {/* <SearchContent>{isLoading}</SearchContent> */}
       {(() => {
         if (isExpanded && dropdownOption === 'Movie') {
           return (
             <>
               <span className="mt-1 search-separator flex min-w-full min-h-2px bg-gray-200" />
-              <div className="w-full h-full flex flex-col p-1 text-black overflow-x-hidden overflow-y-scroll justify-start items-start content-start ">
+              <div className="w-full h-full flex flex-col p-1 text-black overflow-x-hidden overflow-y-scroll justify-start items-start content-start">
                 {searchResults.map((searchResult) => (
                   <SearchResultMovie key={searchResult.id} {...searchResult} />
                 ))}

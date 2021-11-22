@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 import * as ROUTES from '../constants/routes';
 
 import { AuthContext } from '../context/auth';
-import { useForm } from '../hooks/login-sign-up-hooks';
+import useForm from '../hooks/login-sign-up-hooks';
 
 const LOGIN_USER = gql`
   mutation login($username: String!, $password: String!) {

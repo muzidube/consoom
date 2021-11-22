@@ -14,16 +14,13 @@ export default function MoviesList() {
 
   const listFor = title;
   const listTypeFor = type;
-  console.log('type: ', type);
 
   const QueryValues = UserListQuery(userInfo, listFor, listTypeFor);
-  console.log(QueryValues);
 
   useEffect(() => {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
       setListValueItems(QueryValues.data.getUserList.items);
-      console.log(QueryValues.data.getUserList.items);
     }
   });
 

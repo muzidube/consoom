@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useForm = (callback, initalState = {}) => {
+export default function useForm(callback, initalState = {}) {
   const [values, setValues] = useState(initalState);
 
   const onChange = (e) => {
@@ -17,4 +17,4 @@ export const useForm = (callback, initalState = {}) => {
     onSubmit,
     values
   };
-};
+}

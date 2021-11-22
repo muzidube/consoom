@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import { useState, useContext, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { useForm } from '../../hooks/login-sign-up-hooks';
+import useForm from '../../hooks/login-sign-up-hooks';
 import * as ROUTES from '../../constants/routes';
 
 const CREATE_LIST_MUTATION = gql`

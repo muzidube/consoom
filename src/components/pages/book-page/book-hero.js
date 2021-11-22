@@ -31,10 +31,10 @@ export default function BookHero({
   const favourites = 'Favourites';
   const read = 'Read';
   return (
-    <div className="hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
+    <div className="movie-page-hero w-full relative z-1 box-border bg-cover bg-norepeat bg-right-hero">
       <div className="flex content-center justify-center flex-wrap box-border bg-hero-gradient">
         <div className="py-7 px-10 max-w-screen-xl w-full z-0 box-border">
-          <section className="original-header content-wrapper flex flex-nowrap box-border text-white">
+          <section className="original-header content-wrapper flex flex-wrap box-border text-white justify-center md:flex-nowrap">
             <div className="poster-wrapper h-auto w-300px min-w-300px border-0 overflow-hidden rounded-lg box-border flex text-white items-center">
               <div className="poster text-white block min-w-300px w-300px h-450px relative top-0 left-0 box-border">
                 <div className="image-content backdrop text-white w-full min-w-full h-full box-border">
@@ -47,14 +47,14 @@ export default function BookHero({
                 </div>
               </div>
             </div>
-            <div className="info text-white flex box-border">
-              <section className="text-white flex flex-wrap items-start content-center box-border pl-10">
+            <div className="info text-white flex box-border py-1.5">
+              <section className="text-white flex flex-wrap items-start content-center box-border md:pl-10">
                 <div className="title text-white w-full mb-6 flex flex-wrap box-border">
-                  <h2 className="text-white w-full m-0 p-0 text-4xl flex font-semibold box-border items-center">
+                  <h2 className="text-white w-full m-0 p-0 text-4xl flex flex-wrap font-semibold box-border items-center md:flex-nowrap">
                     <p className="text-white font-bold decoration-none box-border bg-transparent text-4xl">
                       {title}
                     </p>
-                    <span className="font-normal text-gray-600 box-border text-3xl ml-3">
+                    <span className="font-normal text-gray-600 box-border text-3xl md:ml-3">
                       ({publishedDate})
                     </span>
                   </h2>

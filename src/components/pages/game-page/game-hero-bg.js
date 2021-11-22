@@ -7,5 +7,7 @@ export default async function gameHeroBG(id) {
       bg = data.background_image;
     });
 
-  document.querySelector('.hero').style.backgroundImage = `url(${bg}`;
+  if (document.querySelector('.game-page-hero')) {
+    document.querySelector('.game-page-hero').style.backgroundImage = `url(${bg}`;
+  }
 }

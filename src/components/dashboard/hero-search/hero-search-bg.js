@@ -11,8 +11,10 @@ export default async function heroSearchBG() {
 
   const selectBG = await bgArray[Math.floor(Math.random() * bgArray.length)];
 
-  document.querySelector(
-    '.hero'
-  ).style.backgroundImage = `linear-gradient(to right, rgba(248, 118, 102, 1), rgba(248, 118, 102, 0.3)), url(
+  if (document.querySelector('.hero')) {
+    document.querySelector(
+      '.hero'
+    ).style.backgroundImage = `linear-gradient(to right, rgba(248, 118, 102, 1), rgba(248, 118, 102, 0.3)), url(
   https://image.tmdb.org/t/p/w1920_and_h600_multi_faces${selectBG}`;
+  }
 }

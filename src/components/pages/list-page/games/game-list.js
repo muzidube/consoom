@@ -17,7 +17,6 @@ export default function GamesList() {
   const listTypeFor = type;
 
   const QueryValues = ListForPageQuery(userInfo, listFor, listTypeFor);
-  console.log(QueryValues);
 
   useEffect(() => {
     setUserInfo(user ? user.id : '');

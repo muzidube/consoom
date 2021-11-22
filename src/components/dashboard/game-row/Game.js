@@ -101,7 +101,6 @@ export default function Game({ name, metacritic, released, id }) {
 
 Game.propTypes = {
   name: PropTypes.string.isRequired,
-  // background_image: PropTypes.string.isRequired,
   released: PropTypes.string.isRequired,
   metacritic: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired

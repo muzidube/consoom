@@ -15,14 +15,12 @@ const SearchResultTV = ({ name, poster_path, vote_average, overview, id }) => (
         <Link to={`/TV/${id}/${name}`}>
           <h2 className="m-0 p-0 w-auto font-bold break-words text-1em no-underline">{name}</h2>
         </Link>
-        {/* <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white"> */}
         <h2 className="text-1em whitespace-normal ml-2">
           {vote_average * 10}
           <span className="text-0.4rem">%</span>
         </h2>
       </div>
       <p className="m-0 p-0 w-900px break-words text-1em no-underline">{overview}</p>
-      {/* </div> */}
     </div>
   </div>
 );

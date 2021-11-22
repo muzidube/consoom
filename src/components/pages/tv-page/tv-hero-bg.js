@@ -9,6 +9,8 @@ export default async function TVHeroBG(id) {
       bg = data.backdrop_path;
     });
 
-  document.querySelector('.hero').style.backgroundImage = `url(
+  if (document.querySelector('.tv-page-hero')) {
+    document.querySelector('.tv-page-hero').style.backgroundImage = `url(
       https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bg}`;
+  }
 }

@@ -60,6 +60,7 @@ module.exports = {
         '5px': '5px'
       },
       minWidth: {
+        '6/12': '50%',
         '1em': '1em',
         '600px': '600px',
         '300px': '300px',
@@ -68,6 +69,7 @@ module.exports = {
         '140px': '140px'
       },
       maxWidth: {
+        '6/12': '50%',
         '1em': '1em',
         '600px': '600px',
         '300px': '300px',
