@@ -21,7 +21,6 @@ export default function MoviesList() {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
       setListValueItems(QueryValues.data.getUserList.items);
-      console.log('items: ', QueryValues.data.getUserList.items);
     }
   });
 

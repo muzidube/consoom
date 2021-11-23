@@ -14,7 +14,6 @@ export default function ShowMovie({ id, release_date }) {
         );
         const json = await (await response).json();
         setMovie(json);
-        console.log(json);
       } catch (error) {
         console.log('Error: ', error);
       }

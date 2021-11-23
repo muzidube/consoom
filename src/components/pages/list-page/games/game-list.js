@@ -8,7 +8,6 @@ import { AuthContext } from '../../../../context/auth';
 export default function GamesList() {
   const { user } = useContext(AuthContext);
   const { type, title } = useParams();
-  console.log(type, title);
 
   const [userInfo, setUserInfo] = useState(user ? user.id : '');
   const [listValueItems, setListValueItems] = useState([]);

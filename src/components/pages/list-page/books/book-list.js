@@ -8,7 +8,6 @@ import { AuthContext } from '../../../../context/auth';
 export default function BooksList() {
   const { user } = useContext(AuthContext);
   const { type, title } = useParams();
-  console.log(type, title);
 
   const [userInfo, setUserInfo] = useState(user ? user.id : '');
   const [listValueItems, setListValueItems] = useState([]);
@@ -22,7 +21,6 @@ export default function BooksList() {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
       setListValueItems(QueryValues.data.getUserList.items);
-      console.log('Items: ', QueryValues.data.getUserList.items);
     }
   });
 
