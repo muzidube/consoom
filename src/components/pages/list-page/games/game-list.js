@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import ShowGame from './game-info';
 
-import ListForPageQuery from '../../../../graphql/queries/use-get-list-for-page';
+import ShowGame from './game-info';
+import UserListQuery from '../../../../graphql/queries/use-get-user-lists';
 import { AuthContext } from '../../../../context/auth';
 
 export default function GamesList() {
@@ -16,20 +16,22 @@ export default function GamesList() {
   const listFor = title;
   const listTypeFor = type;
 
-  const QueryValues = ListForPageQuery(userInfo, listFor, listTypeFor);
+  const QueryValues = UserListQuery(userInfo, listFor, listTypeFor);
 
   useEffect(() => {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
-      setListValueItems(QueryValues.data.getListForPage.items);
+      setListValueItems(QueryValues.data.getUserList.items);
     }
   });
 
   return (
     <div className="hero max-w-screen-xl flex flex-wrap w-full box-border mx-auto px-auto pt-7 justify-center">
-      <div className="pl-10 flex flex-wrap w-full">
+      <div className="user-media-list mx-auto grid gap-5 grid-cols-2 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-4">
         {listValueItems.length > 0 &&
-          listValueItems.map((game) => <ShowGame key={game.id} {...game} />)}
+          listValueItems.map((game) => (
+            <ShowGame key={game.id} {...game} released={game.addedAt.split('T')[0]} />
+          ))}
       </div>
     </div>
   );

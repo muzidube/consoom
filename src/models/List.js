@@ -7,7 +7,7 @@ const listSchema = new Schema({
   createdAt: String,
   items: [
     {
-      id: Number,
+      id: String,
       addedAt: String
     }
   ],

@@ -1,29 +1,23 @@
-// import { useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
-// import Game from '../../../dashboard/game-row/Game';
+/* eslint-disable camelcase */
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import Game from '../../../dashboard/game-row/Game';
 
-// export default function ShowGame({ id }) {
-//   const [game, setGame] = useState([]);
+export default function ShowGame({ id, released }) {
+  const [game, setGame] = useState([]);
 
-//   useEffect(() => {
-//     const fetchGameDetails = async () => {
-//       try {
-//         const response = await fetch(
-//           `https://api.thegamedb.org/3/game/${id}?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
-//         );
-//         const json = await (await response).json();
-//         setGame(json);
-//       } catch (error) {
-//         console.log('Error: ', error);
-//       }
-//     };
+  useEffect(() => {
+    fetch(`https://api.rawg.io/api/games/${id}?key=335197e656a04bad8a99a8fef21b98b7`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGame(data);
+      });
+  }, []);
 
-//     fetchGameDetails();
-//   }, []);
+  return <Game key={game.id} {...game} released={released} />;
+}
 
-//   return <Game key={game.id} {...game} />;
-// }
-
-// ShowGame.propTypes = {
-//   id: PropTypes.number.isRequired
-// };
+ShowGame.propTypes = {
+  id: PropTypes.string.isRequired,
+  released: PropTypes.string.isRequired
+};

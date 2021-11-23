@@ -11,14 +11,12 @@ export default function BookPage() {
   const [author, setAuthor] = useState('');
   const [pageCount, setPageCount] = useState('');
   const [book_Image, setBookImage] = useState('');
-  const { primary_isbn10 } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=isbn:${primary_isbn10}`
-        );
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${id}`);
         const json = await (await response).json();
         document.title = json.items[0].volumeInfo.title;
         setBook(json.items[0].volumeInfo);
@@ -44,7 +42,7 @@ export default function BookPage() {
       <Header />
       <main className="mt-16 mx-auto justify-center items-center">
         <BookHero
-          key={book.primary_isbn10}
+          key={book.id}
           {...book}
           ISBN_13={ISBN_13}
           author={author}

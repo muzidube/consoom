@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import ShowTV from './tv-info';
 
+import ShowTV from './tv-info';
 import UserListQuery from '../../../../graphql/queries/use-get-user-lists';
 import { AuthContext } from '../../../../context/auth';
 

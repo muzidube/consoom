@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import ShowMovie from './movie-info';
 
+import ShowMovie from './movie-info';
 import UserListQuery from '../../../../graphql/queries/use-get-user-lists';
 import { AuthContext } from '../../../../context/auth';
 

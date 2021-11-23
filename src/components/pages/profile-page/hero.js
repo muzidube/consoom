@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
 import { AuthContext } from '../../../context/auth';
+import formatDate from '../../../util/dateFormatter';
 
 export default function Hero() {
   const { user } = useContext(AuthContext);
@@ -8,7 +9,7 @@ export default function Hero() {
   const [memberSince, setMemberSince] = useState('Loading');
 
   useEffect(() => {
-    setMemberSince(user.createdAt);
+    setMemberSince(formatDate(user.createdAt));
     document.querySelector('.profile-page-hero').style.backgroundImage =
       'url(/images/red-lines.svg)';
   });

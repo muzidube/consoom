@@ -6,6 +6,7 @@ import bookHeroBG from './book-hero-bg';
 import WatchlistBtn from '../watchlist-btn';
 import FavouriteBtn from '../favourite-btn';
 import WatchedBtn from '../watched-btn';
+import formatDate from '../../../util/dateFormatter';
 
 export default function BookHero({
   title,
@@ -55,7 +56,7 @@ export default function BookHero({
                       {title}
                     </p>
                     <span className="font-normal text-gray-600 box-border text-3xl">
-                      ({publishedDate})
+                      ({formatDate(publishedDate)})
                     </span>
                   </h2>
                 </div>

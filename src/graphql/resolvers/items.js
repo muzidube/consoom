@@ -16,7 +16,7 @@ module.exports = {
       }
       try {
         const list = await List.findById(listID);
-        const itemIndex = list.items.findIndex((i) => i.id === Number(itemID));
+        const itemIndex = list.items.findIndex((i) => i.id === itemID);
         if (username === list.username && itemIndex === -1) {
           if (list) {
             list.items.unshift({
@@ -38,7 +38,7 @@ module.exports = {
 
       const list = await List.findById(listID);
       if (list) {
-        const itemIndex = list.items.findIndex((i) => i.id === Number(itemID));
+        const itemIndex = list.items.findIndex((i) => i.id === itemID);
 
         if (username === list.username) {
           if (itemIndex > -1) {

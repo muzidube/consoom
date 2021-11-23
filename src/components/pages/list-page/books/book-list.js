@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import ShowBook from './book-info';
 
-import ListForPageQuery from '../../../../graphql/queries/use-get-list-for-page';
+import ShowBook from './book-info';
+import UserListQuery from '../../../../graphql/queries/use-get-user-lists';
 import { AuthContext } from '../../../../context/auth';
 
 export default function BooksList() {
@@ -16,12 +16,13 @@ export default function BooksList() {
   const listFor = title;
   const listTypeFor = type;
 
-  const QueryValues = ListForPageQuery(userInfo, listFor, listTypeFor);
+  const QueryValues = UserListQuery(userInfo, listFor, listTypeFor);
 
   useEffect(() => {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
-      setListValueItems(QueryValues.data.getListForPage.items);
+      setListValueItems(QueryValues.data.getUserList.items);
+      console.log('Items: ', QueryValues.data.getUserList.items);
     }
   });
 

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as URLS from '../../../constants/urls';
 
+import formatDate from '../../../util/dateFormatter';
+
 const Movie = ({ title, poster_path, vote_average, release_date, id }) => (
   <div className="media-item movie ml-10 w-150px min-w-150px bg-transparent mt-0 border-none shadow-none rounded-lg overflow-visible mt-0 relative top-0 left-0 flex flex-wrap content-start whitespace-nowrap">
     <Link to={`/Movie/${id}/${title}`}>
@@ -72,7 +74,9 @@ const Movie = ({ title, poster_path, vote_average, release_date, id }) => (
           </div>
         </div>
       </div>
-      <p className="release-date m-0 p-0 whitespace-normal font-normal">{release_date}</p>
+      <p className="release-date m-0 p-0 whitespace-normal font-normal">
+        {formatDate(release_date)}
+      </p>
     </div>
   </div>
 );

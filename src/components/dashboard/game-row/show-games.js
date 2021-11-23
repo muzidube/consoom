@@ -3,16 +3,11 @@ import Game from './Game';
 
 export default function ShowGames() {
   const [popularGames, setPopularGames] = useState([]);
-  const [latestGames, setLatestGames] = useState([]);
   const [topRatedGamesYear, setTopRatedGamesYear] = useState([]);
-  const [topRatedGamesEver, setTopRatedGamesEver] = useState([]);
   const [games, setGames] = useState([]);
 
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
-    const lastWeek = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 7)
-      .toISOString()
-      .split('T')[0];
     const lastMonth = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 30)
       .toISOString()
       .split('T')[0];
@@ -32,17 +27,6 @@ export default function ShowGames() {
         console.log('Error: ', error);
       }
     };
-    const fetchLatestGames = async () => {
-      try {
-        const response = await fetch(
-          `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&dates=${lastWeek},${today}&ordering=-released`
-        );
-        const json = await (await response).json();
-        setLatestGames(json.results);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
     const fetchTopRatedGamesYear = async () => {
       try {
         const response = await fetch(
@@ -54,22 +38,9 @@ export default function ShowGames() {
         console.log('Error: ', error);
       }
     };
-    const fetchTopRatedGamesEver = async () => {
-      try {
-        const response = await fetch(
-          `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&metacritic=90,100&ordering=-metacritic`
-        );
-        const json = await (await response).json();
-        setTopRatedGamesEver(json.results);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
 
     fetchPopularGames();
-    fetchLatestGames();
     fetchTopRatedGamesYear();
-    fetchTopRatedGamesEver();
   }, []);
 
   return (
@@ -92,17 +63,6 @@ export default function ShowGames() {
                       </button>
                     </h3>
                   </div>
-                  {/* <div className="anchor relative top-0 left-0 z-1 box-border text-black">
-                    <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <button
-                        type="button"
-                        className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent"
-                        onClick={() => setGames(latestGames)}
-                      >
-                        Latest
-                      </button>
-                    </h3>
-                  </div> */}
                   <div className="anchor relative top-0 left-0 z-1 box-border text-black">
                     <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
                       <button
@@ -114,17 +74,6 @@ export default function ShowGames() {
                       </button>
                     </h3>
                   </div>
-                  {/* <div className="anchor relative top-0 left-0 z-1 box-border text-black">
-                    <h3 className="m-0 inline-flex content-center items-center justify-center text-1em py-1 px-5 whitespace-nowrap font-semibold">
-                      <button
-                        type="button"
-                        className="no_click text-red-primary font-semibold decoration-none box-border bg-transparent"
-                        onClick={() => setGames(topRatedGamesEver)}
-                      >
-                        Top Rated All Time
-                      </button>
-                    </h3>
-                  </div> */}
                 </div>
               </div>
               <div className="games-container container max-w-screen-xl w-full flex justify-center flex-wrap items-start content-start mx-auto">

@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import formatDate from '../../../util/dateFormatter';
+
 export default function Game({ name, metacritic, released, id }) {
   const [gameCover, setGameCover] = useState('');
 
@@ -28,7 +30,7 @@ export default function Game({ name, metacritic, released, id }) {
       <Link to={`/Game/${id}/${name}`}>
         <div className="image shadow-md rounded-lg w-full h-225px overflow-hidden bg-grey-background whitespace-nowrap">
           <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
-            <p className="image inline-block w-full h-full whitespace-nowrap" href="/" name={name}>
+            <p className="image inline-block w-full h-full whitespace-nowrap" name={name}>
               <img
                 className="poster inline-block w-full h-full outline-none border-none"
                 onError={addDefaultSrc}
@@ -93,7 +95,7 @@ export default function Game({ name, metacritic, released, id }) {
             </div>
           </div>
         </div>
-        <p className="m-0 p-0 whitespace-normal font-normal">{released}</p>
+        <p className="m-0 p-0 whitespace-normal font-normal">{formatDate(released)}</p>
       </div>
     </div>
   );
@@ -103,5 +105,5 @@ Game.propTypes = {
   name: PropTypes.string.isRequired,
   released: PropTypes.string.isRequired,
   metacritic: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired
 };

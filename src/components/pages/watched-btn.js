@@ -33,7 +33,7 @@ export default function WatchedBtn({ listToAdd }) {
       setListValueID(QueryValues.data.getUserList.id);
       setListValueItems(QueryValues.data.getUserList.items);
     }
-    if (user && listValueItems.find((item) => item.id === id.toString())) {
+    if (user && listValueItems.find((item) => item.id === id)) {
       setAdded(true);
     } else setAdded(false);
   });

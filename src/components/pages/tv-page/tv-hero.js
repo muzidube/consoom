@@ -7,6 +7,7 @@ import * as URLS from '../../../constants/urls';
 import WatchlistBtn from '../watchlist-btn';
 import FavouriteBtn from '../favourite-btn';
 import WatchedBtn from '../watched-btn';
+import formatDate from '../../../util/dateFormatter';
 
 export default function TVShowHero({
   name,
@@ -50,7 +51,7 @@ export default function TVShowHero({
                       {name}
                     </p>
                     <span className="font-normal text-gray-600 box-border text-3xl">
-                      ({first_air_date})
+                      ({formatDate(first_air_date)})
                     </span>
                   </h2>
                   <div className="facts flex text-white italic text-gray-500">{status}</div>

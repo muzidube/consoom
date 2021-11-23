@@ -81,48 +81,40 @@ export default function SignUp() {
   });
 
   const [MoviesWatchlist] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'Watchlist',
-      type: 'Movies'
+      type: 'Movie'
     }
   });
   const [MoviesFavourites] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'Favourites',
-      type: 'Movies'
+      type: 'Movie'
     }
   });
   const [MoviesWatched] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'Watched',
-      type: 'Movies'
+      type: 'Movie'
     }
   });
   const [TVWatchlist] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
@@ -133,9 +125,7 @@ export default function SignUp() {
     }
   });
   const [TVFavourites] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
@@ -146,9 +136,7 @@ export default function SignUp() {
     }
   });
   const [TVWatched] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
@@ -159,87 +147,73 @@ export default function SignUp() {
     }
   });
   const [BooksToRead] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'To Read',
-      type: 'Books'
+      type: 'Book'
     }
   });
   const [BooksFavourites] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'Favourites',
-      type: 'Books'
+      type: 'Book'
     }
   });
   const [BooksRead] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'Read',
-      type: 'Books'
+      type: 'Book'
     }
   });
   const [GamesToPlay] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'To Play',
-      type: 'Games'
+      type: 'Game'
     }
   });
   const [GamesFavourites] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'Favourites',
-      type: 'Games'
+      type: 'Game'
     }
   });
   const [GamesPlayed] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: {
       name: 'Played',
-      type: 'Games'
+      type: 'Game'
     }
   });
   const [MusicToListen] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
@@ -250,9 +224,7 @@ export default function SignUp() {
     }
   });
   const [MusicFavourites] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);
@@ -263,9 +235,7 @@ export default function SignUp() {
     }
   });
   const [MusicListened] = useMutation(CREATE_LIST_MUTATION, {
-    update(_, result) {
-      console.log(result);
-    },
+    update(_, result) {},
     onError(err) {
       console.log('errors: ', err.graphQLErrors[0]);
       // setErrors(err.graphQLErrors[0].extensions.errors);

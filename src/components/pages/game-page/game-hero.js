@@ -8,6 +8,7 @@ import KeyFacts from './key-facts';
 import WatchlistBtn from '../watchlist-btn';
 import FavouriteBtn from '../favourite-btn';
 import WatchedBtn from '../watched-btn';
+import formatDate from '../../../util/dateFormatter';
 
 export default function GameHero({ name, metacritic, released, description, tagline, status, id }) {
   const [gameCover, setGameCover] = useState('');
@@ -64,7 +65,7 @@ export default function GameHero({ name, metacritic, released, description, tagl
                       {name}
                     </p>
                     <span className="font-normal text-gray-600 box-border text-3xl">
-                      ({released})
+                      ({formatDate(released)})
                     </span>
                   </h2>
                   <div className="facts flex text-white italic text-gray-500">{status}</div>
