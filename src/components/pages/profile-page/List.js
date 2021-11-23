@@ -19,7 +19,7 @@ export default function List({ title, type }) {
             >
               <img
                 className="poster inline-block w-full h-full outline-none border-none"
-                src="/images/Consume-Big.jpg"
+                src="/images/Consume-C.jpg"
                 alt={title}
               />
             </p>

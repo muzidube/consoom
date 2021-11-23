@@ -316,14 +316,14 @@ export default function SignUp() {
   }, []);
 
   return (
-    <div className="container flex mx-auto max-w-screen-lg items-center h-screen">
-      <div className="flex w-3/5 mr-5">
-        <img src="/images/Consume-Big-fafafa.jpg" alt="iPhone with profile" />
+    <div className="container flex flex-col mx-auto max-w-screen-lg items-center h-screen justify-center">
+      <div className="flex w-2/5 mb-10">
+        <img className="mx-auto" src="/images/Consume-C-fafafa.jpg" alt="iPhone with profile" />
       </div>
-      <div className="flex flex-col w-2/5">
+      <div className="flex flex-col w-4/5 md:w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full mb-5">
-            <img src="/images/Consume-Media-Logo.png" alt="Consume" className="mt-2 w-6/12" />
+            <img src="/images/Consume-Media-Logo-Black.png" alt="Consume" className="mt-2 w-6/12" />
           </h1>
           <form onSubmit={onSubmit} noValidate>
             <input
@@ -365,7 +365,7 @@ export default function SignUp() {
             <button
               //   disabled={isInvalid}
               type="submit"
-              className="bg-orange-medium text-white w-full rounded h-8 font-bold"
+              className="bg-red-primary text-white w-full rounded h-8 font-bold"
             >
               Sign Up
             </button>
@@ -374,7 +374,7 @@ export default function SignUp() {
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 border border-gray-primary rounded">
           <p className="text-sm">
             Have an account?
-            <Link to={ROUTES.LOGIN} className="font-bold text-green-medium ml-1">
+            <Link to={ROUTES.LOGIN} className="font-bold text-red-primary ml-1">
               Log In
             </Link>
           </p>

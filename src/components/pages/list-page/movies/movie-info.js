@@ -1,8 +1,9 @@
+/* eslint-disable camelcase */
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Movie from '../../../dashboard/movie-row/Movie';
 
-export default function ShowMovie({ id }) {
+export default function ShowMovie({ id, release_date }) {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ export default function ShowMovie({ id }) {
         );
         const json = await (await response).json();
         setMovie(json);
+        console.log(json);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -21,9 +23,10 @@ export default function ShowMovie({ id }) {
     fetchMovieDetails();
   }, []);
 
-  return <Movie key={movie.id} {...movie} />;
+  return <Movie key={movie.id} {...movie} release_date={release_date} />;
 }
 
 ShowMovie.propTypes = {
-  id: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired,
+  release_date: PropTypes.string.isRequired
 };

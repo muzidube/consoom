@@ -19,7 +19,7 @@ export default function SearchResultGame({ name, metacritic, description, id }) 
   }, []);
 
   function addDefaultSrc(e) {
-    e.target.src = '/images/Consume-Big.jpg';
+    e.target.src = '/images/Consume-C.jpg';
   }
 
   return (

@@ -72,7 +72,7 @@ const Movie = ({ title, poster_path, vote_average, release_date, id }) => (
           </div>
         </div>
       </div>
-      <p className="m-0 p-0 whitespace-normal font-normal">{release_date}</p>
+      <p className="release-date m-0 p-0 whitespace-normal font-normal">{release_date}</p>
     </div>
   </div>
 );

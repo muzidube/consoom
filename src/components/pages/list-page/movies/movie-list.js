@@ -21,14 +21,17 @@ export default function MoviesList() {
     setUserInfo(user ? user.id : '');
     if (user && !QueryValues.loading) {
       setListValueItems(QueryValues.data.getUserList.items);
+      console.log('items: ', QueryValues.data.getUserList.items);
     }
   });
 
   return (
     <div className="hero max-w-screen-xl flex flex-wrap w-full box-border mx-auto px-auto pt-7 justify-center">
-      <div className="pl-10 flex flex-wrap w-full">
+      <div className="user-media-list mx-auto grid gap-5 grid-cols-2 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-4">
         {listValueItems.length > 0 &&
-          listValueItems.map((movie) => <ShowMovie key={movie.id} {...movie} />)}
+          listValueItems.map((movie) => (
+            <ShowMovie key={movie.id} {...movie} release_date={movie.addedAt.split('T')[0]} />
+          ))}
       </div>
     </div>
   );

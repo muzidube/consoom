@@ -41,29 +41,17 @@ const Book = ({ title, book_image, rank, author, primary_isbn10 }) => (
                     className="progress-ring__circle w-48px h-48px transform translate-x-5px translate-y-5px fill-none"
                     strokeWidth="2.2"
                     strokeDasharray="120"
-                    strokeDashoffset={120 - (120 * (rank * 10)) / 100}
                     strokeLinecap="round"
-                    stroke={(() => {
-                      if (rank >= 9.5) {
-                        return 'gold';
-                      }
-                      if (rank >= 7) {
-                        return '#21d07a';
-                      }
-                      if (rank >= 5) {
-                        return '#d2d531';
-                      }
-                      return 'red';
-                    })()}
+                    stroke="black"
                     r="19"
                     cx="19"
                     cy="19"
                   />
                 </svg>
                 <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
+                  <span className="text-xs">#</span>
                   <h2 className="pl-px pt-px text-xs items-center justify-center text-center whitespace-normal">
-                    {rank * 10}
-                    <span className="text-0.4rem">%</span>
+                    {rank}
                   </h2>
                 </div>
               </div>

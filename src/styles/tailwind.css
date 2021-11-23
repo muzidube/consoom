@@ -46,3 +46,7 @@ body {
 .media-inner-container .media-item:first-child {
   margin-left: 0;
 }
+
+.user-media-list .media-item {
+  margin-left: 0;
+}

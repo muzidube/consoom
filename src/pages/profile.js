@@ -13,14 +13,10 @@ export default function Profile() {
       <Header />
       <main className="max-w-screen-xl flex flex-wrap content-start justify-center mt-16 mx-auto justify-center items-center box-border">
         <Hero />
-        <div className="flex flex-wrap md:flex-nowrap">
-          <MovieLists />
-          <TVLists />
-        </div>
-        <div className="flex flex-wrap md: flex-nowrap">
-          <BookLists />
-          <GameLists />
-        </div>
+        <MovieLists />
+        <TVLists />
+        <BookLists />
+        <GameLists />
       </main>
     </div>
   );

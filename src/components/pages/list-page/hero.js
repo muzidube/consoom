@@ -23,7 +23,7 @@ export default function Hero() {
                   </span>
                 </div>
               </span>
-              <div className="title mb-1.25 box-border text-white my-auto pl-10">
+              <div className="title mb-1.25 box-border text-white my-auto pt-4 md:pl-10 md:pt-0">
                 <h2 className="text-2em font-bold leading-none m-0 p-0 box-border text-white">
                   {title}
                 </h2>

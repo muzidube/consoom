@@ -53,14 +53,14 @@ export default function Login() {
   }, []);
 
   return (
-    <div className="container flex mx-auto max-w-screen-lg items-center h-screen">
-      <div className="flex w-3/5 mr-5">
-        <img src="/images/Consume-Big-fafafa.jpg" alt="iPhone with profile" />
+    <div className="container flex flex-col mx-auto max-w-screen-lg items-center h-screen justify-center">
+      <div className="flex w-2/5 mb-10">
+        <img className="mx-auto" src="/images/Consume-C-fafafa.jpg" alt="iPhone with profile" />
       </div>
-      <div className="flex flex-col w-2/5">
+      <div className="flex flex-col w-4/5 md:w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full mb-5">
-            <img src="/images/Consume-Media-Logo.png" alt="Consume" className="mt-2 w-6/12" />
+            <img src="/images/Consume-Media-Logo-Black.png" alt="Consume" className="mt-2 w-6/12" />
           </h1>
 
           <form onSubmit={onSubmit} noValidate>
@@ -85,7 +85,7 @@ export default function Login() {
             <button
               //   disabled={isInvalid}
               type="submit"
-              className="bg-orange-medium text-white w-full rounded h-8 font-bold"
+              className="bg-red-primary text-white w-full rounded h-8 font-bold"
             >
               Log In
             </button>
@@ -94,7 +94,7 @@ export default function Login() {
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 border border-gray-primary rounded">
           <p className="text-sm">
             Don't have an account?
-            <Link to={ROUTES.SIGN_UP} className="font-bold text-green-medium ml-1">
+            <Link to={ROUTES.SIGN_UP} className="font-bold text-red-primary ml-1">
               Sign Up
             </Link>
           </p>

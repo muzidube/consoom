@@ -1,8 +1,9 @@
+/* eslint-disable camelcase */
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import TV from '../../../dashboard/tv-row/TV';
 
-export default function ShowTV({ id }) {
+export default function ShowTV({ id, first_air_date }) {
   const [tv, setTV] = useState([]);
 
   useEffect(() => {
@@ -21,9 +22,10 @@ export default function ShowTV({ id }) {
     fetchTVDetails();
   }, []);
 
-  return <TV key={tv.id} {...tv} />;
+  return <TV key={tv.id} {...tv} first_air_date={first_air_date} />;
 }
 
 ShowTV.propTypes = {
-  id: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired,
+  first_air_date: PropTypes.string.isRequired
 };

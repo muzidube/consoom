@@ -50,11 +50,11 @@ export default function BookHero({
             <div className="info text-white flex box-border py-1.5">
               <section className="text-white flex flex-wrap items-start content-center box-border md:pl-10">
                 <div className="title text-white w-full mb-6 flex flex-wrap box-border">
-                  <h2 className="text-white w-full m-0 p-0 text-4xl flex flex-wrap font-semibold box-border items-center md:flex-nowrap">
+                  <h2 className="text-white w-full m-0 p-0 text-4xl flex flex-wrap flex-col font-semibold box-border  md:flex-nowrap">
                     <p className="text-white font-bold decoration-none box-border bg-transparent text-4xl">
                       {title}
                     </p>
-                    <span className="font-normal text-gray-600 box-border text-3xl md:ml-3">
+                    <span className="font-normal text-gray-600 box-border text-3xl">
                       ({publishedDate})
                     </span>
                   </h2>
@@ -77,17 +77,20 @@ export default function BookHero({
                           className="progress-ring__circle w-65px h-65px transform translate-x-5px translate-y-5px fill-none"
                           strokeWidth="2.2"
                           strokeDasharray="175"
-                          strokeDashoffset={175 - (175 * (averageRating * 10)) / 100}
+                          strokeDashoffset={175 - (175 * (averageRating * 20)) / 100}
                           strokeLinecap="round"
                           stroke={(() => {
-                            if (averageRating >= 9.5) {
+                            if (averageRating * 20 >= 95) {
                               return 'gold';
                             }
-                            if (averageRating >= 7) {
+                            if (averageRating * 20 >= 70) {
                               return '#21d07a';
                             }
-                            if (averageRating >= 5) {
+                            if (averageRating * 20 >= 50) {
                               return '#d2d531';
+                            }
+                            if (!averageRating * 20 >= 0) {
+                              return 'black';
                             }
                             return 'red';
                           })()}
@@ -98,8 +101,8 @@ export default function BookHero({
                       </svg>
                       <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
                         <h2 className="pl-px pt-px text-xs items-center justify-center text-center whitespace-normal">
-                          {averageRating * 10}
-                          <span className="text-0.4rem">%</span>
+                          {averageRating >= 0 ? averageRating * 20 : 'N/A'}
+                          <span className="text-0.4rem">{averageRating >= 0 ? '%' : ''}</span>
                         </h2>
                       </div>
                     </div>

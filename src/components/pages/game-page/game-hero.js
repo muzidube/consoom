@@ -32,7 +32,7 @@ export default function GameHero({ name, metacritic, released, description, tagl
   });
 
   function addDefaultSrc(e) {
-    e.target.src = '/images/Consume-Big.jpg';
+    e.target.src = '/images/Consume-C.jpg';
   }
 
   const toPlay = 'To Play';
@@ -59,11 +59,11 @@ export default function GameHero({ name, metacritic, released, description, tagl
             <div className="info text-white flex box-border py-1.5">
               <section className="text-white flex flex-wrap items-start content-center box-border md:pl-10">
                 <div className="title text-white w-full mb-6 flex flex-wrap box-border">
-                  <h2 className="text-white w-full m-0 p-0 text-4xl flex flex-wrap font-semibold box-border items-center md:flex-nowrap">
+                  <h2 className="text-white w-full m-0 p-0 text-4xl flex flex-wrap flex-col font-semibold box-border  md:flex-nowrap">
                     <p className="text-white font-bold decoration-none box-border bg-transparent text-4xl">
                       {name}
                     </p>
-                    <span className="font-normal text-gray-600 box-border text-3xl md:ml-3">
+                    <span className="font-normal text-gray-600 box-border text-3xl">
                       ({released})
                     </span>
                   </h2>

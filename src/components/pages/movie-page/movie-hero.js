@@ -46,11 +46,11 @@ export default function MovieHero({
             <div className="info text-white flex box-border py-1.5">
               <section className="text-white flex flex-wrap items-start content-center box-border md:pl-10">
                 <div className="title text-white w-full mb-6 flex flex-wrap box-border">
-                  <h2 className="text-white w-full m-0 p-0 text-4xl flex flex-wrap font-semibold box-border items-center md:flex-nowrap">
+                  <h2 className="text-white w-full m-0 p-0 text-4xl flex flex-wrap flex-col font-semibold box-border  md:flex-nowrap">
                     <p className="text-white font-bold decoration-none box-border bg-transparent text-4xl">
                       {original_title}
                     </p>
-                    <span className="font-normal text-gray-600 box-border text-3xl md:ml-3">
+                    <span className="font-normal text-gray-600 box-border text-3xl">
                       ({release_date})
                     </span>
                   </h2>
