@@ -21,29 +21,23 @@ export default function Header() {
           <div className="text-gray-700 text-center flex items-center align-items">
             {user ? (
               <>
-                <button type="button" title="Sign Out" onClick={logout}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="mr-6 w-8 cursor-pointer"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                    />
-                  </svg>
+                <button
+                  type="button"
+                  title="Sign Out"
+                  className="font-bold text-sm rounded text-white w-20 h-8"
+                  onClick={logout}
+                >
+                  Sign Out
                 </button>
-                <div className="flex items-center cursor-pointer">
-                  <Link to={`/p/${user.username}`}>
-                    <img
-                      className="rounded-full h-8 w-8 flex"
-                      src={`/images/avatars/${user.username}.jpg`}
-                      alt={user.username}
-                    />
+                <div className="flex items-center cursor-pointer text-black">
+                  <Link to={`/p/${user.username}`} className="min-w-46px">
+                    <span className="min-w-46px w-46px h-46px box-border text-white">
+                      <div className="block m-0 w-full h-full">
+                        <span className="w-full h-full inline-flex flex-nowrap items-center justify-center text-2em rounded-50% bg-red-tertiary">
+                          {user.username.charAt(0).toUpperCase()}
+                        </span>
+                      </div>
+                    </span>
                   </Link>
                 </div>
               </>

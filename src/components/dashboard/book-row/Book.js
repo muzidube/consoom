@@ -7,7 +7,7 @@ const Book = ({ title, book_image, rank, averageRating, author, primary_isbn10 }
     <Link to={`/Book/${primary_isbn10}/${title}`}>
       <div className="image shadow-md rounded-lg w-full h-225px overflow-hidden bg-grey-background whitespace-nowrap">
         <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
-          <p className="image inline-block w-full h-full whitespace-nowrap" href="/" title={title}>
+          <p className="image inline-block w-full h-full whitespace-nowrap" title={title}>
             <img
               className="poster inline-block w-full h-full outline-none border-none"
               src={book_image}

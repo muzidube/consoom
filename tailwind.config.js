@@ -13,7 +13,8 @@ module.exports = {
         },
         red: {
           primary: '#F87666',
-          secondary: '#ed4956'
+          secondary: '#ed4956',
+          tertiary: '#fc8e81'
         },
         blue: {
           primary: '#22254B',
@@ -66,7 +67,8 @@ module.exports = {
         '300px': '300px',
         '200px': '200px',
         '150px': '150px',
-        '140px': '140px'
+        '140px': '140px',
+        '46px': '46px'
       },
       maxWidth: {
         '6/12': '50%',

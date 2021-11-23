@@ -11,7 +11,7 @@ export default function BookLists() {
             <div className="column-header px-10 flex flex-wrap justify-start items-center content-center box-border text-black">
               <h2 className="m-0 mr-5 whitespace-nowrap text-1.5em">Books</h2>
               <div className="book-container container max-w-screen-xl w-full flex justify-center flex-wrap items-start content-start mx-auto">
-                <div className="media-inner-container h-auto w-full overflow-x-scroll md:overflow-x-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
+                <div className="media-inner-container h-auto overflow-x-scroll md:overflow-x-hidden flex justify-start items-start content-start whitespace-nowrap py-5">
                   {bookLists.length > 0 &&
                     bookLists.map((book) => <List key={book.id} {...book} type="Book" />)}
                 </div>

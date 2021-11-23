@@ -10,7 +10,7 @@ const TV = ({ name, poster_path, vote_average, first_air_date, id }) => (
     <Link to={`/TV/${id}/${name}`}>
       <div className="image shadow-md rounded-lg w-full h-225px overflow-hidden bg-grey-background whitespace-nowrap">
         <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
-          <p className="image inline-block w-full h-full whitespace-nowrap" href="/" name={name}>
+          <p className="image inline-block w-full h-full whitespace-nowrap" name={name}>
             <img
               className="poster inline-block w-full h-full outline-none border-none"
               src={URLS.IMG_URL + poster_path}

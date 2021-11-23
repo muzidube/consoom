@@ -72,7 +72,7 @@ export default function FavouriteBtn({ listToAdd }) {
               xmlns="http://www.w3.org/2000/svg"
               fill="#f87666"
               viewBox="0 0 24 24"
-              stroke="#f87666"
+              stroke="black"
               tabIndex={0}
               className="w-8 select-none cursor-pointer focus:outline-none"
             >

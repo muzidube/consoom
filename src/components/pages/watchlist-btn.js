@@ -70,16 +70,11 @@ export default function WatchlistBtn({ listToAdd }) {
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="#f87666"
+              viewBox="0 0 20 20"
+              stroke="black"
+              fill="#f87666"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
+              <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
             </svg>
           </span>
         </div>
@@ -95,15 +90,16 @@ export default function WatchlistBtn({ listToAdd }) {
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
-              viewBox="0 0 24 24"
               fill="none"
-              stroke="#fff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <line x1="12" y1="5" x2="12" y2="19" />
-              <line x1="5" y1="12" x2="19" y2="12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+              />
             </svg>
           </span>
         </div>
