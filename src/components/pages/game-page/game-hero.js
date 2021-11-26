@@ -33,7 +33,7 @@ export default function GameHero({ name, metacritic, released, description, tagl
   });
 
   function addDefaultSrc(e) {
-    e.target.src = '/images/Consume-C.jpg';
+    e.target.src = '/images/Consoom-Thick-fa.png';
   }
 
   const toPlay = 'To Play';

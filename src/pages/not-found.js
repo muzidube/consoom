@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 export default function NotFound() {
   useEffect(() => {
-    document.title = 'Not Found - Consume';
+    document.title = 'Not Found - Consoom';
   }, []);
   return (
     <div className="bg-gray-background">

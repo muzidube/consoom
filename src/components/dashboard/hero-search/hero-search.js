@@ -13,7 +13,7 @@ export default function HeroSearch() {
                 Welcome
               </h2>
               <h3 className="text-2em font-semibold m-0 p-0 box-border text-white">
-                Are you not entertained? Consume now.
+                Are you not entertained? Consoom now.
               </h3>
             </div>
             <SearchBar />

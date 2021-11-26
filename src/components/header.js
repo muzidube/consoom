@@ -13,8 +13,8 @@ export default function Header() {
         <div className="flex justify-between h-full px-5">
           <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
             <h1 className="flex justify-center w-full">
-              <Link to={ROUTES.DASHBOARD} aria-label="Consume logo">
-                <img src="/images/Consume-Media-Logo.png" alt="Consume" className="my-2 w-150px" />
+              <Link to={ROUTES.DASHBOARD} aria-label="Consoom logo">
+                <p className="font-bebas text-2.5em text-center text-white">Consoom</p>
               </Link>
             </h1>
           </div>

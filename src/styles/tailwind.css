@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  font-family: 'Quicksand', sans-serif;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -42,6 +43,8 @@ body {
 } */
 
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@300;400;500&display=swap');
 
 .media-inner-container .media-item:first-child {
   margin-left: 0;

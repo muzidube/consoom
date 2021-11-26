@@ -19,7 +19,8 @@ export default function SearchResultGame({ name, metacritic, description, id }) 
   }, []);
 
   function addDefaultSrc(e) {
-    e.target.src = '/images/Consume-C.jpg';
+    e.target.src = '/images/Consoom-Thick-fa.jpg';
+    e.target.style.backgroundImage = 'url(/images/red-lines.svg)';
   }
 
   return (

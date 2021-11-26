@@ -282,18 +282,18 @@ export default function SignUp() {
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-expressions
-    document.title - 'Sign Up - Consume';
+    document.title - 'Sign Up - Consoom';
   }, []);
 
   return (
     <div className="container flex flex-col mx-auto max-w-screen-lg items-center h-screen justify-center">
-      <div className="flex w-2/5 mb-10">
-        <img className="mx-auto" src="/images/Consume-C-fafafa.jpg" alt="iPhone with profile" />
+      <div className="flex w-2/5 mb-10 ml-20">
+        <img className="mx-auto w-200px" src="/images/Consoom-Thick-fa.png" alt="Consoom" />
       </div>
       <div className="flex flex-col w-4/5 md:w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
-          <h1 className="flex justify-center w-full mb-5">
-            <img src="/images/Consume-Media-Logo-Black.png" alt="Consume" className="mt-2 w-6/12" />
+          <h1 className="flex justify-center w-full">
+            <p className="font-bebas text-3em text-center">Consoom</p>
           </h1>
           <form onSubmit={onSubmit} noValidate>
             <input

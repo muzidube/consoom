@@ -100,6 +100,7 @@ module.exports = {
       fontSize: {
         '4em': '4em',
         '3em': '3em',
+        '2.5em': '2.5em',
         '2em': '2em',
         '1.5em': '1.5em',
         '1.3em': '1.3em',
@@ -109,6 +110,9 @@ module.exports = {
         '1rem': '1rem',
         '0.6em': '0.6em',
         '0.4rem': '0.4rem'
+      },
+      fontFamily: {
+        bebas: ['Bebas Neue']
       },
       strokeWidth: {
         '10s': '10'
@@ -121,7 +125,6 @@ module.exports = {
       backgroundImage: {
         'hero-gradient': 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))',
         'profile-gradient': 'linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4))'
-        // 'profile-hero': 'url(/images/green-lines.svg)'
       },
       zIndex: {
         1: '1'

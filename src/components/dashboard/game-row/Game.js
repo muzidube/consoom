@@ -22,7 +22,8 @@ export default function Game({ name, metacritic, released, id }) {
   }, []);
 
   function addDefaultSrc(e) {
-    e.target.src = '/images/Consume-C.jpg';
+    e.target.src = '/images/Consoom-Thick-fa.png';
+    e.target.style.backgroundImage = 'url(/images/red-lines.svg)';
   }
 
   return (
@@ -32,7 +33,7 @@ export default function Game({ name, metacritic, released, id }) {
           <div className="wrapper w-full h-full relative top-0 left-0 inline-block whitespace-nowrap">
             <p className="image inline-block w-full h-full whitespace-nowrap" name={name}>
               <img
-                className="poster inline-block w-full h-full outline-none border-none"
+                className="poster inline-block w-full h-full outline-none border-none bg-gray-background"
                 onError={addDefaultSrc}
                 src={`https:${gameCover}`}
                 alt={name}

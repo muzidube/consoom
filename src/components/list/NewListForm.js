@@ -66,7 +66,7 @@ export default function ListForm() {
     <div className="flex flex-col w-2/5">
       <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
         <h1 className="flex justify-center w-full mb-5">
-          <img src="/images/Consume-Media-Logo.png" alt="Consume" className="mt-2 w-6/12" />
+          <p className="font-bebas text-2.5em text-center text-white">Consoom</p>
         </h1>
 
         <form onSubmit={onSubmit} noValidate>
