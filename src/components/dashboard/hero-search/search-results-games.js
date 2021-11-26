@@ -8,9 +8,9 @@ export default function SearchResultGame({ name, metacritic, description, id }) 
   useEffect(() => {
     const fetchGameCover = async () => {
       try {
-        const response = await fetch(`https://guarded-mesa-01224.herokuapp.com/api/search/${name}`);
-        const json = await (await response).json();
-        setGameCover(json.pageOfItems[0].cover.url);
+        const response = await fetch(`/api/gameAPI/${name}`);
+        const json = await response.json();
+        setGameCover(json);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -30,7 +30,7 @@ export default function SearchResultGame({ name, metacritic, description, id }) 
           <img
             className="w-94px h-141px rounded-lg"
             onError={addDefaultSrc}
-            src={`https:${gameCover}`}
+            src={gameCover}
             alt={name}
           />
         </div>

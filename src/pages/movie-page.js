@@ -9,14 +9,26 @@ export default function MoviePage() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setMovie(data);
-        document.title = data.original_title;
-      });
+    // fetch(
+    //   `https://api.themoviedb.org/3/movie/${id}?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
+    // )
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setMovie(data);
+    //   });
+    const fetchMovie = async () => {
+      try {
+        const response = await fetch(`/api/movieAPI/single/${id}`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        console.log('Movie: ', jsonObj);
+        setMovie(jsonObj);
+        document.title = jsonObj.original_title;
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchMovie();
   }, []);
 
   return (

@@ -8,7 +8,7 @@ export default function ShowGames() {
 
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
-    const lastMonth = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 30)
+    const last60days = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 60)
       .toISOString()
       .split('T')[0];
     const lastYear = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 365)
@@ -18,7 +18,7 @@ export default function ShowGames() {
     const fetchPopularGames = async () => {
       try {
         const response = await fetch(
-          `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&dates=${lastMonth},${today}&ordering=-ratings_count`
+          `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&dates=${last60days},${today}&ordering=-ratings_count`
         );
         const json = await (await response).json();
         setPopularGames(json.results);

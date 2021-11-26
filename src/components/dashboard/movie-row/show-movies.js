@@ -9,23 +9,21 @@ export default function ShowMovies() {
   useEffect(() => {
     const fetchPopularMovies = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0375f153b709c9b683ba71849a873283&page=1`
-        );
-        const json = await (await response).json();
-        setPopularMovies(json.results);
-        setMovies(json.results);
+        const response = await fetch(`/api/movieAPI/popular`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setMovies(jsonObj);
+        setPopularMovies(jsonObj);
       } catch (error) {
         console.log('Error: ', error);
       }
     };
     const fetchUpcomingMovies = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/upcoming?api_key=0375f153b709c9b683ba71849a873283&page=1`
-        );
-        const json = await (await response).json();
-        setUpcomingMovies(json.results);
+        const response = await fetch(`/api/movieAPI/upcoming`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setUpcomingMovies(jsonObj);
       } catch (error) {
         console.log('Error: ', error);
       }

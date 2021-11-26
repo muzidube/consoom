@@ -2,11 +2,17 @@ const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const express = require('express');
-const fetch = require('node-fetch');
 
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
 const { MONGODB } = require('./config');
+
+const gamer = require('./api/games').search;
+const popularMovies = require('./api/movies').popular;
+const upcomingMovies = require('./api/movies').upcoming;
+const singleMovie = require('./api/movies').single;
+const popularTV = require('./api/tv').popular;
+const topTV = require('./api/tv').top;
 
 const app = express();
 
@@ -41,18 +47,11 @@ const config = {
   data
 };
 
-app.get('/gameAPI', async (request, response) => {
-  const fetchResponse = await fetch(
-    'https://api.themoviedb.org/3/movie/580489/credits?api_key=0375f153b709c9b683ba71849a873283&language=en-US'
-  );
-  const json = await fetchResponse.json();
-  console.log(fetchResponse.json());
-  response.json(json);
-});
+app.use('/api', [gamer, popularMovies, upcomingMovies, singleMovie, popularTV, topTV]);
 
-app.get('/api', (request, response) => {
-  response.json({ message: 'Hello from server!' });
-});
+// app.get('/api', (request, response) => {
+//   response.json({ message: 'Hello from server!' });
+// });
 
 app.get('/thing', async (request, response) => {
   response.json({ message: 'Hello from server!' });

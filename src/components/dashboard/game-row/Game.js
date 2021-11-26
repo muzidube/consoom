@@ -11,14 +11,14 @@ export default function Game({ name, metacritic, released, id }) {
   useEffect(() => {
     const fetchGameCover = async () => {
       try {
-        const response = await fetch(`https://guarded-mesa-01224.herokuapp.com/api/search/${name}`);
-        const json = await (await response).json();
-        setGameCover(json.pageOfItems[0].cover.url);
+        const response = await fetch(`/api/gameAPI/${name}`);
+        const json = await response.json();
+        setGameCover(json);
       } catch (error) {
-        console.log('Error: ', error);
+        // console.log('Error: ', error);
       }
     };
-    fetchGameCover();
+    // fetchGameCover();
   }, []);
 
   function addDefaultSrc(e) {
@@ -35,7 +35,7 @@ export default function Game({ name, metacritic, released, id }) {
               <img
                 className="poster inline-block w-full h-full outline-none border-none bg-gray-background"
                 onError={addDefaultSrc}
-                src={`https:${gameCover}`}
+                src={gameCover}
                 alt={name}
               />
             </p>

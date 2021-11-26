@@ -9,23 +9,21 @@ export default function ShowTV() {
   useEffect(() => {
     const fetchPopularTV = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/tv/popular?api_key=0375f153b709c9b683ba71849a873283&language=en-US&page=1`
-        );
-        const json = await (await response).json();
-        setPopularTV(json.results);
-        setTV(json.results);
+        const response = await fetch(`/api/tvAPI/popular`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setTV(jsonObj);
+        setPopularTV(jsonObj);
       } catch (error) {
         console.log('Error: ', error);
       }
     };
     const fetchTopRatedTV = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/tv/top_rated?api_key=0375f153b709c9b683ba71849a873283&language=en-US&page=1`
-        );
-        const json = await (await response).json();
-        setTopRatedTV(json.results);
+        const response = await fetch(`/api/tvAPI/top-rated`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setTopRatedTV(jsonObj);
       } catch (error) {
         console.log('Error: ', error);
       }
