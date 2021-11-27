@@ -8,6 +8,7 @@ export default function TVPage() {
   const { id } = useParams();
 
   const [tv, setTV] = useState('');
+  const [bg, setBG] = useState('');
 
   useEffect(() => {
     const fetchTV = async () => {
@@ -16,6 +17,7 @@ export default function TVPage() {
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setTV(jsonObj);
+        setBG(jsonObj.backdrop_path);
         document.title = jsonObj.name;
       } catch (error) {
         console.log('Error: ', error);
@@ -28,7 +30,7 @@ export default function TVPage() {
     <div className="bg-gray-background">
       <Header />
       <main className="mt-16 mx-auto justify-center items-center">
-        <TVShowHero key={tv.id} {...tv} />
+        <TVShowHero key={tv.id} {...tv} bg={bg} />
         <ShowCast id={id} />
       </main>
     </div>

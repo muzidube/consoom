@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import movieHeroBG from './movie-hero-bg';
 import * as URLS from '../../../constants/urls';
 import KeyFacts from './key-facts';
 
@@ -18,11 +17,15 @@ export default function MovieHero({
   overview,
   tagline,
   status,
-  id
+  id,
+  bg
 }) {
   useEffect(() => {
-    movieHeroBG(id);
-  }, []);
+    if (document.querySelector('.movie-page-hero')) {
+      document.querySelector('.movie-page-hero').style.backgroundImage = `url(
+    https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bg}`;
+    }
+  }, [bg]);
 
   const watchlist = 'Watchlist';
   const favourites = 'Favourites';
@@ -140,5 +143,6 @@ MovieHero.propTypes = {
   overview: PropTypes.string.isRequired,
   tagline: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  bg: PropTypes.string.isRequired
 };
