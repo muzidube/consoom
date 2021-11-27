@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Cast from './cast';
 
-export default function ShowCast(movieID) {
+export default function ShowCast() {
+  const { id } = useParams();
+
   const [cast, setCast] = useState([]);
-  const { id } = movieID;
 
   useEffect(() => {
     const fetchCast = async () => {

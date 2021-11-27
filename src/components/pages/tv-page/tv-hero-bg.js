@@ -1,8 +1,13 @@
 export default async function TVHeroBG(id) {
-  const response = await fetch(`/api/tvAPI/single/${id}`);
-  const json = await response.json();
-  const jsonObj = JSON.parse(json);
-  const bg = jsonObj.backdrop_path;
+  let bg;
+
+  await fetch(
+    `https://api.themoviedb.org/3/tv/${id}?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      bg = data.backdrop_path;
+    });
 
   if (document.querySelector('.tv-page-hero')) {
     document.querySelector('.tv-page-hero').style.backgroundImage = `url(

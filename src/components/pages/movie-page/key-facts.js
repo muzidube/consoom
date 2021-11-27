@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
-const KeyFacts = ({ id }) => {
+const KeyFacts = () => {
+  const { id } = useParams();
+
   const [director, setDirector] = useState('');
   const [producer, setProducer] = useState('');
   const [screenplay, setScreenplay] = useState('');
@@ -9,40 +11,33 @@ const KeyFacts = ({ id }) => {
   const [revenue, setRevenue] = useState('');
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCrew = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
-        );
-        const json = await (await response).json();
-        setDirector(json.crew.filter((el) => el.job === 'Director')[0].name);
-        setProducer(json.crew.filter((el) => el.job === 'Producer')[0].name);
-        setScreenplay(json.crew.filter((el) => el.job === 'Screenplay')[0].name);
+        const response = await fetch(`/api/movieAPI/crew/${id}`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setDirector(jsonObj.filter((el) => el.job === 'Director')[0].name);
+        setProducer(jsonObj.filter((el) => el.job === 'Producer')[0].name);
+        setScreenplay(jsonObj.filter((el) => el.job === 'Screenplay')[0].name);
       } catch (error) {
         console.log('Error: ', error);
       }
     };
 
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
+    const fetchMovie = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
-        );
-        const json = await (await response).json();
-        setBudget(json.budget);
-        setRevenue(json.revenue);
-        setScreenplay(json.crew.filter((el) => el.job === 'Screenplay')[0].name);
+        const response = await fetch(`/api/movieAPI/single/${id}`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setBudget(jsonObj.budget);
+        setRevenue(jsonObj.revenue);
       } catch (error) {
         console.log('Error: ', error);
       }
     };
-
-    fetchData();
-  }, []);
+    fetchMovie();
+    fetchCrew();
+  }, [id]);
 
   return (
     <ol className="text-white m-0 mt-5 content-start flex flex-wrap list-none list-inside p-0 relative top-0 left-0 box-border">
@@ -88,10 +83,6 @@ const KeyFacts = ({ id }) => {
       </li>
     </ol>
   );
-};
-
-KeyFacts.propTypes = {
-  id: PropTypes.number.isRequired
 };
 
 export default KeyFacts;

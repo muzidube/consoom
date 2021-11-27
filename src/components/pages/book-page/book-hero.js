@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
-import bookHeroBG from './book-hero-bg';
 import WatchlistBtn from '../watchlist-btn';
 import FavouriteBtn from '../favourite-btn';
 import WatchedBtn from '../watched-btn';
@@ -20,10 +19,6 @@ export default function BookHero({
   book_Image,
   id
 }) {
-  useEffect(() => {
-    bookHeroBG(id);
-  }, []);
-
   function addDefaultSrc(e) {
     e.target.src = book_Image;
   }

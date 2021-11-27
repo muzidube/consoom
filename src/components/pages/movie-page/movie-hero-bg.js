@@ -1,8 +1,13 @@
 export default async function movieHeroBG(id) {
-  const response = await fetch(`/api/movieAPI/single/${id}`);
-  const json = await response.json();
-  const jsonObj = JSON.parse(json);
-  const bg = jsonObj.backdrop_path;
+  let bg;
+
+  await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      bg = data.backdrop_path;
+    });
 
   if (document.querySelector('.movie-page-hero')) {
     document.querySelector('.movie-page-hero').style.backgroundImage = `url(

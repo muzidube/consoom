@@ -5,8 +5,9 @@ import MovieHero from '../components/pages/movie-page/movie-hero';
 import ShowCast from '../components/pages/movie-page/show-cast';
 
 export default function MoviePage() {
-  const [movie, setMovie] = useState('');
   const { id } = useParams();
+
+  const [movie, setMovie] = useState('');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -14,7 +15,6 @@ export default function MoviePage() {
         const response = await fetch(`/api/movieAPI/single/${id}`);
         const json = await response.json();
         const jsonObj = JSON.parse(json);
-        console.log('Movie: ', jsonObj);
         setMovie(jsonObj);
         document.title = jsonObj.original_title;
       } catch (error) {

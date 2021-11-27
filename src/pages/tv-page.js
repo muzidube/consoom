@@ -5,8 +5,9 @@ import ShowCast from '../components/pages/tv-page/show-cast';
 import TVShowHero from '../components/pages/tv-page/tv-hero';
 
 export default function TVPage() {
-  const [tv, setTV] = useState('');
   const { id } = useParams();
+
+  const [tv, setTV] = useState('');
 
   useEffect(() => {
     const fetchTV = async () => {
