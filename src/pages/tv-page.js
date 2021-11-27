@@ -9,15 +9,19 @@ export default function TVPage() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setTV(data);
-        document.title = data.name;
-      });
-  }, []);
+    const fetchTV = async () => {
+      try {
+        const response = await fetch(`/api/tvAPI/single/${id}`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setTV(jsonObj);
+        document.title = jsonObj.name;
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchTV();
+  }, [id]);
 
   return (
     <div className="bg-gray-background">

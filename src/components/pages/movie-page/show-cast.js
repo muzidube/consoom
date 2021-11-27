@@ -6,14 +6,18 @@ export default function ShowCast(movieID) {
   const { id } = movieID;
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setCast(data.cast);
-      });
-  }, []);
+    const fetchCast = async () => {
+      try {
+        const response = await fetch(`/api/movieAPI/cast/${id}`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setCast(jsonObj);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchCast();
+  }, [id]);
 
   return (
     <section className="max-w-screen-xl flex flex-wrap justify-center items-start content-start w-full box-border bg-cover bg-no-repeat bg-50-50 p-0 text-black text-1rem mx-auto">

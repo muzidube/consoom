@@ -52,3 +52,54 @@ module.exports.single = app.get('/movieAPI/single/:movieID', (request, response)
       console.log(error);
     });
 });
+
+module.exports.cast = app.get('/movieAPI/cast/:movieID', (request, response) => {
+  const id = request.params.movieID;
+  const config = {
+    method: 'get',
+    url: `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.TMDB_API}&language=en-US`,
+    headers: {}
+  };
+
+  axios(config)
+    .then((movieResponse) => {
+      response.json(JSON.stringify(movieResponse.data.cast));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+module.exports.crew = app.get('/movieAPI/crew/:movieID', (request, response) => {
+  const id = request.params.movieID;
+  const config = {
+    method: 'get',
+    url: `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.TMDB_API}&language=en-US`,
+    headers: {}
+  };
+
+  axios(config)
+    .then((movieResponse) => {
+      response.json(JSON.stringify(movieResponse.data.crew));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+module.exports.search = app.get('/movieAPI/search/:movieQuery', (request, response) => {
+  const query = request.params.movieQuery;
+  const config = {
+    method: 'get',
+    url: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API}&language=en-US&query=${query}&page=1&include_adult=false`,
+    headers: {}
+  };
+
+  axios(config)
+    .then((queryResponse) => {
+      response.json(JSON.stringify(queryResponse.data.results));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});

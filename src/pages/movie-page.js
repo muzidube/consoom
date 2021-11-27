@@ -9,13 +9,6 @@ export default function MoviePage() {
   const { id } = useParams();
 
   useEffect(() => {
-    // fetch(
-    //   `https://api.themoviedb.org/3/movie/${id}?api_key=0375f153b709c9b683ba71849a873283&language=en-US`
-    // )
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setMovie(data);
-    //   });
     const fetchMovie = async () => {
       try {
         const response = await fetch(`/api/movieAPI/single/${id}`);
@@ -29,7 +22,7 @@ export default function MoviePage() {
       }
     };
     fetchMovie();
-  }, []);
+  }, [id]);
 
   return (
     <div className="bg-gray-background">
