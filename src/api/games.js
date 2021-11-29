@@ -1,12 +1,16 @@
 const axios = require('axios');
+const rateLimit = require('axios-rate-limit');
 const express = require('express');
 require('dotenv').config();
 
 const app = express();
 
+const axiosRate = rateLimit(axios.create(), { maxRequests: 4, perMilliseconds: 4000, maxRPS: 2 });
+
 module.exports.search = app.get('/gameAPI/:search', (request, response) => {
   const searchQuery = request.params.search;
   const searchData = `search "${searchQuery}"; fields name, cover;`;
+  console.log('Search: ', searchQuery);
 
   const config = {
     method: 'post',
@@ -21,10 +25,11 @@ module.exports.search = app.get('/gameAPI/:search', (request, response) => {
 
   const fetchGameCovers = async () => {
     try {
-      const searchResponse = await axios(config);
+      const searchResponse = await axiosRate(config);
       const coverID1 = await JSON.stringify(
         searchResponse.data.find((item) => item.name === searchQuery).cover
       );
+      console.log('Search: ', coverID1);
       const coverID2 = await JSON.stringify(searchResponse.data[0].cover);
 
       const coverData = `fields image_id, url;where id = ${coverID1 || coverID2};`;
@@ -40,12 +45,13 @@ module.exports.search = app.get('/gameAPI/:search', (request, response) => {
         data: coverData
       };
 
-      const coverResponse = await axios(coverConfig);
+      const coverResponse = await axiosRate(coverConfig);
       const cover = await JSON.stringify(coverResponse.data[0].image_id);
       const coverURL = `https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.replace(
         /^"|"$/g,
         ''
       )}.jpg`;
+      console.log(searchQuery, coverURL);
       return response.json(coverURL);
     } catch (error) {
       console.log('error: ', error);
@@ -53,4 +59,85 @@ module.exports.search = app.get('/gameAPI/:search', (request, response) => {
   };
 
   fetchGameCovers();
+});
+
+module.exports.popular = app.get('/gameAPI/popular/current', (request, response) => {
+  const today = new Date().toISOString().split('T')[0];
+  const last60days = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 60)
+    .toISOString()
+    .split('T')[0];
+
+  const config = {
+    method: 'get',
+    url: `https://api.rawg.io/api/games?key=${process.env.GAME_RAWG_API}&dates=${last60days},${today}&ordering=-ratings_count`,
+    headers: {}
+  };
+
+  axios(config)
+    .then((popularResponse) => {
+      console.log(JSON.stringify(popularResponse.data.results));
+      response.json(JSON.stringify(popularResponse.data.results));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+module.exports.year = app.get('/gameAPI/popular/year', (request, response) => {
+  const today = new Date().toISOString().split('T')[0];
+  const lastYear = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 365)
+    .toISOString()
+    .split('T')[0];
+
+  const config = {
+    method: 'get',
+    url: `https://api.rawg.io/api/games?key=${process.env.GAME_RAWG_API}&dates=${lastYear},${today}&ordering=-ratings_count`,
+    headers: {}
+  };
+
+  axios(config)
+    .then((yearResponse) => {
+      response.json(JSON.stringify(yearResponse.data.results));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+module.exports.single = app.get('/gameAPI/single/:gameID', (request, response) => {
+  const id = request.params.gameID;
+  const config = {
+    method: 'get',
+    url: `https://api.rawg.io/api/games/${id}?key=${process.env.GAME_RAWG_API}`,
+    headers: {
+      'Retry-After': 5
+    }
+  };
+
+  axios(config)
+    .then((singleGame) => {
+      response.json(JSON.stringify(singleGame.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+module.exports.gameInfo = app.get('/gameAPI/gameInfo/:gameName', (request, response) => {
+  const name = request.params.gameName;
+  const config = {
+    method: 'get',
+    url: `https://guarded-mesa-01224.herokuapp.com/api/search/${name})`,
+    headers: {
+      'Retry-After': 5
+    }
+  };
+
+  axios(config)
+    .then((gameInfo) => {
+      response.json(JSON.stringify(gameInfo.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });

@@ -12,36 +12,42 @@ export default function GamePage() {
   const [gameCover, setGameCover] = useState('');
 
   useEffect(() => {
-    fetch(`https://api.rawg.io/api/games/${id}?key=335197e656a04bad8a99a8fef21b98b7`)
-      .then((res) => res.json())
-      .then((data) => {
-        setGame(data);
+    const fetchGame = async () => {
+      try {
+        const response = await fetch(`/api/gameAPI/single/${id}`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setGame(jsonObj);
         setDescription(
-          data.description
+          jsonObj.description
             .replace(/(<([^>]+)>)/gi, '')
             .replace(/&#39;/g, "'")
             .replace(/&quot;/g, '"')
         );
-        setBG(data.background_image);
-        document.title = data.name;
-      });
-    // const fetchGameCover = async () => {
-    //   try {
-    //     const response = await fetch(`/api/gameAPI/${decodeURI(document.URL.split('/')[5])}`);
-    //     const json = await response.json();
-    //     setGameCover(json);
-    //   } catch (error) {
-    //     // console.log('Error: ', error);
-    //   }
-    // };
-    // fetchGameCover();
+        setBG(jsonObj.background_image);
+        document.title = jsonObj.name;
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    const fetchGameCover = async () => {
+      try {
+        const response = await fetch(`/api/gameAPI/${decodeURI(document.URL.split('/')[5])}`);
+        const json = await response.json();
+        setGameCover(json);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchGame();
+    fetchGameCover();
   }, []);
 
   return (
     <div className="bg-gray-background">
       <Header />
       <main className="mt-16 mx-auto justify-center items-center">
-        <GameHero key={game.id} {...game} description={description} bg={bg} />
+        <GameHero key={game.id} {...game} description={description} bg={bg} gameCover={gameCover} />
       </main>
     </div>
   );

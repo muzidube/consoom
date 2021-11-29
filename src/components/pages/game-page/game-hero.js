@@ -18,26 +18,10 @@ export default function GameHero({
   tagline,
   status,
   id,
-  bg
+  bg,
+  gameCover
 }) {
-  const [gameCover, setGameCover] = useState('');
-  const [gameCover2, setGameCover2] = useState('');
-  const title = decodeURI(document.URL.split('/')[5]);
-
   useEffect(() => {
-    const fetchGameCover = async () => {
-      try {
-        const response = await fetch(
-          `https://guarded-mesa-01224.herokuapp.com/api/search/${title}`
-        );
-        const json = await (await response).json();
-        setGameCover((await json.pageOfItems.find((item) => item.name === title).cover.url) || '');
-        setGameCover2(await json.pageOfItems[0].cover.url);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
-    fetchGameCover();
     if (document.querySelector('.game-page-hero')) {
       document.querySelector('.game-page-hero').style.backgroundImage = `url(${bg}`;
     }
@@ -62,7 +46,7 @@ export default function GameHero({
                   <img
                     className="block w-full min-w-full h-full min-h-full border-0 outline-none text-whit rounded-lg"
                     onError={addDefaultSrc}
-                    src={gameCover ? `https:${gameCover}` : `https:${gameCover2}`}
+                    src={gameCover}
                     alt={name}
                   />
                 </div>
@@ -164,5 +148,6 @@ GameHero.propTypes = {
   tagline: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   bg: PropTypes.string.isRequired,
+  gameCover: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired
 };

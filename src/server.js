@@ -19,6 +19,10 @@ const singleTV = require('./api/tv').single;
 const searchTV = require('./api/tv').search;
 const castTV = require('./api/tv').cast;
 
+const popularGames = require('./api/games').popular;
+const topGames = require('./api/games').year;
+const singleGame = require('./api/games').single;
+
 const app = express();
 
 async function startApolloServer(typeDefs, resolvers) {
@@ -49,7 +53,10 @@ app.use('/api', [
   topTV,
   singleTV,
   searchTV,
-  castTV
+  castTV,
+  popularGames,
+  topGames,
+  singleGame
 ]);
 
 startApolloServer(typeDefs, resolvers);

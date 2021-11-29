@@ -7,38 +7,27 @@ export default function ShowGames() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0];
-    const last60days = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 60)
-      .toISOString()
-      .split('T')[0];
-    const lastYear = new Date(new Date().valueOf() - 1000 * 3600 * 24 * 365)
-      .toISOString()
-      .split('T')[0];
-
     const fetchPopularGames = async () => {
       try {
-        const response = await fetch(
-          `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&dates=${last60days},${today}&ordering=-ratings_count`
-        );
-        const json = await (await response).json();
-        setPopularGames(json.results);
-        setGames(json.results);
+        const response = await fetch(`/api/gameAPI/popular/current`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setGames(jsonObj);
+        setPopularGames(jsonObj);
       } catch (error) {
         console.log('Error: ', error);
       }
     };
     const fetchTopRatedGamesYear = async () => {
       try {
-        const response = await fetch(
-          `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&dates=${lastYear},${today}&metacritic=87,100&ordering=-metacritic`
-        );
-        const json = await (await response).json();
-        setTopRatedGamesYear(json.results);
+        const response = await fetch(`/api/gameAPI/popular/year`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setTopRatedGamesYear(jsonObj);
       } catch (error) {
         console.log('Error: ', error);
       }
     };
-
     fetchPopularGames();
     fetchTopRatedGamesYear();
   }, []);

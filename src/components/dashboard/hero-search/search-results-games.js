@@ -1,26 +1,25 @@
 /* eslint-disable camelcase */
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default function SearchResultGame({ name, metacritic, description, id }) {
   const [gameCover, setGameCover] = useState('');
-  const mountedRef = useRef(true);
-
+  const [gameCover2, setGameCover2] = useState('');
   useEffect(() => {
     const fetchGameCover = async () => {
       try {
-        const response = await fetch(`/api/gameAPI/${name}`);
-        const json = await response.json();
-        setGameCover(json);
+        const response = await fetch(`https://guarded-mesa-01224.herokuapp.com/api/search/${name}`);
+        const json = await (await response).json();
+        setGameCover2(await json.pageOfItems[0].cover.url);
+        setGameCover(
+          (await json.pageOfItems.find((item) => item.name === name).cover.url) || gameCover2
+        );
       } catch (error) {
         console.log('Error: ', error);
       }
     };
     fetchGameCover();
-    // return () => {
-    //   mountedRef.current = false;
-    // };
   }, [name]);
 
   function addDefaultSrc(e) {
@@ -35,7 +34,7 @@ export default function SearchResultGame({ name, metacritic, description, id }) 
           <img
             className="w-94px h-141px rounded-lg"
             onError={addDefaultSrc}
-            src={gameCover}
+            src={gameCover === null ? `https:${gameCover2}` : `https:${gameCover}`}
             alt={name}
           />
         </div>
