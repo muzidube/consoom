@@ -7,18 +7,20 @@ import formatDate from '../../../util/dateFormatter';
 
 export default function Game({ name, metacritic, released, id }) {
   const [gameCover, setGameCover] = useState('');
+  const [gameCover2, setGameCover2] = useState('');
 
   useEffect(() => {
     const fetchGameCover = async () => {
       try {
-        const response = await fetch(`/api/gameAPI/${name}`);
-        const json = await response.json();
-        setGameCover(json);
+        const response = await fetch(`https://guarded-mesa-01224.herokuapp.com/api/search/${name}`);
+        const json = await (await response).json();
+        setGameCover(await json.pageOfItems.find((item) => item.name === name).cover.url);
+        setGameCover2(await json.pageOfItems[0].cover.url);
       } catch (error) {
-        // console.log('Error: ', error);
+        console.log('Error: ', error);
       }
     };
-    // fetchGameCover();
+    fetchGameCover();
   }, []);
 
   function addDefaultSrc(e) {
@@ -35,7 +37,7 @@ export default function Game({ name, metacritic, released, id }) {
               <img
                 className="poster inline-block w-full h-full outline-none border-none bg-gray-background"
                 onError={addDefaultSrc}
-                src={gameCover}
+                src={gameCover ? `https:${gameCover}` : `https:${gameCover2}`}
                 alt={name}
               />
             </p>

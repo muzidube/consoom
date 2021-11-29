@@ -52,8 +52,4 @@ app.use('/api', [
   castTV
 ]);
 
-app.get('/thing', async (request, response) => {
-  response.json({ message: 'Hello from server!' });
-});
-
 startApolloServer(typeDefs, resolvers);

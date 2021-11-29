@@ -63,7 +63,6 @@ module.exports.cast = app.get('/tvAPI/cast/:tvID', (request, response) => {
 
   axios(config)
     .then((tvResponse) => {
-      console.log('TESTING THE CAST');
       response.json(JSON.stringify(tvResponse.data.cast));
     })
     .catch((error) => {

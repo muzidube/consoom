@@ -22,9 +22,12 @@ module.exports.search = app.get('/gameAPI/:search', (request, response) => {
   const fetchGameCovers = async () => {
     try {
       const searchResponse = await axios(config);
-      const coverID = await JSON.stringify(searchResponse.data[0].cover);
+      const coverID1 = await JSON.stringify(
+        searchResponse.data.find((item) => item.name === searchQuery).cover
+      );
+      const coverID2 = await JSON.stringify(searchResponse.data[0].cover);
 
-      const coverData = `fields image_id, url;where id = ${coverID};`;
+      const coverData = `fields image_id, url;where id = ${coverID1 || coverID2};`;
 
       const coverConfig = {
         method: 'post',
@@ -45,7 +48,7 @@ module.exports.search = app.get('/gameAPI/:search', (request, response) => {
       )}.jpg`;
       return response.json(coverURL);
     } catch (error) {
-      // console.log('error: ', error);
+      console.log('error: ', error);
     }
   };
 

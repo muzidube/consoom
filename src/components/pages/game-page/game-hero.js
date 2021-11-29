@@ -10,27 +10,38 @@ import FavouriteBtn from '../favourite-btn';
 import WatchedBtn from '../watched-btn';
 import formatDate from '../../../util/dateFormatter';
 
-export default function GameHero({ name, metacritic, released, description, tagline, status, id }) {
+export default function GameHero({
+  name,
+  metacritic,
+  released,
+  description,
+  tagline,
+  status,
+  id,
+  bg
+}) {
   const [gameCover, setGameCover] = useState('');
   const [gameCover2, setGameCover2] = useState('');
-  const { title } = useParams();
+  const title = decodeURI(document.URL.split('/')[5]);
 
   useEffect(() => {
-    gameHeroBG(id);
     const fetchGameCover = async () => {
       try {
         const response = await fetch(
           `https://guarded-mesa-01224.herokuapp.com/api/search/${title}`
         );
         const json = await (await response).json();
-        setGameCover(await json.pageOfItems.find((item) => item.name === title).cover.url);
+        setGameCover((await json.pageOfItems.find((item) => item.name === title).cover.url) || '');
         setGameCover2(await json.pageOfItems[0].cover.url);
       } catch (error) {
         console.log('Error: ', error);
       }
     };
     fetchGameCover();
-  });
+    if (document.querySelector('.game-page-hero')) {
+      document.querySelector('.game-page-hero').style.backgroundImage = `url(${bg}`;
+    }
+  }, [bg]);
 
   function addDefaultSrc(e) {
     e.target.src = '/images/Consoom-Thick-fa.png';
@@ -51,7 +62,7 @@ export default function GameHero({ name, metacritic, released, description, tagl
                   <img
                     className="block w-full min-w-full h-full min-h-full border-0 outline-none text-whit rounded-lg"
                     onError={addDefaultSrc}
-                    src={gameCover2 ? `https:${gameCover}` : `https:${gameCover2}`}
+                    src={gameCover ? `https:${gameCover}` : `https:${gameCover2}`}
                     alt={name}
                   />
                 </div>
@@ -152,5 +163,6 @@ GameHero.propTypes = {
   description: PropTypes.string.isRequired,
   tagline: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
+  bg: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired
 };
