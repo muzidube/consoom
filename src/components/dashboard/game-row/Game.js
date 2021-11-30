@@ -13,6 +13,7 @@ export default function Game({ name, metacritic, released, id }) {
       try {
         const response = await fetch(`/api/gameAPI/${name}`);
         const json = await response.json();
+        console.log('Name: ', name);
         setGameCover(json);
       } catch (error) {
         console.log('Error: ', error);

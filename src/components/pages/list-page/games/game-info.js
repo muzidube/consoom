@@ -7,11 +7,17 @@ export default function ShowGame({ id, released }) {
   const [game, setGame] = useState([]);
 
   useEffect(() => {
-    fetch(`https://api.rawg.io/api/games/${id}?key=335197e656a04bad8a99a8fef21b98b7`)
-      .then((res) => res.json())
-      .then((data) => {
-        setGame(data);
-      });
+    const fetchGame = async () => {
+      try {
+        const response = await fetch(`/api/gameAPI/single/${id}`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setGame(jsonObj);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchGame();
   }, []);
 
   return <Game key={game.id} {...game} released={released} />;
