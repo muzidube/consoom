@@ -2,6 +2,8 @@
 
 Consoom is a media tracking site. I have found many sites for tracking movies/tv watched, books read etc but never one that combined everything in to one. Consoom combines tracking your movies/tv, books and games in to one platform.
 
+Live link is here: Consoom
+
 ## API's used
 
 For the site I have made use of various sites and their API's:
