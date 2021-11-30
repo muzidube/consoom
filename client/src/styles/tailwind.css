@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1rem;
+}
+
+/* .search:focus::placeholder {
+  opacity: 0;
+}
+
+.search::placeholder {
+  opacity: 1;
+  transition: all 250ms ease-in-out;
+} */
+
+/* .overview {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  padding: 1rem;
+  max-height: 100%;
+  transform: translateY(101%);
+  transition: transform 0.3s ease-in;
+} */
+
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@300;400;500&display=swap');
+
+.media-inner-container .media-item:first-child {
+  margin-left: 0;
+}
+
+.user-media-list .media-item {
+  margin-left: 0;
+}
