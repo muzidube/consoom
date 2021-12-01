@@ -49,7 +49,7 @@ module.exports.search = app.get('/gameAPI/:search', (request, response) => {
         /^"|"$/g,
         ''
       )}.jpg`;
-      console.log(`${searchQuery} :`, coverURL);
+      console.log(`${searchQuery}: `, coverURL);
       return response.json(coverURL);
     } catch (error) {
       console.log('error: ', error);
