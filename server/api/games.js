@@ -124,7 +124,7 @@ module.exports.gameInfo = app.get('/gameAPI/gameInfo/:gameName', (request, respo
   const name = request.params.gameName;
   const config = {
     method: 'get',
-    url: `https://guarded-mesa-01224.herokuapp.com/api/search/${name})`,
+    url: `https://api.rawg.io/api/games?key=${process.env.GAME_RAWG_API}&search=${name}`,
     headers: {
       'Retry-After': 5
     }
@@ -132,7 +132,7 @@ module.exports.gameInfo = app.get('/gameAPI/gameInfo/:gameName', (request, respo
 
   axios(config)
     .then((gameInfo) => {
-      response.json(JSON.stringify(gameInfo.data));
+      response.json(JSON.stringify(gameInfo.results));
     })
     .catch((error) => {
       console.log(error);

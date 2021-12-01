@@ -8,7 +8,7 @@ export default function Header() {
   const { user, logout } = useContext(AuthContext);
 
   return (
-    <header className="h-16 bg-red-primary fixed top-0 left-0 w-full z-10">
+    <header className="h-16 bg-red-primary fixed top-0 left-0 w-full z-100">
       <div className="container mx-auto max-w-screen-lg h-full">
         <div className="flex justify-between h-full px-5">
           <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">

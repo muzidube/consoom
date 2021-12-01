@@ -10,7 +10,7 @@ export default function ShowCast() {
   useEffect(() => {
     const fetchCast = async () => {
       try {
-        const response = await fetch(`/api/tvAPI/cast/${id}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/cast/${id}`);
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setCast(jsonObj);

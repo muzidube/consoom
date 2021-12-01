@@ -51,13 +51,13 @@ export default function SearchBar() {
   const prepareSearchQuery = (query) => {
     let url;
     if (dropdownOption === 'Movie') {
-      url = `https://api.themoviedb.org/3/search/movie?api_key=0375f153b709c9b683ba71849a873283&language=en-US&query=${query}&page=1&include_adult=false`;
+      url = `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/search/${query}`;
     } else if (dropdownOption === 'TV Show') {
-      url = `https://api.themoviedb.org/3/search/tv?api_key=0375f153b709c9b683ba71849a873283&language=en-US&query=${query}&page=1&include_adult=false`;
+      url = `${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/search/${query}`;
     } else if (dropdownOption === 'Book') {
       url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=5`;
     } else if (dropdownOption === 'Game') {
-      url = `https://api.rawg.io/api/games?key=335197e656a04bad8a99a8fef21b98b7&search=${query}`;
+      url = `${process.env.REACT_APP_BACKEND_URL}/api//gameAPI/gameInfo/${query}`;
     }
     return encodeURI(url);
   };
@@ -93,7 +93,9 @@ export default function SearchBar() {
         console.log('Error: ', err);
       });
       if (response) {
-        setSearchResults(response.data.results);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setSearchResults(jsonObj);
       }
     } else {
       const response = await fetch.get(URL).catch((err) => {
@@ -101,7 +103,9 @@ export default function SearchBar() {
       });
 
       if (response) {
-        setSearchResults(response.data.results);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setSearchResults(jsonObj);
       } else {
         console.log('Error');
       }

@@ -10,11 +10,12 @@ export default function ShowBooks() {
     const fetchFictionBooks = async () => {
       try {
         const response = await fetch(
-          `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=UPuY68Msfri67IaGyCwdzwtfzpnWTGJ1`
+          `${process.env.REACT_APP_BACKEND_URL}/api/bookAPI/popular/fiction`
         );
-        const json = await (await response).json();
-        setFictionBooks(json.results.books);
-        setBooks(json.results.books);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setFictionBooks(jsonObj);
+        setBooks(jsonObj);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -22,10 +23,11 @@ export default function ShowBooks() {
     const fetchNonFictionBooks = async () => {
       try {
         const response = await fetch(
-          `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-nonfiction.json?api-key=UPuY68Msfri67IaGyCwdzwtfzpnWTGJ1`
+          `${process.env.REACT_APP_BACKEND_URL}/api/bookAPI/popular/non-fiction`
         );
-        const json = await (await response).json();
-        setNonFictionBooks(json.results.books);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setNonFictionBooks(jsonObj);
       } catch (error) {
         console.log('Error: ', error);
       }

@@ -10,12 +10,13 @@ const KeyFacts = ({ id }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://api.rawg.io/api/games/${id}?key=335197e656a04bad8a99a8fef21b98b7`
+          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/single/${id}`
         );
-        const json = await (await response).json();
-        setDeveloper(json.developers[0].name);
-        setPublisher(json.publishers[0].name);
-        setGenre(json.genres[0].name);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setDeveloper(jsonObj.developers[0].name);
+        setPublisher(jsonObj.publishers[0].name);
+        setGenre(jsonObj.genres[0].name);
       } catch (error) {
         console.log('Error: ', error);
       }
