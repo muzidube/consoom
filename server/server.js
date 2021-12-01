@@ -5,7 +5,6 @@ require('dotenv').config();
 
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
-const { MONGODB } = require('./config');
 
 const gamer = require('./api/games').search;
 const popularMovies = require('./api/movies').popular;
@@ -36,7 +35,7 @@ async function startApolloServer(typeDefs, resolvers) {
   await server.start();
   server.applyMiddleware({ app, path: '/graphql' });
 
-  mongoose.connect(MONGODB, { useNewUrlParser: true }).then(() => {
+  mongoose.connect(process.env.MONGODB, { useNewUrlParser: true }).then(() => {
     app.listen(process.env.PORT || 5000, () => {
       console.log('Server running successfully');
     });
