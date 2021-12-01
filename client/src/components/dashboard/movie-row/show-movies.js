@@ -4,8 +4,6 @@ import Movie from './Movie';
 export default function ShowMovies() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
-  const [bgArray, setBGArray] = useState([]);
-  const [bg, setBG] = useState('');
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -16,8 +14,6 @@ export default function ShowMovies() {
         const jsonObj = JSON.parse(json);
         setMovies(jsonObj);
         setPopularMovies(jsonObj);
-        setBGArray(jsonObj.map((a) => a.backdrop_path));
-        setBG(bgArray[Math.floor(Math.random() * bgArray.length)]);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -34,13 +30,6 @@ export default function ShowMovies() {
     };
     fetchPopularMovies();
     fetchUpcomingMovies();
-
-    if (document.querySelector('.hero')) {
-      document.querySelector(
-        '.hero'
-      ).style.backgroundImage = `linear-gradient(to right, rgba(248, 118, 102, 1), rgba(248, 118, 102, 0.3)), url(
-    https://image.tmdb.org/t/p/w1920_and_h600_multi_faces${bg}`;
-    }
   }, []);
 
   return (
