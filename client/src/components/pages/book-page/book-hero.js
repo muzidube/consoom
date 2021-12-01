@@ -15,8 +15,7 @@ export default function BookHero({
   ISBN_13,
   author,
   pageCount,
-  book_Image,
-  id
+  book_Image
 }) {
   function addDefaultSrc(e) {
     e.target.src = book_Image;
@@ -158,6 +157,5 @@ BookHero.propTypes = {
   ISBN_13: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   book_Image: PropTypes.string.isRequired,
-  pageCount: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
+  pageCount: PropTypes.string.isRequired
 };
