@@ -1,8 +1,8 @@
-import heroSearchBG from './hero-search-bg';
+// import heroSearchBG from './hero-search-bg';
 import SearchBar from './search-bar.js';
 
 export default function HeroSearch() {
-  heroSearchBG();
+  // heroSearchBG();
   return (
     <section className="hero max-w-screen-xl min-h-300px h-heroHeight max-h-360px bg-top-center bg-cover bg-no-repeat text-white flex flex-wrap justify-center items-start content-start w-full box-border mx-auto">
       <div className="media discover h-full flex content-center items-center justify-center w-full flex-wrap box-border text-white">
