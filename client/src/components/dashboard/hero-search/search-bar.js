@@ -57,7 +57,7 @@ export default function SearchBar() {
     } else if (dropdownOption === 'Book') {
       url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=5`;
     } else if (dropdownOption === 'Game') {
-      url = `${process.env.REACT_APP_BACKEND_URL}/api//gameAPI/gameInfo/${query}`;
+      url = `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/gameInfo/${query}`;
     }
     return encodeURI(url);
   };
@@ -81,15 +81,16 @@ export default function SearchBar() {
     const URL = prepareSearchQuery(searchQuery);
 
     if (dropdownOption === 'Book') {
-      const response = await fetch.get(URL).catch((err) => {
+      const response = await fetch(URL).catch((err) => {
         console.log('Error: ', err);
       });
 
       if (response) {
-        setSearchResults(response.data.items);
+        const json = await response.json();
+        setSearchResults(json.items);
       }
     } else if (dropdownOption === 'Game') {
-      const response = await fetch.get(URL).catch((err) => {
+      const response = await fetch(URL).catch((err) => {
         console.log('Error: ', err);
       });
       if (response) {
@@ -98,7 +99,7 @@ export default function SearchBar() {
         setSearchResults(jsonObj);
       }
     } else {
-      const response = await fetch.get(URL).catch((err) => {
+      const response = await fetch(URL).catch((err) => {
         console.log('Error: ', err);
       });
 

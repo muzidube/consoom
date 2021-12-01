@@ -20,9 +20,14 @@ const singleTV = require('./api/tv').single;
 const searchTV = require('./api/tv').search;
 const castTV = require('./api/tv').cast;
 
+const fictionBooks = require('./api/books').fiction;
+const nonFictionBooks = require('./api/books').nonFiction;
+
+const searchGame = require('./api/games').search;
 const popularGames = require('./api/games').popular;
 const topGames = require('./api/games').year;
 const singleGame = require('./api/games').single;
+const infoGame = require('./api/games').gameInfo;
 
 const app = express();
 
@@ -56,9 +61,13 @@ app.use('/api', [
   singleTV,
   searchTV,
   castTV,
+  fictionBooks,
+  nonFictionBooks,
+  searchGame,
   popularGames,
   topGames,
-  singleGame
+  singleGame,
+  infoGame
 ]);
 
 startApolloServer(typeDefs, resolvers);

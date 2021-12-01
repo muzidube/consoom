@@ -49,7 +49,7 @@ module.exports.search = app.get('/gameAPI/:search', (request, response) => {
         /^"|"$/g,
         ''
       )}.jpg`;
-      console.log(`${searchQuery}: `, coverURL);
+      // console.log(`${searchQuery}: `, coverURL);
       return response.json(coverURL);
     } catch (error) {
       console.log('error: ', error);
@@ -67,7 +67,7 @@ module.exports.popular = app.get('/gameAPI/popular/current', (request, response)
 
   const config = {
     method: 'get',
-    url: `https://api.rawg.io/api/games?key=${process.env.GAME_RAWG_API}&dates=${last60days},${today}&ordering=-ratings_count`,
+    url: `https://api.rawg.io/api/games?page_size=10&key=${process.env.GAME_RAWG_API}&dates=${last60days},${today}&ordering=-ratings_count`,
     headers: {}
   };
 
@@ -88,7 +88,7 @@ module.exports.year = app.get('/gameAPI/popular/year', (request, response) => {
 
   const config = {
     method: 'get',
-    url: `https://api.rawg.io/api/games?key=${process.env.GAME_RAWG_API}&dates=${lastYear},${today}&ordering=-metacritic`,
+    url: `https://api.rawg.io/api/games?page_size=10&key=${process.env.GAME_RAWG_API}&dates=${lastYear},${today}&ordering=-metacritic`,
     headers: {}
   };
 
@@ -124,7 +124,7 @@ module.exports.gameInfo = app.get('/gameAPI/gameInfo/:gameName', (request, respo
   const name = request.params.gameName;
   const config = {
     method: 'get',
-    url: `https://api.rawg.io/api/games?key=${process.env.GAME_RAWG_API}&search=${name}`,
+    url: `https://api.rawg.io/api/games?page_size=6&key=${process.env.GAME_RAWG_API}&search=${name}`,
     headers: {
       'Retry-After': 5
     }
@@ -132,7 +132,7 @@ module.exports.gameInfo = app.get('/gameAPI/gameInfo/:gameName', (request, respo
 
   axios(config)
     .then((gameInfo) => {
-      response.json(JSON.stringify(gameInfo.results));
+      response.json(JSON.stringify(gameInfo.data.results));
     })
     .catch((error) => {
       console.log(error);

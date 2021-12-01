@@ -14,6 +14,7 @@ export default function ShowBooks() {
         );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
+        console.log('JSONOBJ: ', jsonObj);
         setFictionBooks(jsonObj);
         setBooks(jsonObj);
       } catch (error) {
