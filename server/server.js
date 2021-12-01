@@ -24,7 +24,7 @@ const popularGames = require('./api/games').popular;
 const topGames = require('./api/games').year;
 const singleGame = require('./api/games').single;
 
-const app = express().use({ origin: 'https://www.consoom.co.uk' });
+const app = express();
 
 async function startApolloServer(typeDefs, resolvers) {
   const server = new ApolloServer({
@@ -43,6 +43,7 @@ async function startApolloServer(typeDefs, resolvers) {
   });
 }
 
+app.use(cors({ origin: 'www.consoom.co.uk' }));
 app.use('/api', [
   gamer,
   popularMovies,
