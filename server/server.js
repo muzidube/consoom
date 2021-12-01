@@ -43,7 +43,7 @@ async function startApolloServer(typeDefs, resolvers) {
   });
 }
 
-app.use(cors({ origin: 'www.consoom.co.uk' }));
+app.use(cors({ origin: 'https://www.consoom.co.uk' }));
 app.use('/api', [
   gamer,
   popularMovies,
