@@ -13,7 +13,9 @@ export default function MoviePage() {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const response = await fetch(`/api/movieAPI/single/${id}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/single/${id}`
+        );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setMovie(jsonObj);

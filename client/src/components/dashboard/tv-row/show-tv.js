@@ -9,7 +9,7 @@ export default function ShowTV() {
   useEffect(() => {
     const fetchPopularTV = async () => {
       try {
-        const response = await fetch(`/api/tvAPI/popular`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/popular`);
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setTV(jsonObj);
@@ -20,7 +20,7 @@ export default function ShowTV() {
     };
     const fetchTopRatedTV = async () => {
       try {
-        const response = await fetch(`/api/tvAPI/top-rated`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/top-rated`);
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setTopRatedTV(jsonObj);

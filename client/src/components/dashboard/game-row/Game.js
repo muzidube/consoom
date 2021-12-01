@@ -11,7 +11,7 @@ export default function Game({ name, metacritic, released, id }) {
   useEffect(() => {
     const fetchGameCover = async () => {
       try {
-        const response = await fetch(`/api/gameAPI/${name}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/${name}`);
         const json = await response.json();
         console.log('Name: ', name);
         setGameCover(json);

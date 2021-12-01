@@ -9,7 +9,7 @@ export default function ShowMovies() {
   useEffect(() => {
     const fetchPopularMovies = async () => {
       try {
-        const response = await fetch(`/api/movieAPI/popular`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/popular`);
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setMovies(jsonObj);
@@ -20,7 +20,7 @@ export default function ShowMovies() {
     };
     const fetchUpcomingMovies = async () => {
       try {
-        const response = await fetch(`/api/movieAPI/upcoming`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/upcoming`);
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setUpcomingMovies(jsonObj);

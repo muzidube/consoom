@@ -13,7 +13,9 @@ const KeyFacts = () => {
   useEffect(() => {
     const fetchCrew = async () => {
       try {
-        const response = await fetch(`/api/movieAPI/crew/${id}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/crew/${id}`
+        );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setDirector(jsonObj.filter((el) => el.job === 'Director')[0].name);
@@ -26,7 +28,9 @@ const KeyFacts = () => {
 
     const fetchMovie = async () => {
       try {
-        const response = await fetch(`/api/movieAPI/single/${id}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/single/${id}`
+        );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setBudget(jsonObj.budget);

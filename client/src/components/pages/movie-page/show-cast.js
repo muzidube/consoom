@@ -10,7 +10,9 @@ export default function ShowCast() {
   useEffect(() => {
     const fetchCast = async () => {
       try {
-        const response = await fetch(`/api/movieAPI/cast/${id}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/cast/${id}`
+        );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setCast(jsonObj);

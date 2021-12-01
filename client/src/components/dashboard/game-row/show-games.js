@@ -9,7 +9,9 @@ export default function ShowGames() {
   useEffect(() => {
     const fetchPopularGames = async () => {
       try {
-        const response = await fetch(`/api/gameAPI/popular/current`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/popular/current`
+        );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setGames(jsonObj);
@@ -20,7 +22,9 @@ export default function ShowGames() {
     };
     const fetchTopRatedGamesYear = async () => {
       try {
-        const response = await fetch(`/api/gameAPI/popular/year`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/popular/year`
+        );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setTopRatedGamesYear(jsonObj);

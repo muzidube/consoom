@@ -13,7 +13,7 @@ export default function TVPage() {
   useEffect(() => {
     const fetchTV = async () => {
       try {
-        const response = await fetch(`/api/tvAPI/single/${id}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/single/${id}`);
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setTV(jsonObj);

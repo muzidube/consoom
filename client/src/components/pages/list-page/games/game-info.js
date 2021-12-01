@@ -9,7 +9,9 @@ export default function ShowGame({ id, released }) {
   useEffect(() => {
     const fetchGame = async () => {
       try {
-        const response = await fetch(`/api/gameAPI/single/${id}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/single/${id}`
+        );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setGame(jsonObj);

@@ -14,7 +14,9 @@ export default function GamePage() {
   useEffect(() => {
     const fetchGame = async () => {
       try {
-        const response = await fetch(`/api/gameAPI/single/${id}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/single/${id}`
+        );
         const json = await response.json();
         const jsonObj = JSON.parse(json);
         setGame(jsonObj);
@@ -32,7 +34,11 @@ export default function GamePage() {
     };
     const fetchGameCover = async () => {
       try {
-        const response = await fetch(`/api/gameAPI/${decodeURI(document.URL.split('/')[5])}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/${decodeURI(
+            document.URL.split('/')[5]
+          )}`
+        );
         const json = await response.json();
         setGameCover(json);
       } catch (error) {
