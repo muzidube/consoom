@@ -1,6 +1,7 @@
 const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 
 const typeDefs = require('./graphql/typeDefs');
@@ -23,7 +24,7 @@ const popularGames = require('./api/games').popular;
 const topGames = require('./api/games').year;
 const singleGame = require('./api/games').single;
 
-const app = express();
+const app = express().use({ origin: 'https://www.consoom.co.uk' });
 
 async function startApolloServer(typeDefs, resolvers) {
   const server = new ApolloServer({
