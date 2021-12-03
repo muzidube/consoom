@@ -281,8 +281,7 @@ export default function SignUp() {
   }
 
   useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
-    document.title - 'Sign Up - Consoom';
+    document.title = 'Sign Up - Consoom';
   }, []);
 
   return (
