@@ -86,7 +86,7 @@ export default function Login() {
               type="submit"
               className="bg-red-primary text-white w-full rounded h-8 font-bold"
             >
-              Log In
+              Login
             </button>
           </form>
           {/* 0f7173ff f87666ff */}

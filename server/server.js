@@ -7,7 +7,6 @@ require('dotenv').config();
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
 
-const gamer = require('./api/games').search;
 const popularMovies = require('./api/movies').popular;
 const upcomingMovies = require('./api/movies').upcoming;
 const singleMovie = require('./api/movies').single;
@@ -50,7 +49,6 @@ async function startApolloServer(typeDefs, resolvers) {
 
 app.use(cors({ origin: 'https://www.consoom.co.uk' }));
 app.use('/api', [
-  gamer,
   popularMovies,
   upcomingMovies,
   singleMovie,

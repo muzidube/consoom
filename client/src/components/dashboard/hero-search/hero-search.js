@@ -10,7 +10,7 @@ export default function HeroSearch() {
           <div className="content-wrapper flex-wrap max-w-screen-xl w-full flex items-start content-start px-10 py-7 box-border text-white">
             <div className="title w-full mb-1.25 box-border text-white">
               <h2 className="text-3em font-bold leading-none w-full m-0 p-0 box-border text-white">
-                Welcome
+                Welcome.
               </h2>
               <h3 className="text-2em font-semibold m-0 p-0 box-border text-white">
                 Are you not entertained? Consoom now.

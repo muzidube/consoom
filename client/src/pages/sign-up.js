@@ -345,7 +345,7 @@ export default function SignUp() {
           <p className="text-sm">
             Have an account?
             <Link to={ROUTES.LOGIN} className="font-bold text-red-primary ml-1">
-              Log In
+              Login
             </Link>
           </p>
         </div>
