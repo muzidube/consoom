@@ -87,6 +87,7 @@ export default function SearchBar() {
 
       if (response) {
         const json = await response.json();
+        console.log('json: ', json);
         setSearchResults(json.items);
       }
     } else if (dropdownOption === 'Game') {
@@ -116,7 +117,8 @@ export default function SearchBar() {
   };
 
   const doesValueExist = (value) => {
-    if (value === undefined || null) {
+    if (typeof value === 'undefined' || null) {
+      console.log('Book Value: ', value);
       return false;
     }
     return true;
@@ -245,7 +247,7 @@ export default function SearchBar() {
                     }
                     primary_isbn10={
                       doesValueExist(searchResult.volumeInfo.industryIdentifiers)
-                        ? searchResult.volumeInfo.industryIdentifiers[1].identifier
+                        ? searchResult.volumeInfo.industryIdentifiers[0].identifier
                         : 'Unknown'
                     }
                     book_image={

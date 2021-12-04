@@ -16,7 +16,11 @@ const SearchResultBook = ({ title, book_image, author, textSnippet, primary_isbn
         </Link>
         <h2 className="text-1em whitespace-normal ml-2 italic">{author}</h2>
       </div>
-      <p className="m-0 p-0 w-900px break-words text-1em no-underline">{textSnippet}</p>
+      <p className="m-0 p-0 w-900px break-words text-1em no-underline">
+        {decodeURI(textSnippet)
+          .replace(/&#39;/g, "'")
+          .replace(/&quot;/g, '"')}
+      </p>
     </div>
   </div>
 );
