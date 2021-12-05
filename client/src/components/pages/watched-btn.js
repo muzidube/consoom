@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import MoonLoader from 'react-spinners/MoonLoader';
 import { AuthContext } from '../../context/auth';
 
 import * as ROUTES from '../../constants/routes';
