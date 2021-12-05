@@ -139,9 +139,7 @@ export default function WatchedBtn({ listToAdd }) {
   );
 
   return (
-    <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">
-      {QueryValues.loading ? <MoonLoader loading color="#000" size={20} /> : watchedButton}
-    </li>
+    <li className="mark-watched py-0.5 mr-5 text-white box-border list-none">{watchedButton}</li>
   );
 }
 

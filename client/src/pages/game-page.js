@@ -52,7 +52,7 @@ export default function GamePage() {
   return (
     <div className="bg-gray-background">
       <Header />
-      <main className="mt-16 mx-auto justify-center items-center">
+      <main className="mx-auto justify-center items-center">
         <GameHero key={game.id} {...game} description={description} bg={bg} gameCover={gameCover} />
       </main>
     </div>

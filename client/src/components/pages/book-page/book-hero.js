@@ -62,20 +62,34 @@ export default function BookHero({
                           strokeWidth="3"
                           strokeDasharray="175"
                           strokeDashoffset="0"
-                          stroke="black"
+                          stroke={(() => {
+                            if (averageRating * 20 >= 95) {
+                              return '#7d6c0e';
+                            }
+                            if (averageRating * 20 >= 70) {
+                              return '#204529';
+                            }
+                            if (averageRating * 20 >= 50) {
+                              return '#423d0f';
+                            }
+                            if (!averageRating * 20 >= 0) {
+                              return '#666666';
+                            }
+                            return 'red';
+                          })()}
                           r="28"
                           cx="28"
                           cy="28"
                         />
                         <circle
                           className="progress-ring__circle w-65px h-65px transform translate-x-5px translate-y-5px fill-none"
-                          strokeWidth="2.2"
+                          strokeWidth="3"
                           strokeDasharray="175"
                           strokeDashoffset={175 - (175 * (averageRating * 20)) / 100}
                           strokeLinecap="round"
                           stroke={(() => {
                             if (averageRating * 20 >= 95) {
-                              return 'gold';
+                              return '#FFD700';
                             }
                             if (averageRating * 20 >= 70) {
                               return '#21d07a';
@@ -84,7 +98,7 @@ export default function BookHero({
                               return '#d2d531';
                             }
                             if (!averageRating * 20 >= 0) {
-                              return 'black';
+                              return '#666666';
                             }
                             return 'red';
                           })()}
@@ -94,9 +108,9 @@ export default function BookHero({
                         />
                       </svg>
                       <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
-                        <h2 className="pl-px pt-px text-xs items-center justify-center text-center whitespace-normal">
+                        <h2 className="pl-px pt-px text-md items-center justify-center text-center whitespace-normal">
                           {averageRating >= 0 ? averageRating * 20 : 'N/A'}
-                          <span className="text-0.4rem">{averageRating >= 0 ? '%' : ''}</span>
+                          <span className="text-xs">{averageRating >= 0 ? '%' : ''}</span>
                         </h2>
                       </div>
                     </div>

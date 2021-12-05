@@ -29,7 +29,7 @@ export default function TVPage() {
   return (
     <div className="bg-gray-background">
       <Header />
-      <main className="mt-16 mx-auto justify-center items-center">
+      <main className="mx-auto justify-center items-center">
         <TVShowHero key={tv.id} {...tv} bg={bg} />
         <ShowCast id={id} />
       </main>

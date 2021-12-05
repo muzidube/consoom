@@ -18,7 +18,7 @@ export default function Profile() {
   return (
     <div className="bg-gray-background">
       <Header />
-      <main className="max-w-screen-xl flex flex-wrap content-start justify-center mt-16 mx-auto justify-center items-center box-border">
+      <main className="max-w-screen-xl flex flex-wrap content-start justify-center mx-auto justify-center items-center box-border">
         <Hero />
         <MovieLists />
         <TVLists />

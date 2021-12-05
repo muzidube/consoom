@@ -69,20 +69,34 @@ export default function MovieHero({
                           strokeWidth="3"
                           strokeDasharray="175"
                           strokeDashoffset="0"
-                          stroke="black"
+                          stroke={(() => {
+                            if (vote_average >= 9.5) {
+                              return '#7d6c0e';
+                            }
+                            if (vote_average >= 7) {
+                              return '#204529';
+                            }
+                            if (vote_average >= 5) {
+                              return '#423d0f';
+                            }
+                            if (vote_average >= 1) {
+                              return '#571435';
+                            }
+                            return '#666666';
+                          })()}
                           r="28"
                           cx="28"
                           cy="28"
                         />
                         <circle
                           className="progress-ring__circle w-65px h-65px transform translate-x-5px translate-y-5px fill-none"
-                          strokeWidth="2.2"
+                          strokeWidth="3"
                           strokeDasharray="175"
                           strokeDashoffset={175 - (175 * (vote_average * 10)) / 100}
                           strokeLinecap="round"
                           stroke={(() => {
                             if (vote_average >= 9.5) {
-                              return 'gold';
+                              return '#FFD700';
                             }
                             if (vote_average >= 7) {
                               return '#21d07a';
@@ -90,7 +104,10 @@ export default function MovieHero({
                             if (vote_average >= 5) {
                               return '#d2d531';
                             }
-                            return 'red';
+                            if (vote_average >= 1) {
+                              return '#db2360';
+                            }
+                            return '#666666';
                           })()}
                           r="28"
                           cx="28"
@@ -98,9 +115,9 @@ export default function MovieHero({
                         />
                       </svg>
                       <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
-                        <h2 className="pl-px pt-px text-xs items-center justify-center text-center whitespace-normal">
-                          {vote_average * 10}
-                          <span className="text-0.4rem">%</span>
+                        <h2 className="pl-px pt-px text-md items-center justify-center text-center whitespace-normal">
+                          {vote_average * 10 || 'N/A'}
+                          <span className="text-xs">%</span>
                         </h2>
                       </div>
                     </div>
