@@ -36,7 +36,7 @@ export default function Book({ title, book_image, rank, averageRating, author, p
                   <svg className="progress-ring relative w-48px h-48px transform -rotate-90">
                     <circle
                       className="progress-ring__circle w-48px h-48px transform translate-x-5px translate-y-5px fill-none"
-                      strokeWidth="8"
+                      strokeWidth="3"
                       strokeDasharray="120"
                       strokeDashoffset="0"
                       stroke="black"
