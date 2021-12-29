@@ -21,7 +21,13 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense
+          fallback={
+            <div className="min-v-screen min-h-screen flex items-center justify-center">
+              <h1>Loading...</h1>
+            </div>
+          }
+        >
           <Switch>
             <AuthRoute path={ROUTES.LOGIN} component={Login} />
             <AuthRoute path={ROUTES.SIGN_UP} component={SignUp} />
