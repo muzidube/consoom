@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import * as URLS from '../../../constants/urls';
 
@@ -18,12 +18,23 @@ export default function TVShowHero({
   status,
   bg
 }) {
+  const mountedRef = useRef(true);
+
   useEffect(() => {
-    if (document.querySelector('.tv-page-hero')) {
-      document.querySelector('.tv-page-hero').style.backgroundImage = `url(
-    https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bg}`;
+    if (mountedRef.current) {
+      if (document.querySelector('.tv-page-hero')) {
+        document.querySelector('.tv-page-hero').style.backgroundImage = `url(
+      https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bg}`;
+      }
     }
   }, [bg]);
+
+  useEffect(
+    () => () => {
+      mountedRef.current = false;
+    },
+    []
+  );
 
   const watchlist = 'Watchlist';
   const favourites = 'Favourites';
@@ -114,7 +125,7 @@ export default function TVShowHero({
                       </svg>
                       <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
                         <h2 className="pl-px pt-px text-md items-center justify-center text-center whitespace-normal">
-                          {vote_average * 10 || 'N/A'}
+                          {Math.round(vote_average * 10) || 'N/A'}
                           <span className="text-xs">%</span>
                         </h2>
                       </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import MoonLoader from 'react-spinners/MoonLoader';
 import Header from '../components/header';
 import ShowCast from '../components/pages/tv-page/show-cast';
 import TVShowHero from '../components/pages/tv-page/tv-hero';
@@ -7,6 +8,7 @@ import TVShowHero from '../components/pages/tv-page/tv-hero';
 export default function TVPage() {
   const { id } = useParams();
 
+  const [isLoading, setLoading] = useState(true);
   const [tv, setTV] = useState('');
   const [bg, setBG] = useState('');
 
@@ -19,6 +21,7 @@ export default function TVPage() {
         setTV(jsonObj);
         setBG(jsonObj.backdrop_path);
         document.title = jsonObj.name;
+        setLoading(false);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -30,8 +33,16 @@ export default function TVPage() {
     <div className="bg-gray-background">
       <Header />
       <main className="mx-auto justify-center items-center">
-        <TVShowHero key={tv.id} {...tv} bg={bg} />
-        <ShowCast id={id} />
+        {isLoading ? (
+          <div className="min-v-screen min-h-screen flex items-center justify-center">
+            <MoonLoader loading color="#000" size={40} />
+          </div>
+        ) : (
+          <div>
+            <TVShowHero key={tv.id} {...tv} bg={bg} />
+            <ShowCast id={id} />
+          </div>
+        )}
       </main>
     </div>
   );

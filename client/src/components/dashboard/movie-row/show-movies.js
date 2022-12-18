@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Movie from './Movie';
 
 export default function ShowMovies() {
@@ -6,31 +6,44 @@ export default function ShowMovies() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [movies, setMovies] = useState([]);
 
+  const mountedRef = useRef(true);
+
   useEffect(() => {
-    const fetchPopularMovies = async () => {
-      try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/popular`);
-        const json = await response.json();
-        const jsonObj = JSON.parse(json);
-        setMovies(jsonObj);
-        setPopularMovies(jsonObj);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
-    const fetchUpcomingMovies = async () => {
-      try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/upcoming`);
-        const json = await response.json();
-        const jsonObj = JSON.parse(json);
-        setUpcomingMovies(jsonObj);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
-    fetchPopularMovies();
-    fetchUpcomingMovies();
+    if (mountedRef.current) {
+      const fetchPopularMovies = async () => {
+        try {
+          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/popular`);
+          const json = await response.json();
+          const jsonObj = JSON.parse(json);
+          setMovies(jsonObj);
+          setPopularMovies(jsonObj);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      };
+      const fetchUpcomingMovies = async () => {
+        try {
+          const response = await fetch(
+            `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/upcoming`
+          );
+          const json = await response.json();
+          const jsonObj = JSON.parse(json);
+          setUpcomingMovies(jsonObj);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      };
+      fetchPopularMovies();
+      fetchUpcomingMovies();
+    }
   }, []);
+
+  useEffect(
+    () => () => {
+      mountedRef.current = false;
+    },
+    []
+  );
 
   return (
     <section className="max-w-screen-xl flex flex-wrap justify-center items-start content-start w-full box-border bg-cover bg-no-repeat bg-50-50 p-0 text-black text-1rem mx-auto">

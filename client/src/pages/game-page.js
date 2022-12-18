@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import MoonLoader from 'react-spinners/MoonLoader';
 import Header from '../components/header';
 import GameHero from '../components/pages/game-page/game-hero';
 
 export default function GamePage() {
   const { id } = useParams();
 
+  const [isLoading, setLoading] = useState(true);
   const [game, setGame] = useState('');
   const [description, setDescription] = useState('');
   const [bg, setBG] = useState('');
@@ -28,6 +30,7 @@ export default function GamePage() {
         );
         setBG(jsonObj.background_image);
         document.title = jsonObj.name;
+        setLoading(false);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -53,7 +56,21 @@ export default function GamePage() {
     <div className="bg-gray-background">
       <Header />
       <main className="mx-auto justify-center items-center">
-        <GameHero key={game.id} {...game} description={description} bg={bg} gameCover={gameCover} />
+        {isLoading ? (
+          <div className="min-v-screen min-h-screen flex items-center justify-center">
+            <MoonLoader loading color="#000" size={40} />
+          </div>
+        ) : (
+          <div>
+            <GameHero
+              key={game.id}
+              {...game}
+              description={description}
+              bg={bg}
+              gameCover={gameCover}
+            />
+          </div>
+        )}
       </main>
     </div>
   );

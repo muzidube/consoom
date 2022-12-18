@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 const KeyFacts = () => {
@@ -10,38 +10,49 @@ const KeyFacts = () => {
   const [budget, setBudget] = useState('');
   const [revenue, setRevenue] = useState('');
 
-  useEffect(() => {
-    const fetchCrew = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/crew/${id}`
-        );
-        const json = await response.json();
-        const jsonObj = JSON.parse(json);
-        setDirector(jsonObj.filter((el) => el.job === 'Director')[0].name);
-        setProducer(jsonObj.filter((el) => el.job === 'Producer')[0].name);
-        setScreenplay(jsonObj.filter((el) => el.job === 'Screenplay')[0].name);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
+  const mountedRef = useRef(true);
 
-    const fetchMovie = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/single/${id}`
-        );
-        const json = await response.json();
-        const jsonObj = JSON.parse(json);
-        setBudget(jsonObj.budget);
-        setRevenue(jsonObj.revenue);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
-    fetchMovie();
-    fetchCrew();
+  useEffect(() => {
+    if (mountedRef.current) {
+      const fetchCrew = async () => {
+        try {
+          const response = await fetch(
+            `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/crew/${id}`
+          );
+          const json = await response.json();
+          const jsonObj = JSON.parse(json);
+          setDirector(jsonObj.filter((el) => el.job === 'Director')[0].name);
+          setProducer(jsonObj.filter((el) => el.job === 'Producer')[0].name);
+          setScreenplay(jsonObj.filter((el) => el.job === 'Screenplay')[0].name);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      };
+
+      const fetchMovie = async () => {
+        try {
+          const response = await fetch(
+            `${process.env.REACT_APP_BACKEND_URL}/api/movieAPI/single/${id}`
+          );
+          const json = await response.json();
+          const jsonObj = JSON.parse(json);
+          setBudget(jsonObj.budget);
+          setRevenue(jsonObj.revenue);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      };
+      fetchMovie();
+      fetchCrew();
+    }
   }, [id]);
+
+  useEffect(
+    () => () => {
+      mountedRef.current = false;
+    },
+    []
+  );
 
   return (
     <ol className="text-white m-0 mt-5 content-start flex flex-wrap list-none list-inside p-0 relative top-0 left-0 box-border">

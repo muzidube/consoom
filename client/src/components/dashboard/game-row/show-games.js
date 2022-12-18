@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Game from './Game';
 
 export default function ShowGames() {
@@ -6,35 +6,46 @@ export default function ShowGames() {
   const [topRatedGamesYear, setTopRatedGamesYear] = useState([]);
   const [games, setGames] = useState([]);
 
+  const mountedRef = useRef(true);
+
   useEffect(() => {
-    const fetchPopularGames = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/popular/current`
-        );
-        const json = await response.json();
-        const jsonObj = JSON.parse(json);
-        setGames(jsonObj);
-        setPopularGames(jsonObj);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
-    const fetchTopRatedGamesYear = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/popular/year`
-        );
-        const json = await response.json();
-        const jsonObj = JSON.parse(json);
-        setTopRatedGamesYear(jsonObj);
-      } catch (error) {
-        console.log('Error: ', error);
-      }
-    };
-    fetchPopularGames();
-    fetchTopRatedGamesYear();
+    if (mountedRef.current) {
+      const fetchPopularGames = async () => {
+        try {
+          const response = await fetch(
+            `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/popular/current`
+          );
+          const json = await response.json();
+          const jsonObj = JSON.parse(json);
+          setGames(jsonObj);
+          setPopularGames(jsonObj);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      };
+      const fetchTopRatedGamesYear = async () => {
+        try {
+          const response = await fetch(
+            `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/popular/year`
+          );
+          const json = await response.json();
+          const jsonObj = JSON.parse(json);
+          setTopRatedGamesYear(jsonObj);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      };
+      fetchPopularGames();
+      fetchTopRatedGamesYear();
+    }
   }, []);
+
+  useEffect(
+    () => () => {
+      mountedRef.current = false;
+    },
+    []
+  );
 
   return (
     <section className="max-w-screen-xl flex flex-wrap justify-center items-start content-start w-full box-border bg-cover bg-no-repeat bg-50-50 p-0 text-black text-1rem mx-auto">

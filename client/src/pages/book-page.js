@@ -1,10 +1,13 @@
 /* eslint-disable camelcase */
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import MoonLoader from 'react-spinners/MoonLoader';
 import Header from '../components/header';
 import BookHero from '../components/pages/book-page/book-hero';
 
 export default function BookPage() {
+  const [isLoading, setLoading] = useState(true);
+
   const [book, setBook] = useState('');
   const [ISBN_13, setISBN_13] = useState('');
   const [textSnippet, setTextSnippet] = useState('');
@@ -29,6 +32,7 @@ export default function BookPage() {
         setAuthor(json.items[0].volumeInfo.authors[0]);
         setPageCount(json.items[0].volumeInfo.pageCount);
         setBookImage(json.items[0].volumeInfo.imageLinks.thumbnail);
+        setLoading(false);
       } catch (error) {
         console.log('Error: ', error);
       }
@@ -41,15 +45,23 @@ export default function BookPage() {
     <div className="bg-gray-background">
       <Header />
       <main className="mx-auto justify-center items-center">
-        <BookHero
-          key={book.id}
-          {...book}
-          ISBN_13={ISBN_13}
-          author={author}
-          textSnippet={textSnippet}
-          pageCount={pageCount}
-          book_Image={book_Image}
-        />
+        {isLoading ? (
+          <div className="min-v-screen min-h-screen flex items-center justify-center">
+            <MoonLoader loading color="#000" size={40} />
+          </div>
+        ) : (
+          <div>
+            <BookHero
+              key={book.id}
+              {...book}
+              ISBN_13={ISBN_13}
+              author={author}
+              textSnippet={textSnippet}
+              pageCount={pageCount}
+              book_Image={book_Image}
+            />
+          </div>
+        )}
       </main>
     </div>
   );

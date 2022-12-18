@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import KeyFacts from './key-facts';
 import WatchlistBtn from '../watchlist-btn';
@@ -19,11 +19,22 @@ export default function GameHero({
   bg,
   gameCover
 }) {
+  const mountedRef = useRef(true);
+
   useEffect(() => {
-    if (document.querySelector('.game-page-hero')) {
-      document.querySelector('.game-page-hero').style.backgroundImage = `url(${bg}`;
+    if (mountedRef.current) {
+      if (document.querySelector('.game-page-hero')) {
+        document.querySelector('.game-page-hero').style.backgroundImage = `url(${bg}`;
+      }
     }
   }, [bg]);
+
+  useEffect(
+    () => () => {
+      mountedRef.current = false;
+    },
+    []
+  );
 
   function addDefaultSrc(e) {
     e.target.src = '/images/Consoom-Thick-fa.png';
@@ -119,7 +130,7 @@ export default function GameHero({
                       </svg>
                       <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
                         <h2 className="pl-px pt-px text-md items-center justify-center text-center whitespace-normal">
-                          {metacritic || 'N/A'}
+                          {Math.round(metacritic) || 'N/A'}
                           <span className="text-xs">%</span>
                         </h2>
                       </div>
