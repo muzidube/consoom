@@ -24,8 +24,6 @@
     "react-scripts": "4.0.3",
     "react-select": "^5.1.0",
     "react-spinners": "^0.11.0",
-    "postcss-cli": "^9.0.1",
-    "tailwindcss": "^2.2.16",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -67,6 +65,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.4.1"
+    "postcss-cli": "^9.0.1",
+    "prettier": "^2.4.1",
+    "tailwindcss": "^2.2.16"
   }
 }
