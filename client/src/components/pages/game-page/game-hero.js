@@ -19,10 +19,11 @@ export default function GameHero({
   bg,
   gameCover
 }) {
-  const mountedRef = useRef(true);
+  const mountedRef = useRef(false);
 
   useEffect(() => {
-    if (mountedRef.current) {
+    mountedRef.current = true;
+    if (mountedRef.current === true) {
       if (document.querySelector('.game-page-hero')) {
         document.querySelector('.game-page-hero').style.backgroundImage = `url(${bg}`;
       }

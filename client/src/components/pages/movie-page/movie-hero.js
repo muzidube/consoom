@@ -20,10 +20,11 @@ export default function MovieHero({
   id,
   bg
 }) {
-  const mountedRef = useRef(true);
+  const mountedRef = useRef(false);
 
   useEffect(() => {
-    if (mountedRef.current) {
+    mountedRef.current = true;
+    if (mountedRef.current === true) {
       if (document.querySelector('.movie-page-hero')) {
         document.querySelector('.movie-page-hero').style.backgroundImage = `url(
     https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bg}`;
@@ -34,6 +35,7 @@ export default function MovieHero({
   useEffect(
     () => () => {
       mountedRef.current = false;
+      console.log('Mounted: ', mountedRef.current);
     },
     []
   );

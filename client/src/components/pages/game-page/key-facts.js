@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const KeyFacts = ({ id }) => {
@@ -6,35 +6,33 @@ const KeyFacts = ({ id }) => {
   const [publisher, setPublisher] = useState('');
   const [genre, setGenre] = useState('');
 
-  const mountedRef = useRef(true);
-
   useEffect(() => {
-    if (mountedRef.current) {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(
-            `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/single/${id}`
-          );
-          const json = await response.json();
-          const jsonObj = JSON.parse(json);
-          setDeveloper(jsonObj.developers[0].name);
-          setPublisher(jsonObj.publishers[0].name);
-          setGenre(jsonObj.genres[0].name);
-        } catch (error) {
-          console.log('Error: ', error);
-        }
-      };
+    const abortController = new AbortController();
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/single/${id}`,
+          {
+            signal: abortController.signal
+          }
+        );
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setDeveloper(jsonObj.developers[0].name);
+        setPublisher(jsonObj.publishers[0].name);
+        setGenre(jsonObj.genres[0].name);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
 
-      fetchData();
-    }
+    fetchData();
+
+    return () => {
+      abortController.abort();
+      // stop the query by aborting on the AbortController on unmount
+    };
   }, [id]);
-
-  useEffect(
-    () => () => {
-      mountedRef.current = false;
-    },
-    []
-  );
 
   return (
     <ol className="text-white m-0 mt-5 content-start flex flex-wrap list-none list-inside p-0 relative top-0 left-0 box-border">

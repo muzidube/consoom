@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Cast from './cast';
 
@@ -7,30 +7,27 @@ export default function ShowCast() {
 
   const [cast, setCast] = useState([]);
 
-  const mountedRef = useRef(true);
-
   useEffect(() => {
-    if (mountedRef.current) {
-      const fetchCast = async () => {
-        try {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/cast/${id}`);
-          const json = await response.json();
-          const jsonObj = JSON.parse(json);
-          setCast(jsonObj);
-        } catch (error) {
-          console.log('Error: ', error);
-        }
-      };
-      fetchCast();
-    }
-  }, [id]);
+    const abortController = new AbortController();
+    const fetchCast = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/cast/${id}`, {
+          signal: abortController.signal
+        });
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setCast(jsonObj);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchCast();
 
-  useEffect(
-    () => () => {
-      mountedRef.current = false;
-    },
-    []
-  );
+    return () => {
+      abortController.abort();
+      // stop the query by aborting on the AbortController on unmount
+    };
+  }, [id]);
 
   return (
     <section className="max-w-screen-xl flex flex-wrap justify-center items-start content-start w-full box-border bg-cover bg-no-repeat bg-50-50 p-0 text-black text-1rem mx-auto">

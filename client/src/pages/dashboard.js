@@ -19,7 +19,7 @@ export default function Dashboard() {
         <ShowMovies />
         <ShowTV />
         <ShowBooks />
-        {/* <ShowGames /> */}
+        <ShowGames />
       </main>
     </div>
   );

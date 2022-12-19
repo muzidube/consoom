@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import TV from './TV';
 
 export default function ShowTV() {
@@ -6,43 +6,40 @@ export default function ShowTV() {
   const [topRatedTV, setTopRatedTV] = useState([]);
   const [tv, setTV] = useState([]);
 
-  const mountedRef = useRef(true);
-
   useEffect(() => {
-    if (mountedRef.current) {
-      const fetchPopularTV = async () => {
-        try {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/popular`);
-          const json = await response.json();
-          const jsonObj = JSON.parse(json);
-          setTV(jsonObj);
-          setPopularTV(jsonObj);
-        } catch (error) {
-          console.log('Error: ', error);
-        }
-      };
-      const fetchTopRatedTV = async () => {
-        try {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/top-rated`);
-          const json = await response.json();
-          const jsonObj = JSON.parse(json);
-          setTopRatedTV(jsonObj);
-        } catch (error) {
-          console.log('Error: ', error);
-        }
-      };
+    const abortController = new AbortController();
+    const fetchPopularTV = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/popular`, {
+          signal: abortController.signal
+        });
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setTV(jsonObj);
+        setPopularTV(jsonObj);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    const fetchTopRatedTV = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tvAPI/top-rated`);
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setTopRatedTV(jsonObj);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
 
-      fetchPopularTV();
-      fetchTopRatedTV();
-    }
+    fetchPopularTV();
+    fetchTopRatedTV();
+
+    return () => {
+      abortController.abort();
+      // stop the query by aborting on the AbortController on unmount
+    };
   }, []);
-
-  useEffect(
-    () => () => {
-      mountedRef.current = false;
-    },
-    []
-  );
 
   return (
     <section className="max-w-screen-xl flex flex-wrap justify-center items-start content-start w-full box-border bg-cover bg-no-repeat bg-50-50 p-0 text-black text-1rem mx-auto">

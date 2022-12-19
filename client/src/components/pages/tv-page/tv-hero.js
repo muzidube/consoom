@@ -18,10 +18,11 @@ export default function TVShowHero({
   status,
   bg
 }) {
-  const mountedRef = useRef(true);
+  const mountedRef = useRef(false);
 
   useEffect(() => {
-    if (mountedRef.current) {
+    mountedRef.current = true;
+    if (mountedRef.current === true) {
       if (document.querySelector('.tv-page-hero')) {
         document.querySelector('.tv-page-hero').style.backgroundImage = `url(
       https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${bg}`;

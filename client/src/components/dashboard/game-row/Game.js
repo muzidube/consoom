@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -7,29 +7,35 @@ import formatDate from '../../../util/dateFormatter';
 
 export default function Game({ name, metacritic, released, id }) {
   const [gameCover, setGameCover] = useState('');
-  const mountedRef = useRef(true);
 
   useEffect(() => {
-    if (mountedRef.current) {
-      const fetchGameCover = async () => {
-        try {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/${name}`);
-          const json = await response.json();
-          setGameCover(json);
-        } catch (error) {
-          console.log('Error: ', error);
-        }
-      };
-      fetchGameCover();
-    }
+    const abortController = new AbortController();
+    const fetchGameCover = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/gameAPI/${name}`, {
+          signal: abortController.signal
+        });
+        const json = await response.json();
+        setGameCover(json);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    fetchGameCover();
+
+    return () => {
+      abortController.abort();
+      // stop the query by aborting on the AbortController on unmount
+    };
   }, [name]);
 
-  useEffect(
-    () => () => {
-      mountedRef.current = false;
-    },
-    []
-  );
+  // useEffect(
+  //   () => () => {
+  //     mountedRef.current = false;
+  //     console.log('Mounted (Game): ', mountedRef.current);
+  //   },
+  //   []
+  // );
 
   function addDefaultSrc(e) {
     e.target.src = '/images/Consoom-Thick-fa.png';

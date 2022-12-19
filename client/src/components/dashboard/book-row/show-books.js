@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Book from './Book';
 
 export default function ShowBooks() {
@@ -6,47 +6,45 @@ export default function ShowBooks() {
   const [nonFictionBooks, setNonFictionBooks] = useState([]);
   const [books, setBooks] = useState([]);
 
-  const mountedRef = useRef(true);
-
   useEffect(() => {
-    if (mountedRef.current) {
-      const fetchFictionBooks = async () => {
-        try {
-          const response = await fetch(
-            `${process.env.REACT_APP_BACKEND_URL}/api/bookAPI/popular/fiction`
-          );
-          const json = await response.json();
-          const jsonObj = JSON.parse(json);
-          setFictionBooks(jsonObj);
-          setBooks(jsonObj);
-        } catch (error) {
-          console.log('Error: ', error);
-        }
-      };
-      const fetchNonFictionBooks = async () => {
-        try {
-          const response = await fetch(
-            `${process.env.REACT_APP_BACKEND_URL}/api/bookAPI/popular/non-fiction`
-          );
-          const json = await response.json();
-          const jsonObj = JSON.parse(json);
-          setNonFictionBooks(jsonObj);
-        } catch (error) {
-          console.log('Error: ', error);
-        }
-      };
+    const abortController = new AbortController();
+    const fetchFictionBooks = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/bookAPI/popular/fiction`
+        );
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setFictionBooks(jsonObj);
+        setBooks(jsonObj);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
+    const fetchNonFictionBooks = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/api/bookAPI/popular/non-fiction`,
+          {
+            signal: abortController.signal
+          }
+        );
+        const json = await response.json();
+        const jsonObj = JSON.parse(json);
+        setNonFictionBooks(jsonObj);
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    };
 
-      fetchNonFictionBooks();
-      fetchFictionBooks();
-    }
+    fetchNonFictionBooks();
+    fetchFictionBooks();
+
+    return () => {
+      abortController.abort();
+      // stop the query by aborting on the AbortController on unmount
+    };
   }, []);
-
-  useEffect(
-    () => () => {
-      mountedRef.current = false;
-    },
-    []
-  );
 
   return (
     <section className="max-w-screen-xl flex flex-wrap justify-center items-start content-start w-full box-border bg-cover bg-no-repeat bg-50-50 p-0 text-black text-1rem mx-auto">
