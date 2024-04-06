@@ -89,7 +89,7 @@ export default function TV({ name, poster_path, vote_average, first_air_date, id
                   </svg>
                   <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
                     <h2 className="pl-px pt-px text-xs items-center justify-center text-center whitespace-normal">
-                      {vote_average * 10 || 'N/A'}
+                    {Math.round(vote_average * 10) || 'N/A'}
                       <span className="text-0.4rem">%</span>
                     </h2>
                   </div>
