@@ -16,7 +16,7 @@ const SearchResultMovie = ({ title, poster_path, vote_average, overview, id }) =
           <h2 className="m-0 p-0 w-auto font-bold break-words text-1em no-underline">{title}</h2>
         </Link>
         <h2 className="text-1em whitespace-normal ml-2">
-          {vote_average * 10}
+        {Math.round(vote_average * 10) || 'N/A'}
           <span className="text-0.4rem">%</span>
         </h2>
       </div>
